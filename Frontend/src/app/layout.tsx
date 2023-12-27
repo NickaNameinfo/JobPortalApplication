@@ -2,6 +2,16 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/meanmenu.css';
+import '../assets/css/icofont.min.css';
+// import '../assets/css/owl.carousel.min.css';
+import '../assets/css/owl.theme.default.min.css';
+import '../assets/css/animate.min.css';
+import '../assets/fonts/flaticon.css';
+import '../assets/css/odometer.min.css';
+import '../assets/css/style.css';
+import '../assets/css/responsive.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
