@@ -6,6 +6,35 @@ import { Button, Link } from "@nextui-org/react";
 
 export default function Home() {
   const [courses, setCourses] = React.useState([]);
+  const visibleColumn = [
+    "jobTitle",
+    "jobCategory",
+    "salaryFrom",
+    "salaryTo",
+    "jobLocation",
+    "status",
+    "status",
+    "jobdesCription",
+    "jobSkills",
+    "courseStatus",
+  ];
+  const columns = [
+    { name: "ID", uid: "id", sortable: true },
+    { name: "Job Title", uid: "jobTitle", sortable: true },
+    { name: "Job Category", uid: "jobCategory", sortable: true },
+    { name: "Salary From", uid: "salaryFrom", sortable: true },
+    { name: "Slaary To", uid: "salaryTo" },
+    { name: "Job Location", uid: "jobLocation" },
+    { name: "Job Description", uid: "jobdesCription" },
+    { name: "Job Skills", uid: "jobSkills" },
+    { name: "Course Status", uid: "courseStatus" },
+  ];
+
+  const statusOptions = [
+    { name: "Active", uid: "jobTitle" },
+    { name: "Paused", uid: "jobCategory" },
+    { name: "Vacation", uid: "salaryFrom" },
+  ];
 
   React.useEffect(() => {
     // Define the API URL
@@ -38,7 +67,12 @@ export default function Home() {
           Add Jobs
         </Button>
       </div>
-      <TableList data={courses} />
+      <TableList
+        data={courses}
+        visibleColumn={visibleColumn}
+        columns={columns}
+        option={statusOptions}
+      />
     </>
   );
 }

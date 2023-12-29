@@ -11,7 +11,6 @@ const customerController = {
       return res.json({ success: false, error: "Authentication failed." });
     }
   },
-
   findAll: async (req, res, next) => {
     try {
       const {
