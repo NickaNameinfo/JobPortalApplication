@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
 import { infoData } from "../../../../configData";
-const CreateAccount = () => {
+const Company = () => {
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -22,12 +22,17 @@ const CreateAccount = () => {
   }, []);
 
   const onSubmit = async (formData) => {
+    console.log(formData, "sdfasdfsad");
     try {
-      let tempData = {
-        ...formData,
-      };
-      await axios.post(`${infoData?.baseApi}/customers`, tempData);
-      router.push("/Components/Login");
+      const response = await axios.post(
+        `${infoData?.baseApi}/company`,
+        formData
+      );
+      if (response.data.success && !response?.data?.data?.error) {
+        router.push("/Components/CompanyLogin");
+      } else {
+        alert("User name or password is incorrect");
+      }
     } catch (error) {
       if (error.response) {
         alert(error.response.data?.message);
@@ -57,80 +62,120 @@ const CreateAccount = () => {
                     <div className="create-photo-right">
                       <div className="form-group">
                         <Controller
-                          name="firstName"
+                          name="companyName"
                           control={controlLogin}
                           rules={{ required: true }}
                           render={({ field }) => (
                             <input
                               type="text"
                               className="form-control"
-                              placeholder="Frist Name"
+                              placeholder="Company Name"
                               {...field}
                             />
                           )}
                         />
                         <p className="error">
-                          {errorsLogin.firstName?.type === "required"
-                            ? "Frist is required"
+                          {errorsLogin.companyName?.type === "required"
+                            ? "field is required"
                             : null}
                         </p>
                       </div>
                       <div className="form-group">
                         <Controller
-                          name="lastName"
+                          name="companyEmail"
                           control={controlLogin}
                           rules={{ required: true }}
                           render={({ field }) => (
                             <input
                               type="text"
                               className="form-control"
-                              placeholder="Last Name "
+                              placeholder="Company Email"
                               {...field}
                             />
                           )}
                         />
                         <p className="error">
-                          {errorsLogin.lastName?.type === "required"
-                            ? "Last Name is required"
+                          {errorsLogin.companyEmail?.type === "required"
+                            ? "field is required"
                             : null}
                         </p>
                       </div>
                       <div className="form-group">
                         <Controller
-                          name="email"
+                          name="companyNumber"
                           control={controlLogin}
                           rules={{ required: true }}
                           render={({ field }) => (
                             <input
                               type="text"
                               className="form-control"
-                              placeholder="Enter email"
+                              placeholder="Company Number"
                               {...field}
                             />
                           )}
                         />
                         <p className="error">
-                          {errorsLogin.email?.type === "required"
-                            ? "Email is required"
+                          {errorsLogin.companyNumber?.type === "required"
+                            ? "field is required"
                             : null}
                         </p>
                       </div>
                       <div className="form-group">
                         <Controller
-                          name="phoneNumber"
+                          name="companyWebsite"
                           control={controlLogin}
                           rules={{ required: true }}
                           render={({ field }) => (
                             <input
                               type="text"
                               className="form-control"
-                              placeholder="Enter Number"
+                              placeholder="Company Website"
                               {...field}
                             />
                           )}
                         />
                         <p className="error">
-                          {errorsLogin.phoneNumber?.type === "required"
+                          {errorsLogin.companyWebsite?.type === "required"
+                            ? "Field Name is required"
+                            : null}
+                        </p>
+                      </div>
+                      <div className="form-group">
+                        <Controller
+                          name="companyAddress"
+                          control={controlLogin}
+                          rules={{ required: true }}
+                          render={({ field }) => (
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Address"
+                              {...field}
+                            />
+                          )}
+                        />
+                        <p className="error">
+                          {errorsLogin.companyAddress?.type === "required"
+                            ? "Field is required"
+                            : null}
+                        </p>
+                      </div>
+                      <div className="form-group">
+                        <Controller
+                          name="totalEmployee"
+                          control={controlLogin}
+                          rules={{ required: true }}
+                          render={({ field }) => (
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Total Employee"
+                              {...field}
+                            />
+                          )}
+                        />
+                        <p className="error">
+                          {errorsLogin.totalEmployee?.type === "required"
                             ? "Number is required"
                             : null}
                         </p>
@@ -192,4 +237,4 @@ const CreateAccount = () => {
   );
 };
 
-export default CreateAccount;
+export default Company;

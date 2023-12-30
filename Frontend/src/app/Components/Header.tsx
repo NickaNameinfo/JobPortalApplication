@@ -1,11 +1,9 @@
 "use client";
 import Link from "next/link";
 import * as React from "react";
-
+const session = sessionStorage?.getItem("userName");
 const Header = () => {
-  const [userName, setUserName] = React.useState(
-    sessionStorage.getItem("userName")
-  );
+  const [userName, setUserName] = React.useState(session);
 
   return (
     <div className="navbar-area fixed-top">
@@ -58,7 +56,7 @@ const Header = () => {
                     </span>
                   </Link>
                 )}
-                <Link className="login-btn" href="/Components/Login">
+                <Link className="login-btn" href="/Components/Login/CompanyLogin">
                   Company Log in
                 </Link>
               </div>

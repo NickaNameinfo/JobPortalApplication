@@ -1,6 +1,17 @@
 const companyService = require("../services/company");
+const bcrypt = require("bcryptjs");
 
 const courseController = {
+  authenticate: async (req, res, next) => {
+    console.log(req.body, "bodyweqrqwe3124332");
+    try {
+      const data = await companyService.authenticate(req.body);
+      return res.json({ success: true, data });
+    } catch (error) {
+      console.error("Authentication Error:", error);
+      return res.json({ success: false, error: "Authentication failed." });
+    }
+  },
   findAll: async (req, res, next) => {
     try {
       const {
@@ -34,12 +45,13 @@ const courseController = {
   },
   create: async (req, res, next) => {
     console.log(req.files, req.body, "asdfasdfasd");
-    // let inputData = {
-    //   ...req.body,
-    //   uploadCourse: req?.files?.uploadCourse?.[0]?.path,
-    // };
+    let tempData = {
+      ...req.body,
+      password: await bcrypt.hash(req?.body?.password, 10),
+    };
+    console.log(tempData, "tempData45235");
     try {
-      const data = await companyService.create(req.body);
+      const data = await companyService.create(tempData);
       return res.json({ success: true, data });
     } catch (error) {
       return res.json({ success: false, error: "Company create failed." });

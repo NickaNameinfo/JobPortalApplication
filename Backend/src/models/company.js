@@ -28,6 +28,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         field: "company_name",
       },
+      companyEmail: {
+        type: DataTypes.STRING,
+        field: "company_email",
+      },
+      companyNumber: {
+        type: DataTypes.STRING,
+        field: "company_number",
+      },
       companyWebsite: {
         type: DataTypes.STRING,
         field: "company_website",
@@ -44,9 +52,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         field: "user_Name",
       },
-      passowrd: {
+      password: {
         type: DataTypes.STRING,
-        field: "company_website",
+        field: "password",
       },
       createdAt: {
         type: DataTypes.DATE,
@@ -62,6 +70,14 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Company",
       timestamps: true,
       underscored: true,
+      defaultScope: {
+        // exclude hash by default
+        attributes: { exclude: ["password"] },
+      },
+      scopes: {
+        // include hash with this scope
+        withHash: { attributes: {} },
+      },
     }
   );
   return Company;

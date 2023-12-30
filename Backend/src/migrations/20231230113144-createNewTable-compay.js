@@ -1,17 +1,27 @@
 "use strict";
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Companies", {
+  up: async (queryInterface, Sequelize) => {
+    // Create the new table
+    await queryInterface.createTable("your_new_table_name", {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
+        autoIncrement: true,
       },
       companyName: {
         type: Sequelize.STRING,
         field: "company_name",
+      },
+      companyEmail: {
+        type: Sequelize.STRING,
+        field: "company_email",
+      },
+      companyNumber: {
+        type: Sequelize.STRING,
+        field: "company_number",
       },
       companyWebsite: {
         type: Sequelize.STRING,
@@ -31,19 +41,23 @@ module.exports = {
       },
       passowrd: {
         type: Sequelize.STRING,
-        field: "password",
       },
+
       createdAt: {
         type: Sequelize.DATE,
-        field: "create_at",
+        allowNull: false,
       },
       updatedAt: {
         type: Sequelize.DATE,
-        field: "updated_at",
+        allowNull: false,
       },
     });
+
+    // Additional configuration like indexes and foreign keys can be added here.
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Companies");
+
+  down: async (queryInterface, Sequelize) => {
+    // In case you need to rollback, you can drop the table
+    await queryInterface.dropTable("your_new_table_name");
   },
 };

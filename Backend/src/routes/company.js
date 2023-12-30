@@ -22,6 +22,7 @@ const uploads = multer({
   limits: { fileSize: "1000000" },
 }).fields([{ name: "uploadCourse" }]);
 
+router.post("/authenticate", companyController.authenticate);
 router.get("/", companyController.findAll);
 router.get("/:id", companyController.findById);
 router.post("/", companyController.create);
