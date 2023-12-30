@@ -31,8 +31,6 @@ const CompanyLogin = () => {
       console.log(formData, "formData32134", response);
 
       if (response.data.success && !response?.data?.data?.error) {
-        sessionStorage.setItem("userName", formData?.userName);
-        sessionStorage.setItem("userID", response?.data?.data.id);
         router.push("http://localhost:3001");
       } else {
         alert("User name or password is incorrect");
