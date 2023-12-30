@@ -1,10 +1,11 @@
-const customerService = require("../services/customer");
+const companyService = require("../services/company");
 const bcrypt = require("bcryptjs");
-const customerController = {
+
+const courseController = {
   authenticate: async (req, res, next) => {
     console.log(req.body, "bodyweqrqwe3124332");
     try {
-      const data = await customerService.authenticate(req.body);
+      const data = await companyService.authenticate(req.body);
       return res.json({ success: true, data });
     } catch (error) {
       console.error("Authentication Error:", error);
@@ -15,13 +16,13 @@ const customerController = {
     try {
       const {
         page = 1,
-        limit = 3,
-        orderBy = "email",
+        limit = 500,
+        orderBy = "companyName",
         sortBy = "asc",
         keyword,
       } = req.query;
 
-      const data = await customerService.findAll({
+      const data = await companyService.findAll({
         page: +page ? +page : 1,
         limit: +limit ? +limit : 3,
         orderBy,
@@ -36,45 +37,34 @@ const customerController = {
   findById: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const data = await customerService.findById(id);
+      const data = await companyService.findById(id);
       return res.json({ success: true, data });
     } catch (error) {
       next(error);
     }
   },
   create: async (req, res, next) => {
-    console.log(req.body, "sdfasd231423");
+    console.log(req.files, req.body, "asdfasdfasd");
+    let tempData = {
+      ...req.body,
+      password: await bcrypt.hash(req?.body?.password, 10),
+    };
+    console.log(tempData, "tempData45235");
     try {
-      let tempData = {
-        ...req.body,
-        password: await bcrypt.hash(req?.body?.password, 10),
-        addresses: [],
-      };
-      const data = await customerService.create(tempData);
+      const data = await companyService.create(tempData);
       return res.json({ success: true, data });
     } catch (error) {
-      next(error);
-    }
-  },
-  addNewAddress: async (req, res, next) => {
-    try {
-      const { city, state, street, zipcode } = req.body;
-      const { id } = req.params;
-      const data = await customerService.addNewAddress(id, {
-        city,
-        state,
-        street,
-        zipcode,
-      });
-      return res.json({ success: true, data });
-    } catch (error) {
-      next(error);
+      return res.json({ success: false, error: "Company create failed." });
     }
   },
   updateById: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const data = await customerService.updateById(id, req.body);
+      // let inputData = {
+      //   ...req.body,
+      //   uploadCourse: req.files.uploadCourse?.[0]?.path,
+      // };
+      const data = await companyService.updateById(id, req.body);
       return res.json({ success: true, data });
     } catch (error) {
       next(error);
@@ -83,7 +73,7 @@ const customerController = {
   deleteById: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const data = await customerService.deleteById(id);
+      const data = await companyService.deleteById(id);
       return res.json({ success: true, data });
     } catch (error) {
       next(error);
@@ -91,4 +81,4 @@ const customerController = {
   },
 };
 
-module.exports = customerController;
+module.exports = courseController;

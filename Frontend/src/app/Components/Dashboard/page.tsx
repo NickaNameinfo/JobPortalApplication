@@ -1,12 +1,32 @@
-import React from 'react'
-import Header from '../Header'
+"use client";
+import React from "react";
+import Header from "../Header";
+import Footer from "../Footer/page";
+import { infoData } from "../../../../configData";
+import axios from "axios";
+import Link from "next/link";
 
 const Dashboard = () => {
+  const [courses, setCourses] = React.useState([]);
+
+  React.useEffect(() => {
+    const apiUrl = `${infoData?.baseApi}/courses`;
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        console.log(response?.data?.data?.data, "response.data123412");
+        setCourses(response?.data?.data?.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching courses:", error);
+      });
+  }, []);
+
   return (
-   <>
+    <>
       <div>
         <Header />
-        
+
         <div className="banner-area banner-img-one dashboardbanner">
           <div className="d-table">
             <div className="d-table-cell">
@@ -60,27 +80,27 @@ const Dashboard = () => {
                     <h3>Job Categories</h3>
                     <ul>
                       <li>
-                        <a href="#">Web Developer</a>
+                        <Link href="#">Web Developer</Link>
                         <span>(5)</span>
                       </li>
                       <li>
-                        <a href="#">Web Designer</a>
+                        <Link href="#">Web Designer</Link>
                         <span>(2)</span>
                       </li>
                       <li>
-                        <a href="#">UX/UI Designer</a>
+                        <Link href="#">UX/UI Designer</Link>
                         <span>(7)</span>
                       </li>
                       <li>
-                        <a href="#">Marketing</a>
+                        <Link href="#">Marketing</Link>
                         <span>(0)</span>
                       </li>
                       <li>
-                        <a href="#">SEO</a>
+                        <Link href="#">SEO</Link>
                         <span>(1)</span>
                       </li>
                       <li>
-                        <a href="#">Networking</a>
+                        <Link href="#">Networking</Link>
                         <span>(0)</span>
                       </li>
                     </ul>
@@ -89,23 +109,23 @@ const Dashboard = () => {
                     <h3>Job Locations</h3>
                     <ul>
                       <li>
-                        <a href="#">New York</a>
+                        <Link href="#">New York</Link>
                         <span>(4)</span>
                       </li>
                       <li>
-                        <a href="#">Washington</a>
+                        <Link href="#">Washington</Link>
                         <span>(5)</span>
                       </li>
                       <li>
-                        <a href="#">Chicago</a>
+                        <Link href="#">Chicago</Link>
                         <span>(3)</span>
                       </li>
                       <li>
-                        <a href="#">Houston</a>
+                        <Link href="#">Houston</Link>
                         <span>(1)</span>
                       </li>
                       <li>
-                        <a href="#">Los Angeles</a>
+                        <Link href="#">Los Angeles</Link>
                         <span>(0)</span>
                       </li>
                     </ul>
@@ -114,181 +134,45 @@ const Dashboard = () => {
               </div>
               <div className="col-sm-8">
                 <div className="row">
-                  <div className="col-lg-12">
-                    <div className="job-item">
-                      <img src="/Images/home-1/jobs/1.png" alt="Job" />
-                      <div className="job-inner align-items-center">
-                        <div className="job-inner-left">
-                          <h3>
-                            <a href="#!">UI/UX Designer</a>
-                          </h3>
-                          <a className="company" href="company-details.php">
-                            Winbrans.com
-                          </a>
-                          <ul>
-                            <li>
-                              <i className="icofont-money-bag" />
-                              $20k - $25k
-                            </li>
-                            <li>
-                              <i className="icofont-location-pin" />
-                              Location 210-27 Quadra, Market Street, Victoria Canada
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="job-inner-right">
-                          <ul>
-                            <li>
-                              <a href="job-details.php">Apply</a>
-                            </li>
-                            {/* <li>
-                                              <span>Full Time</span>
-                                          </li> */}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="job-item">
-                      <img src="/Images/home-1/jobs/2.png" alt="Job" />
-                      <div className="job-inner align-items-center">
-                        <div className="job-inner-left">
-                          <h3>
-                            <a href="#!">Android Developer</a>
-                          </h3>
-                          <a className="company" href="company-details.php">
-                            Infiniza.com
-                          </a>
-                          <ul>
-                            <li>
-                              <i className="icofont-money-bag" />
-                              $20k - $25k
-                            </li>
-                            <li>
-                              <i className="icofont-location-pin" />
-                              Location 210-27 Quadra, Market Street, Victoria Canada
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="job-inner-right">
-                          <ul>
-                            <li>
-                              <a href="job-details.php">Apply</a>
-                            </li>
-                            {/* <li>
-                                              <span>Part Time</span>
-                                          </li> */}
-                          </ul>
+                  {courses?.map((result) => (
+                    <div className="col-lg-12">
+                      <div className="job-item">
+                        <img src="/Images/home-1/jobs/1.png" alt="Job" />
+                        <div className="job-inner align-items-center">
+                          <div className="job-inner-left">
+                            <h3>
+                              <Link href="#!">{result?.jobTitle}</Link>
+                            </h3>
+                            <Link
+                              className="company"
+                              href={`/Components/${result?.id}`}
+                            >
+                              Winbrans.com
+                            </Link>
+                            <ul>
+                              <li>
+                                <i className="icofont-money-bag" />
+                                {result?.salaryFrom} - {result?.salaryTo}
+                              </li>
+                              <li>
+                                <i className="icofont-location-pin" />
+                                {result?.jobLocation}
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="job-inner-right">
+                            <ul>
+                              <li>
+                                <Link href={`/Components/Apply/${result?.id}`}>
+                                  Apply
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="job-item">
-                      <img src="/Images/home-1/jobs/3.png" alt="Job" />
-                      <div className="job-inner align-items-center">
-                        <div className="job-inner-left">
-                          <h3>
-                            <a href="#!">Senior Manager</a>
-                          </h3>
-                          <a className="company" href="company-details.php">
-                            Glovibo.com
-                          </a>
-                          <ul>
-                            <li>
-                              <i className="icofont-money-bag" />
-                              $20k - $25k
-                            </li>
-                            <li>
-                              <i className="icofont-location-pin" />
-                              Location 210-27 Quadra, Market Street, Victoria Canada
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="job-inner-right">
-                          <ul>
-                            <li>
-                              <a href="job-details.php">Apply</a>
-                            </li>
-                            {/* <li>
-                                              <span>Intern</span>
-                                          </li> */}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="job-item ">
-                      <img src="/Images/home-1/jobs/4.png" alt="Job" />
-                      <div className="job-inner align-items-center">
-                        <div className="job-inner-left">
-                          <h3>
-                            <a href="#!">Product Designer</a>
-                          </h3>
-                          <a className="company" href="company-details.php">
-                            Bizotic.com
-                          </a>
-                          <ul>
-                            <li>
-                              <i className="icofont-money-bag" />
-                              $20k - $25k
-                            </li>
-                            <li>
-                              <i className="icofont-location-pin" />
-                              Location 210-27 Quadra, Market Street, Victoria Canada
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="job-inner-right">
-                          <ul>
-                            <li>
-                              <a href="job-details.php">Apply</a>
-                            </li>
-                            {/* <li>
-                                              <span>Part Time</span>
-                                          </li> */}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="job-item">
-                      <img src="/Images/home-1/jobs/5.png" alt="Job" />
-                      <div className="job-inner align-items-center">
-                        <div className="job-inner-left">
-                          <h3>
-                            <a href="#">Digital Marketer</a>
-                          </h3>
-                          <a className="company" href="company-details.php">
-                            Hotelzo.com
-                          </a>
-                          <ul>
-                            <li>
-                              <i className="icofont-money-bag" />
-                              $20k - $25k
-                            </li>
-                            <li>
-                              <i className="icofont-location-pin" />
-                              Location 210-27 Quadra, Market Street, Victoria Canada
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="job-inner-right">
-                          <ul>
-                            <li>
-                              <a href="job-details.php">Apply</a>
-                            </li>
-                            {/* <li>
-                                              <span>Intern</span>
-                                          </li> */}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -296,7 +180,7 @@ const Dashboard = () => {
         </section>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

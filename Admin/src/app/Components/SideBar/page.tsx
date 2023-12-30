@@ -36,7 +36,7 @@ export const SideNavbar = () => {
                   style={{ backgroundColor: "var(--secondary-500)" }}
                 >
                   <Link
-                    href="/"
+                    href="/Pages/Company"
                     className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <div className="flex justify-between w-full items-center">
@@ -49,7 +49,7 @@ export const SideNavbar = () => {
                   style={{ backgroundColor: "var(--secondary-500)" }}
                 >
                   <Link
-                    href="/"
+                    href="/Pages/Users"
                     className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <div className="flex justify-between w-full items-center">
@@ -62,7 +62,7 @@ export const SideNavbar = () => {
                   style={{ backgroundColor: "var(--secondary-500)" }}
                 >
                   <Link
-                    href="/"
+                    href="/Pages/Jobs"
                     className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <div className="flex justify-between w-full items-center">

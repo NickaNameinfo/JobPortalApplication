@@ -4,9 +4,9 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
-import { infoData } from "../../../../configData";
+import { infoData } from "../../../../../configData";
 
-const Login = () => {
+const CompanyLogin = () => {
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -25,15 +25,13 @@ const Login = () => {
   const onSubmit = async (formData) => {
     try {
       const response = await axios.post(
-        `${infoData?.baseApi}/customers/authenticate`,
+        `${infoData?.baseApi}/company/authenticate`,
         formData
       );
       console.log(formData, "formData32134", response);
 
       if (response.data.success && !response?.data?.data?.error) {
-        sessionStorage.setItem("userName", formData?.userName);
-        sessionStorage.setItem("userID", response?.data?.data.id);
-        router.push("/");
+        router.push("http://localhost:3001");
       } else {
         alert("User name or password is incorrect");
       }
@@ -99,7 +97,7 @@ const Login = () => {
                   <ul>
                     <li>Don’t Have Account ?</li>
                     <li>
-                      <Link href="/Components/CreateAccount">Sign Up Here</Link>
+                      <Link href="/Components/Company">Sign Up Here</Link>
                     </li>
                   </ul>
                   <div className="text-center">
@@ -117,4 +115,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default CompanyLogin;

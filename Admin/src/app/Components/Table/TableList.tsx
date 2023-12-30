@@ -31,25 +31,14 @@ const statusColorMap = {
   vacation: "warning",
 };
 
-const INITIAL_VISIBLE_COLUMNS = [
-  "jobTitle",
-  "jobCategory",
-  "salaryFrom",
-  "salaryTo",
-  "jobLocation",
-  "status",
-  "status",
-  "jobdesCription",
-  "jobSkills",
-  "courseStatus",
-];
-
-export default function TableList({ data }) {
+export default function TableList({
+  data,
+  visibleColumn,
+  columns = [],
+  option,
+}) {
   const [filterValue, setFilterValue] = React.useState("");
   const [selectedKeys, setSelectedKeys] = React.useState<any>(new Set([]));
-  const [visibleColumns, setVisibleColumns] = React.useState<any>(
-    new Set(INITIAL_VISIBLE_COLUMNS)
-  );
   const [statusFilter, setStatusFilter] = React.useState<any>("all");
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [sortDescriptor, setSortDescriptor] = React.useState<any>({
@@ -60,30 +49,12 @@ export default function TableList({ data }) {
 
   const hasSearchFilter = Boolean(filterValue);
 
-  const columns = [
-    { name: "ID", uid: "id", sortable: true },
-    { name: "Job Title", uid: "jobTitle", sortable: true },
-    { name: "Job Category", uid: "jobCategory", sortable: true },
-    { name: "Salary From", uid: "salaryFrom", sortable: true },
-    { name: "Slaary To", uid: "salaryTo" },
-    { name: "Job Location", uid: "jobLocation" },
-    { name: "Job Description", uid: "jobdesCription" },
-    { name: "Job Skills", uid: "jobSkills" },
-    { name: "Course Status", uid: "courseStatus" },
-  ];
-
-  const statusOptions = [
-    { name: "Active", uid: "jobTitle" },
-    { name: "Paused", uid: "jobCategory" },
-    { name: "Vacation", uid: "salaryFrom" },
-  ];
-
   const headerColumns = React.useMemo(() => {
     // if (visibleColumns === "all") return columns;
     return columns.filter((column) =>
-      Array.from(visibleColumns).includes(column.uid)
+      Array.from(visibleColumn).includes(column.uid)
     );
-  }, [visibleColumns]);
+  }, [visibleColumn]);
 
   const filteredItems = React.useMemo(() => {
     let filteredUsers = [...data];
@@ -95,7 +66,7 @@ export default function TableList({ data }) {
     }
     if (
       statusFilter !== "all" &&
-      Array.from(statusFilter).length !== statusOptions.length
+      Array.from(statusFilter).length !== option.length
     ) {
       filteredUsers = filteredUsers.filter((user) =>
         Array.from(statusFilter).includes(user.status)

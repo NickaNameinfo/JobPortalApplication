@@ -2,24 +2,21 @@
 import React from "react";
 import Header from "../Header";
 import axios from "axios";
+import Link from "next/link";
+import { infoData } from "../../../../configData";
 
 const Index = () => {
   const [courses, setCourses] = React.useState([]);
 
   React.useEffect(() => {
-    // Define the API URL
-    const apiUrl = "http://localhost:5000/api/v1/courses";
-
-    // Make a GET request using Axios
+    const apiUrl = `${infoData?.baseApi}/courses`;
     axios
       .get(apiUrl)
       .then((response) => {
-        // Handle the successful response
         console.log(response?.data?.data?.data, "response.data123412");
-        setCourses(response?.data?.data?.data); // Assuming the response is an array of courses
+        setCourses(response?.data?.data?.data);
       })
       .catch((error) => {
-        // Handle the error
         console.error("Error fetching courses:", error);
       });
   }, []);
@@ -88,9 +85,9 @@ const Index = () => {
                     </form>
                   </div>
                   {/* <div class="banner-btn">
-                          <a href="create-account.php">Create Your
-                              Profile</a>
-                          <a href="submit-resume.php">Upload Your CV</a>
+                          <Link href="create-account.php">Create Your
+                              Profile</Link>
+                          <Link href="submit-resume.php">Upload Your CV</Link>
                       </div> */}
                 </div>
               </div>
@@ -135,11 +132,14 @@ const Index = () => {
                       <div className="job-inner align-items-center">
                         <div className="job-inner-left">
                           <h3>
-                            <a href="#">{result?.jobTitle}</a>
+                            <Link href="#">{result?.jobTitle}</Link>
                           </h3>
-                          <a className="company" href="company-details.php">
+                          <Link
+                            className="company"
+                            href={`/Components/${result?.id}`}
+                          >
                             Winbrans.com
-                          </a>
+                          </Link>
                           <ul>
                             <li>
                               <i className="icofont-money-bag" />
@@ -154,11 +154,10 @@ const Index = () => {
                         <div className="job-inner-right">
                           <ul>
                             <li>
-                              <a href="#">Apply</a>
+                              <Link href={`/Components/Apply/${result?.id}`}>
+                                Apply
+                              </Link>
                             </li>
-                            {/* <li>
-                                          <span>Full Time</span>
-                                      </li> */}
                           </ul>
                         </div>
                       </div>
