@@ -50,7 +50,7 @@ const courseController = {
       const { id } = req.params;
       let inputData = {
         ...req.body,
-        resume: req.files.resume?.[0]?.path,
+        resume: req?.files?.resume?.[0]?.path,
       };
       const data = await jobsService.updateById(id, inputData);
       return res.json({ success: true, data });

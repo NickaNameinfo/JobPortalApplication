@@ -22,6 +22,13 @@ const Apply = ({ params }: { params: { slug: string } }) => {
   console.log(params.slug, "sdfjaslkd43245", courses);
 
   React.useEffect(() => {
+    let localUserName = sessionStorage.getItem("userName");
+    console.log(localUserName, "sdfas");
+    if (!localUserName) {
+      alert("Before applying job kindly login your account");
+      router.back();
+    }
+
     const apiUrl1 = `${infoData?.baseApi}/courses/${params.slug}`;
     const apiUrl2 = `${infoData?.baseApi}/customers/${sessionStorage.getItem(
       "userID"
@@ -47,9 +54,10 @@ const Apply = ({ params }: { params: { slug: string } }) => {
     for (const key in data) {
       formData.append(key, data[key]);
     }
-    formData.append("userName", `${customer?.firstName} ${customer?.lastName}`);
+    formData.append("userName", `${customer?.userName}`);
     formData.append("jobTitle", courses?.jobTitle);
     formData.append("jobCategory", courses?.jobCategory);
+    formData.append("companyName", courses?.companyName);
     try {
       const response = await axios.post(`${infoData?.baseApi}/jobs`, formData, {
         headers: {
@@ -59,7 +67,8 @@ const Apply = ({ params }: { params: { slug: string } }) => {
       if (!response?.data?.success) {
         alert("Somthing want worng");
       } else {
-        router.push("/");
+        alert("Good Job! Thanks for submitting the form!");
+        router.push("/Components/UserDashboard");
       }
       // Handle the response as needed
     } catch (error) {
@@ -217,8 +226,8 @@ const Apply = ({ params }: { params: { slug: string } }) => {
                           )}
                         />
                         <p className="error">
-                          {errorsLogin.experience?.type === "required"
-                            ? "Experience is required"
+                          {errorsLogin.resume?.type === "required"
+                            ? "Resume is required"
                             : null}
                         </p>
                       </div>

@@ -2,10 +2,12 @@
 import React from "react";
 import { Input, Button, Textarea } from "@nextui-org/react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { infoData } from "../../../../configData";
 import axios from "axios";
 const PostJob = () => {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("companyName");
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -16,12 +18,17 @@ const PostJob = () => {
   const onSubmit = async (formData) => {
     console.log(formData, "sdfasdfsad");
     try {
+      let tempData = {
+        ...formData,
+        companyName: search,
+      };
       const response = await axios.post(
         `${infoData?.baseApi}/courses`,
-        formData
+        tempData
       );
+
       if (response.data.success && !response?.data?.data?.error) {
-        router.push("/");
+        router.push(`/?companyName=${search}`);
       } else {
         alert("User name or password is incorrect");
       }
@@ -99,6 +106,23 @@ const PostJob = () => {
               errorMessage={
                 errorsLogin.jobCategory?.type === "required"
                   ? "Job Location is required"
+                  : null
+              }
+            />
+          )}
+        />
+        <Controller
+          name="experince"
+          control={controlLogin}
+          // rules={{ required: true }}
+          render={({ field }) => (
+            <Input
+              type="number"
+              label="Experince"
+              {...field}
+              errorMessage={
+                errorsLogin.experince?.type === "required"
+                  ? "Experince Status is required"
                   : null
               }
             />

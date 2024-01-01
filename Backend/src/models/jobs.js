@@ -56,6 +56,14 @@ module.exports = (sequelize, DataTypes) => {
       resume: {
         type: DataTypes.STRING,
       },
+      companyName: {
+        type: DataTypes.STRING,
+        field: "company_name",
+      },
+      jobStatus: {
+        type: DataTypes.STRING,
+        field: "job_status",
+      },
       createdAt: {
         type: DataTypes.DATE,
         field: "create_at",

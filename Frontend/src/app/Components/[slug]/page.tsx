@@ -92,15 +92,15 @@ const JobDetails = ({ params }: { params: { slug: string } }) => {
                         {courses?.salaryFrom} - {courses?.salaryTo}
                       </span>
                     </li>
-                    <li>
+                    {/* <li>
                       <i className="icofont-users-alt-3" />
                       <p>Gender</p>
                       <span>Male</span>
-                    </li>
+                    </li> */}
                     <li>
                       <i className="icofont-badge" />
                       <p>Experince</p>
-                      <span>2 Years</span>
+                      <span>{courses?.experince}</span>
                     </li>
                     <li>
                       <i className="icofont-graduate" />

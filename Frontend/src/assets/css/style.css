@@ -5878,6 +5878,7 @@ textarea {
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
+  box-shadow: 0px 0px 8px 0px #cdcdcd;
 }
 .job-card:hover {
   transform: scale(1.02);

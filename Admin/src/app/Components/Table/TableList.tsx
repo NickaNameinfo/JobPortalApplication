@@ -15,15 +15,20 @@ import {
   Chip,
   User,
   Pagination,
+  Tooltip,
+  Badge,
 } from "@nextui-org/react";
 import {
   ChevronDownIcon,
+  DeleteIcon,
+  EditIcon,
+  EyeIcon,
   PlusIcon,
   SearchIcon,
   VerticalDotsIcon,
 } from "../Icons";
-import { capitalize } from "./data2";
-import { Anybody } from "next/font/google";
+import { FaX, FaCheck } from "react-icons/fa6";
+import axios from "axios";
 
 const statusColorMap = {
   active: "success",
@@ -36,6 +41,7 @@ export default function TableList({
   visibleColumn,
   columns = [],
   option,
+  api = null,
 }) {
   const [filterValue, setFilterValue] = React.useState("");
   const [selectedKeys, setSelectedKeys] = React.useState<any>(new Set([]));
@@ -95,7 +101,54 @@ export default function TableList({
     });
   }, [sortDescriptor, items]);
 
+  const onClickReject = async (formData) => {
+    let tempData = {
+      ...formData,
+      jobStatus: "Rejected",
+    };
+    try {
+      const response = await axios.put(`${api?.api}/${formData.id}`, tempData);
+      if (response.data.success && !response?.data?.data?.error) {
+        location.reload();
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data?.message);
+      }
+    }
+  };
+  const onClickApprove = async (formData) => {
+    let tempData = {
+      ...formData,
+      jobStatus: "Approved",
+    };
+    try {
+      const response = await axios.put(`${api?.api}/${formData.id}`, tempData);
+      if (response.data.success && !response?.data?.data?.error) {
+        location.reload();
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data?.message);
+      }
+    }
+  };
+
+  const onClicDelete = async (formData) => {
+    try {
+      const response = await axios.delete(`${api?.api}/${formData.id}`);
+      if (response.data.success && !response?.data?.data?.error) {
+        location.reload();
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data?.message);
+      }
+    }
+  };
+
   const renderCell = React.useCallback((user, columnKey) => {
+    console.log(user, "user34213");
     const cellValue = user[columnKey];
 
     switch (columnKey) {
@@ -131,19 +184,47 @@ export default function TableList({
         );
       case "actions":
         return (
-          <div className="relative flex justify-end items-center gap-2">
-            <Dropdown>
-              <DropdownTrigger>
-                <Button isIconOnly size="sm" variant="light">
-                  <VerticalDotsIcon className="text-default-300" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem>View</DropdownItem>
-                <DropdownItem>Edit</DropdownItem>
-                <DropdownItem>Delete</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+          <div className="relative flex items-center gap-2">
+            {/* <Tooltip content="Edit">
+              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                <EditIcon />
+              </span>
+            </Tooltip> */}
+            <Tooltip color="danger" content="Delete">
+              <span
+                className="text-lg text-danger cursor-pointer active:opacity-50"
+                onClick={() => onClicDelete(user)}
+              >
+                <DeleteIcon />
+              </span>
+            </Tooltip>
+          </div>
+        );
+      case "updates":
+        return (
+          <div className="relative flex items-center gap-2">
+            {!user.jobStatus ? (
+              <>
+                <Tooltip content="Reject">
+                  <span
+                    className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                    onClick={() => onClickReject(user)}
+                  >
+                    <FaX color="red" />
+                  </span>
+                </Tooltip>
+                <Tooltip content="Shortlisted">
+                  <span
+                    className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                    onClick={() => onClickApprove(user)}
+                  >
+                    <FaCheck />
+                  </span>
+                </Tooltip>
+              </>
+            ) : (
+              <span>{user.jobStatus}</span>
+            )}
           </div>
         );
       default:
@@ -212,7 +293,6 @@ export default function TableList({
         wrapper: "max-h-[382px]",
       }}
       selectedKeys={selectedKeys}
-      selectionMode="multiple"
       sortDescriptor={sortDescriptor}
       topContentPlacement="outside"
       onSelectionChange={setSelectedKeys}

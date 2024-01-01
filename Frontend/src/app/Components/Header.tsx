@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
 import * as React from "react";
-const session = sessionStorage?.getItem("userName");
 const Header = () => {
-  const [userName, setUserName] = React.useState(session);
+  const [userName, setUserName] = React.useState(
+    sessionStorage?.getItem("userName")
+  );
 
   return (
     <div className="navbar-area fixed-top">
@@ -38,6 +39,14 @@ const Header = () => {
                     Jobs
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link
+                    href="/Components/UserDashboard"
+                    className="nav-link dropdown-toggle"
+                  >
+                    Profile
+                  </Link>
+                </li>
               </ul>
               <div className="common-btn">
                 {!userName ? (
@@ -56,7 +65,10 @@ const Header = () => {
                     </span>
                   </Link>
                 )}
-                <Link className="login-btn" href="/Components/Login/CompanyLogin">
+                <Link
+                  className="login-btn"
+                  href="/Components/Login/CompanyLogin"
+                >
                   Company Log in
                 </Link>
               </div>

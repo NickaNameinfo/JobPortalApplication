@@ -31,7 +31,7 @@ const Login = () => {
       console.log(formData, "formData32134", response);
 
       if (response.data.success && !response?.data?.data?.error) {
-        sessionStorage.setItem("userName", formData?.userName);
+        sessionStorage.setItem("userName", response?.data?.data?.userName);
         sessionStorage.setItem("userID", response?.data?.data.id);
         router.push("/");
       } else {

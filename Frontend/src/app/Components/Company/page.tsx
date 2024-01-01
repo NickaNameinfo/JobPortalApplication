@@ -14,7 +14,7 @@ const Company = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
+    let localUserName = sessionStorage.getItem("companyName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();
@@ -29,9 +29,9 @@ const Company = () => {
         formData
       );
       if (response.data.success && !response?.data?.data?.error) {
-        router.push("/Components/CompanyLogin");
+        router.push("/Components/Login/CompanyLogin");
       } else {
-        alert("User name or password is incorrect");
+        alert("User name, Company name or email is already exist");
       }
     } catch (error) {
       if (error.response) {
