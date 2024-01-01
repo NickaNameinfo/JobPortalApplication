@@ -3,9 +3,16 @@ import * as React from "react";
 import TableList from "./Components/Table/TableList";
 import axios from "axios";
 import { Button, Link } from "@nextui-org/react";
+import { Login } from "./Components/Login/Login";
+import { useRouter, useSearchParams } from "next/navigation";
+import { infoData } from "../../configData";
 
 export default function Home() {
   const [courses, setCourses] = React.useState([]);
+  const searchParams = useSearchParams();
+  const search = searchParams.get("companyName");
+
+  console.log(search, "query23452345");
   const visibleColumn = [
     "jobTitle",
     "jobCategory",
@@ -17,17 +24,21 @@ export default function Home() {
     "jobdesCription",
     "jobSkills",
     "courseStatus",
+    "experince",
+    "actions",
   ];
   const columns = [
     { name: "ID", uid: "id", sortable: true },
     { name: "Job Title", uid: "jobTitle", sortable: true },
+    { name: "Experince", uid: "experince", sortable: true },
     { name: "Job Category", uid: "jobCategory", sortable: true },
     { name: "Salary From", uid: "salaryFrom", sortable: true },
     { name: "Slaary To", uid: "salaryTo" },
     { name: "Job Location", uid: "jobLocation" },
     { name: "Job Description", uid: "jobdesCription" },
     { name: "Job Skills", uid: "jobSkills" },
-    { name: "Course Status", uid: "courseStatus" },
+    { name: "Job Status", uid: "courseStatus" },
+    { name: "Actions", uid: "actions" },
   ];
 
   const statusOptions = [
@@ -38,7 +49,7 @@ export default function Home() {
 
   React.useEffect(() => {
     // Define the API URL
-    const apiUrl = "http://localhost:5000/api/v1/courses";
+    const apiUrl = `${infoData.baseApi}/courses`;
 
     // Make a GET request using Axios
     axios
@@ -46,7 +57,10 @@ export default function Home() {
       .then((response) => {
         // Handle the successful response
         console.log(response?.data?.data?.data, "response.data123412");
-        setCourses(response?.data?.data?.data); // Assuming the response is an array of courses
+        let tempData = response?.data?.data?.data.filter(
+          (item) => item.companyName === search
+        );
+        setCourses(tempData); // Assuming the response is an array of courses
       })
       .catch((error) => {
         // Handle the error
@@ -62,17 +76,21 @@ export default function Home() {
           variant="flat"
           className="mb-4"
           as={Link}
-          href="/Pages/PostJob"
+          href={`/Pages/PostJob/?companyName=${search}`}
         >
           Add Jobs
         </Button>
+
+        <TableList
+          api={{
+            api: `${infoData.baseApi}/courses`,
+          }}
+          data={courses}
+          visibleColumn={visibleColumn}
+          columns={columns}
+          option={statusOptions}
+        />
       </div>
-      <TableList
-        data={courses}
-        visibleColumn={visibleColumn}
-        columns={columns}
-        option={statusOptions}
-      />
     </>
   );
 }

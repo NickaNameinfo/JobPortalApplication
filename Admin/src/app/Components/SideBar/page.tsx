@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import * as React from "react";
 
 export const SideNavbar = () => {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("companyName");
   return (
     <>
       <div className="navBarStyle">
@@ -23,7 +26,7 @@ export const SideNavbar = () => {
                   style={{ backgroundColor: "var(--secondary-500)" }}
                 >
                   <Link
-                    href="/"
+                    href={`/?companyName=${search}`}
                     className="mt-7 p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <div className="flex justify-between w-full items-center">
@@ -31,38 +34,43 @@ export const SideNavbar = () => {
                     </div>
                   </Link>
                 </li>
+                {search === "Admin" && (
+                  <>
+                    <li
+                      className="rounded-xl"
+                      style={{ backgroundColor: "var(--secondary-500)" }}
+                    >
+                      <Link
+                        href={`/Pages/Company/?companyName=${search}`}
+                        className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                      >
+                        <div className="flex justify-between w-full items-center">
+                          <p>Company List</p>
+                        </div>
+                      </Link>
+                    </li>
+                    <li
+                      className="rounded-xl"
+                      style={{ backgroundColor: "var(--secondary-500)" }}
+                    >
+                      <Link
+                        href={`/Pages/Users/?companyName=${search}`}
+                        className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                      >
+                        <div className="flex justify-between w-full items-center">
+                          <p>User List</p>
+                        </div>
+                      </Link>
+                    </li>
+                  </>
+                )}
+
                 <li
                   className="rounded-xl"
                   style={{ backgroundColor: "var(--secondary-500)" }}
                 >
                   <Link
-                    href="/Pages/Company"
-                    className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                  >
-                    <div className="flex justify-between w-full items-center">
-                      <p>Company List</p>
-                    </div>
-                  </Link>
-                </li>
-                <li
-                  className="rounded-xl"
-                  style={{ backgroundColor: "var(--secondary-500)" }}
-                >
-                  <Link
-                    href="/Pages/Users"
-                    className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                  >
-                    <div className="flex justify-between w-full items-center">
-                      <p>User List</p>
-                    </div>
-                  </Link>
-                </li>
-                <li
-                  className="rounded-xl"
-                  style={{ backgroundColor: "var(--secondary-500)" }}
-                >
-                  <Link
-                    href="/Pages/Jobs"
+                    href={`/Pages/Jobs/?companyName=${search}`}
                     className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <div className="flex justify-between w-full items-center">
@@ -75,11 +83,11 @@ export const SideNavbar = () => {
                   style={{ backgroundColor: "var(--secondary-500)" }}
                 >
                   <Link
-                    href="/"
+                    href="http://localhost:3000"
                     className="p-3 text-sm flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <div className="flex justify-between w-full items-center">
-                      <p>Settings</p>
+                      <p>Log Out</p>
                     </div>
                   </Link>
                 </li>

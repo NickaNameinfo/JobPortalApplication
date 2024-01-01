@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SideNavbar } from "./Components/SideBar/page";
 import { NavBar } from "./Components/NavBar/page";
+import { useSearchParams } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,24 +19,39 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("companyName");
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextUIProvider>
-          <main className="mytheme text-foreground overflow-hidden p-4">
-            <div className="flex flex-row">
-              <div className="w-1/4 md:w-1/3 lg:w-1/5">
-                <SideNavbar />
-              </div>
-              <div className="w-1/4 md:w-2/3 lg:w-4/5 px-3 custom-scrollbar">
-                <NavBar />
-                <div className="navBarStyle p-4 mt-3">
-                  {children}
+        {search ? (
+          <NextUIProvider>
+            <main className="mytheme text-foreground overflow-hidden p-4">
+              <div className="flex flex-row">
+                <div className="w-1/4 md:w-1/3 lg:w-1/5">
+                  <SideNavbar />
+                </div>
+                <div className="w-1/4 md:w-2/3 lg:w-4/5 px-3 custom-scrollbar">
+                  <NavBar />
+                  <div className="navBarStyle p-4 mt-3">{children}</div>
                 </div>
               </div>
-            </div>
-          </main>
-        </NextUIProvider>
+            </main>
+          </NextUIProvider>
+        ) : (
+          <div
+            style={{
+              height: "100vh",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <a href="http://localhost:3000">
+              <button style={{background : "white", padding: "14px", borderRadius : "10px"}}>Please login or register our company</button>
+            </a>
+          </div>
+        )}
       </body>
     </html>
   );

@@ -26,7 +26,7 @@ import { OTPPage } from "./Otp";
 import { NewPassword } from "./NewPassword";
 import { Register } from "./Register";
 
-export const Login = () => {
+export const Login = (props) => {
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const [isForgetPassword, setIsForgetPassword] = React.useState(false);
   const [isOTP, setIsOTP] = React.useState(false);
@@ -64,7 +64,7 @@ export const Login = () => {
         <IconProfile />
       </Button>
       <Modal
-        isOpen={isOpen}
+        isOpen={isOpen ? isOpen : props?.isOpen}
         onOpenChange={onCloseModal}
         placement="top-center"
         size="lg"

@@ -5,6 +5,7 @@ import Footer from "../Footer/page";
 import { infoData } from "../../../../configData";
 import axios from "axios";
 import Link from "next/link";
+import JobCard from "../JobCard";
 
 const Dashboard = () => {
   const [courses, setCourses] = React.useState([]);
@@ -25,8 +26,6 @@ const Dashboard = () => {
   return (
     <>
       <div>
-        <Header />
-
         <div className="banner-area banner-img-one dashboardbanner">
           <div className="d-table">
             <div className="d-table-cell">
@@ -135,43 +134,7 @@ const Dashboard = () => {
               <div className="col-sm-8">
                 <div className="row">
                   {courses?.map((result) => (
-                    <div className="col-lg-12">
-                      <div className="job-item">
-                        <img src="/Images/home-1/jobs/1.png" alt="Job" />
-                        <div className="job-inner align-items-center">
-                          <div className="job-inner-left">
-                            <h3>
-                              <Link href="#!">{result?.jobTitle}</Link>
-                            </h3>
-                            <Link
-                              className="company"
-                              href={`/Components/${result?.id}`}
-                            >
-                              Winbrans.com
-                            </Link>
-                            <ul>
-                              <li>
-                                <i className="icofont-money-bag" />
-                                {result?.salaryFrom} - {result?.salaryTo}
-                              </li>
-                              <li>
-                                <i className="icofont-location-pin" />
-                                {result?.jobLocation}
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="job-inner-right">
-                            <ul>
-                              <li>
-                                <Link href={`/Components/Apply/${result?.id}`}>
-                                  Apply
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <JobCard result={result} column={12}/>
                   ))}
                 </div>
               </div>

@@ -1,13 +1,21 @@
-import { Button, Select, SelectItem, useDisclosure } from "@nextui-org/react";
+import {
+  Avatar,
+  Button,
+  Select,
+  SelectItem,
+  useDisclosure,
+} from "@nextui-org/react";
 import * as React from "react";
 import "../style.scss";
 import { IconHome, IconInfo, IconProfile } from "../Icons";
 import { SideNavbar } from "../SideBar/page";
 import { Login } from "../Login/Login";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export const NavBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const searchParams = useSearchParams();
+  const search = searchParams.get("companyName");
   return (
     <>
       <div className="grid grid-cols-12 justify-between navBarStyle gap-4 items-center p-3">
@@ -25,9 +33,7 @@ export const NavBar = () => {
           <div className="col-span-10"></div>
         </div>
         <div className="col-span-8 flex justify-end">
-          <div>
-            <Login />
-          </div>
+          <div>{search ? <Avatar name={search} /> : <Login />}</div>
         </div>
       </div>
     </>

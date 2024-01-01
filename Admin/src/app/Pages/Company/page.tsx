@@ -3,6 +3,7 @@ import * as React from "react";
 import axios from "axios";
 import { Button, Link } from "@nextui-org/react";
 import TableList from "@/app/Components/Table/TableList";
+import { infoData } from "../../../../configData";
 
 export default function Company() {
   const [company, setCompany] = React.useState([]);
@@ -30,7 +31,7 @@ export default function Company() {
 
   React.useEffect(() => {
     // Define the API URL
-    const apiUrl = "http://localhost:5000/api/v1/company";
+    const apiUrl = `${infoData.baseApi}/company`;
 
     // Make a GET request using Axios
     axios
@@ -49,7 +50,7 @@ export default function Company() {
   return (
     <>
       <div>
-        <Button
+        {/* <Button
           size="sm"
           variant="flat"
           className="mb-4"
@@ -57,7 +58,7 @@ export default function Company() {
           href="/Pages/AddCompany"
         >
           Add Compay
-        </Button>
+        </Button> */}
       </div>
       <TableList
         data={company}

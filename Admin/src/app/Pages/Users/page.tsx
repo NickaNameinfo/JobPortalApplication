@@ -2,6 +2,7 @@
 import * as React from "react";
 import axios from "axios";
 import TableList from "@/app/Components/Table/TableList";
+import { infoData } from "../../../../configData";
 
 const Users = () => {
   const [company, setCompany] = React.useState([]);
@@ -29,7 +30,7 @@ const Users = () => {
 
   React.useEffect(() => {
     // Define the API URL
-    const apiUrl = "http://localhost:5000/api/v1/customers";
+    const apiUrl = `${infoData.baseApi}/customers`;
 
     // Make a GET request using Axios
     axios
