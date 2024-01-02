@@ -5,6 +5,9 @@ const Header = () => {
   const [userName, setUserName] = React.useState(
     sessionStorage?.getItem("userName")
   );
+  const [comapnyName, setCOmpanyName] = React.useState(
+    sessionStorage.getItem("companyName")
+  );
 
   return (
     <div className="navbar-area fixed-top">
@@ -25,13 +28,13 @@ const Header = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav">
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link href="/" className="nav-link dropdown-toggle active">
                     Home
                   </Link>
-                </li>
+                </li> */}
 
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link
                     href="/Components/Dashboard"
                     className="nav-link dropdown-toggle"
@@ -46,31 +49,35 @@ const Header = () => {
                   >
                     Profile
                   </Link>
-                </li>
+                </li> */}
               </ul>
               <div className="common-btn">
-                {!userName ? (
-                  <Link className="login-btn" href="/Components/Login">
-                    Log in /
-                  </Link>
-                ) : (
-                  <Link className="login-btn" href="/Components/Login">
-                    <span
-                      onClick={() => {
-                        sessionStorage.removeItem("userID");
-                        sessionStorage.removeItem("userName");
-                      }}
+                {!userName && !comapnyName ? (
+                  <>
+                    <Link className="login-btn" href="/Components/Login">
+                      Log in /
+                    </Link>
+                    <Link
+                      className="login-btn"
+                      href="/Components/Login/CompanyLogin"
                     >
-                      Log Out /
-                    </span>
-                  </Link>
+                      Company Log in
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href={comapnyName ? "/CompanyDashboard" : "/Components/UserDashboard"}>
+                      <img
+                        className="user-profile"
+                        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png"
+                        alt=""
+                      />
+                      <div className="user-name">
+                        {comapnyName ? comapnyName : userName}
+                      </div>
+                    </Link>
+                  </>
                 )}
-                <Link
-                  className="login-btn"
-                  href="/Components/Login/CompanyLogin"
-                >
-                  Company Log in
-                </Link>
               </div>
             </div>
           </nav>

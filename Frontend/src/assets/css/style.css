@@ -5621,7 +5621,7 @@ textarea {
   flex-direction: column;
   flex-grow: 1;
   scroll-behavior: smooth;
-  padding: 30px 40px;
+  padding: 104px 40px;
   overflow: auto;
 }
 .search-menu {

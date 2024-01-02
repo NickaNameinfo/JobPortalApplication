@@ -42,7 +42,7 @@ const JobCard = ({ result, column }) => {
             <ul>
               <li>
                 <i className="icofont-money-bag" />
-                {result?.salaryFrom} - {result?.salaryTo}
+                {result?.salaryAmount} - {result?.salaryTo}
               </li>
               <li>
                 <i className="icofont-location-pin" />
