@@ -14,6 +14,14 @@ const CompanyLogin = () => {
     formState: { errors: errorsLogin },
   } = useForm();
 
+  React.useEffect(() => {
+    let localUserName = sessionStorage.getItem("companyName");
+    console.log(localUserName, "sdfas");
+    if (localUserName) {
+      router.back();
+    }
+  }, []);
+
   const onSubmit = async (formData) => {
     try {
       const response = await axios.post(
@@ -23,9 +31,9 @@ const CompanyLogin = () => {
       console.log(formData, "formData32134", response);
 
       if (response.data.success && !response?.data?.data?.error) {
-        router.push(
-          `http://localhost:3001?companyName=${response?.data?.data?.userName}`
-        );
+        sessionStorage.setItem("companyName", response?.data?.data?.userName);
+        sessionStorage.setItem("companyId", response?.data?.data?.id);
+        router.push(`/CompanyDashboard`);
       } else {
         alert("User name or password is incorrect");
       }
