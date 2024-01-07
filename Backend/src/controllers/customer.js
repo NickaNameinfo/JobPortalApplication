@@ -93,6 +93,15 @@ const customerController = {
       next(error);
     }
   },
+  generateOtp: async (req, res, next) => {
+    try {
+      const { email } = req.params;
+      const data = await customerService.generateOtp(email);
+      return res.json({ success: true, data });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 module.exports = customerController;

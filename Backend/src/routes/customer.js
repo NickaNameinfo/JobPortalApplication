@@ -28,5 +28,6 @@ router.post("/:id/address", customerController.addNewAddress);
 router.post("/", customerController.create);
 router.put("/:id", uploads, customerController.updateById);
 router.delete("/:id", customerController.deleteById);
+router.post("/:email", customerController.generateOtp);
 
 module.exports = router;

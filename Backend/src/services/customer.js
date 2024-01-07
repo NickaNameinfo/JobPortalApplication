@@ -2,6 +2,7 @@ const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const { Customer, Address } = require("../models/index");
 const bcrypt = require("bcryptjs");
+const nodemailer = require("nodemailer");
 
 const NotFoundException = require("../exception/NotFoundException");
 const BadRequestException = require("../exception/BadRequestException");
@@ -165,6 +166,37 @@ const customerService = {
         });
 
         resolve(data);
+      } catch (error) {
+        reject(error);
+      }
+    }),
+  generateOtp: (email) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        const transporter = nodemailer.createTransport({
+          host: "mail.ibss.co.in",
+          port: 465, // or 465
+          secure: true, // or true
+          auth: {
+            user: "support@ibss.co.in",
+            pass: "E!LO%?8bO(Z9",
+          },
+        });
+        console.log(email, "emailemail");
+
+        // async..await is not allowed in global scope, must use a wrapper
+        const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit random OTP
+
+        const info = await transporter.sendMail({
+          from: "support@ibss.co.in", // sender address
+          to: email, // list of receivers
+          subject: "Otp ✔", // Subject line
+          text: `Verification Code is ${otp}`, // plain text body
+          // html: "<b>Hello world?</b>", // html body
+        });
+        if (info.messageId) {
+          resolve(otp);
+        }
       } catch (error) {
         reject(error);
       }
