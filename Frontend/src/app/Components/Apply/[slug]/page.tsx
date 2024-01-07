@@ -58,6 +58,7 @@ const Apply = ({ params }: { params: { slug: string } }) => {
     formData.append("jobTitle", courses?.jobTitle);
     formData.append("jobCategory", courses?.jobCategory);
     formData.append("companyName", courses?.companyName);
+    formData.append("companyId", courses?.companyId);
     try {
       const response = await axios.post(`${infoData?.baseApi}/jobs`, formData, {
         headers: {
@@ -68,7 +69,7 @@ const Apply = ({ params }: { params: { slug: string } }) => {
         alert("Somthing want worng");
       } else {
         alert("Good Job! Thanks for submitting the form!");
-        router.push("/Components/UserDashboard");
+        router.push("/Components/UserDashboard/AppliedJob");
       }
       // Handle the response as needed
     } catch (error) {

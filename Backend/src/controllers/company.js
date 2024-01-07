@@ -60,11 +60,11 @@ const courseController = {
   updateById: async (req, res, next) => {
     try {
       const { id } = req.params;
-      // let inputData = {
-      //   ...req.body,
-      //   uploadCourse: req.files.uploadCourse?.[0]?.path,
-      // };
-      const data = await companyService.updateById(id, req.body);
+      let tempData = {
+        ...req.body,
+        password: await bcrypt.hash(req?.body?.password, 10),
+      };
+      const data = await companyService.updateById(id, tempData); 
       return res.json({ success: true, data });
     } catch (error) {
       next(error);

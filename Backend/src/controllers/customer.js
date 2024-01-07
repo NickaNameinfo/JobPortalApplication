@@ -74,7 +74,11 @@ const customerController = {
   updateById: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const data = await customerService.updateById(id, req.body);
+      let inputData = {
+        ...req.body,
+        resume: req?.files?.resume?.[0]?.path,
+      };
+      const data = await customerService.updateById(id, inputData);
       return res.json({ success: true, data });
     } catch (error) {
       next(error);
