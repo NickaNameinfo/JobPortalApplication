@@ -3,15 +3,15 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const CompanyDashboardLayout = ({ children }) => {
+const AdminDashboardLayout = ({ children }) => {
   const router = useRouter();
-  React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("companyName");
-    console.log(localUserName, "sdfas");
-    if (!localUserName) {
-      router.back();
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   let localUserName = sessionStorage.getItem("companyName");
+  //   console.log(localUserName, "sdfas");
+  //   if (!localUserName) {
+  //     router.back();
+  //   }
+  // }, []);
   return (
     <div className="wrapper">
       {/* <div className="fright mt-4">
@@ -24,40 +24,32 @@ const CompanyDashboardLayout = ({ children }) => {
           <div className="col-sm-3">
             <div className="search-type">
               <Link
-                href="/CompanyDashboard/PostJob"
+                href="/AdminDashboard"
                 className="search-buttons card-buttons"
               >
-                Create a jobs
+                Comapny List
               </Link>
               <Link
-                href="/CompanyDashboard/CompanyProfile"
+                href="/AdminDashboard/JobList"
                 className="search-buttons card-buttons"
               >
-                Company Profile
+                Job List
               </Link>
               <Link
-                href="/CompanyDashboard/Jobs"
+                href="/AdminDashboard/AppliedList"
                 className="search-buttons card-buttons"
               >
-                Jobs
+                Applied List
               </Link>
               <Link
-                href="/CompanyDashboard/Candidates"
+                href="/AdminDashboard/Candidates"
                 className="search-buttons card-buttons"
               >
                 Candidates
               </Link>
-              <Link href="/CompanyDashboard/Settings" className="search-buttons card-buttons">
-                Settings
-              </Link>
-
               <a className="search-buttons card-buttons">
                 <span
                   onClick={() => {
-                    sessionStorage.removeItem("userID");
-                    sessionStorage.removeItem("userName");
-                    sessionStorage.removeItem("companyId");
-                    sessionStorage.removeItem("companyName");
                     router.push("/");
                   }}
                 >
@@ -73,4 +65,4 @@ const CompanyDashboardLayout = ({ children }) => {
   );
 };
 
-export default CompanyDashboardLayout;
+export default AdminDashboardLayout;

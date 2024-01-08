@@ -34,7 +34,7 @@ const Login = () => {
         sessionStorage.setItem("userName", response?.data?.data?.userName);
         sessionStorage.setItem("userID", response?.data?.data.id);
         // location.reload();
-        router.push("/Components/UserDashboard");
+        router.push("/Components/UserDashboard/UserProfile");
       } else {
         alert("User name or password is incorrect");
       }

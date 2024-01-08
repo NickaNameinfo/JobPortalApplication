@@ -12,6 +12,10 @@ const CreateAccount = () => {
     control: controlLogin,
     formState: { errors: errorsLogin },
   } = useForm();
+  const [otpValue, setOtpValue] = React.useState(null);
+  const [oldOtp, setOldOtp] = React.useState(null);
+
+  console.log(otpValue, oldOtp)
 
   React.useEffect(() => {
     let localUserName = sessionStorage.getItem("userName");
@@ -22,18 +26,52 @@ const CreateAccount = () => {
   }, []);
 
   const onSubmit = async (formData) => {
-    try {
-      let tempData = {
-        ...formData,
-      };
-      await axios.post(`${infoData?.baseApi}/customers`, tempData);
-      router.push("/Components/Login");
-    } catch (error) {
-      if (error.response) {
-        alert(error.response.data?.message);
+    if (!otpValue) {
+      try {
+        const response = await axios.post(
+          `${infoData?.baseApi}/customers/${formData?.email}`,
+          formData
+        );
+        if (response?.data) {
+          alert('Please check Your mail')
+          setOldOtp(response?.data);
+        }
+        console.log(formData, "formData32134", response);
+      } catch (error) {
+        alert("Somthis want worng");
+      }
+    } else {
+      if (String(oldOtp?.data) === String(otpValue)) {
+        try {
+          let tempData = {
+            ...formData,
+          };
+          await axios.post(`${infoData?.baseApi}/customers`, tempData);
+          router.push("/Components/Login");
+        } catch (error) {
+          if (error.response) {
+            alert(error.response.data?.message);
+          }
+        }
+      } else {
+        alert("Please check your otp");
       }
     }
   };
+
+  // const onSubmit = async (formData) => {
+  //   try {
+  //     let tempData = {
+  //       ...formData,
+  //     };
+  //     await axios.post(`${infoData?.baseApi}/customers`, tempData);
+  //     router.push("/Components/Login");
+  //   } catch (error) {
+  //     if (error.response) {
+  //       alert(error.response.data?.message);
+  //     }
+  //   }
+  // };
 
   return (
     <div>
@@ -175,11 +213,33 @@ const CreateAccount = () => {
                             : null}
                         </p>
                       </div>
-                      <div className="text-right submitt">
-                        <button type="submit" className="btn create-photo-btn">
-                          Sent OTP
-                        </button>
-                      </div>
+                      {oldOtp ? (
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter Otp"
+                            onChange={(e) => setOtpValue(e.target.value)}
+                          />
+                          <div className="text-right submitt">
+                            <button
+                              type="submit"
+                              className="btn create-photo-btn"
+                            >
+                              Submit
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="text-right submitt">
+                          <button
+                            type="submit"
+                            className="btn create-photo-btn"
+                          >
+                            Send Otp
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

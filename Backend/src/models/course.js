@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         allowNull: false,
-        primaryKey: true,
+        primaryKey: true, 
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
@@ -87,6 +87,10 @@ module.exports = (sequelize, DataTypes) => {
       experince: {
         type: DataTypes.STRING,
         field: "experince",
+      },
+      companyId: {
+        type: DataTypes.STRING,
+        field: "companyId",
       },
       createdAt: {
         type: DataTypes.DATE,

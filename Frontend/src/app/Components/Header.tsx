@@ -66,7 +66,7 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Link href={comapnyName ? "/CompanyDashboard" : "/Components/UserDashboard"}>
+                    <Link href={comapnyName ? "/CompanyDashboard/CompanyProfile" : "/Components/UserDashboard/UserProfile"}>
                       <img
                         className="user-profile"
                         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png"
