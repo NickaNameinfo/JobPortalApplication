@@ -52,7 +52,7 @@ const JobDetails = ({ params }: { params: { slug: string } }) => {
                   <h2>Job Description</h2>
                   <p>{courses?.jobdesCription}</p>
                 </div>
-                <div className="job-knowledge">
+                {/* <div className="job-knowledge">
                   <h2>Required Knowledge, Skills, and Abilities</h2>
                   <ul>
                     <li>
@@ -69,7 +69,7 @@ const JobDetails = ({ params }: { params: { slug: string } }) => {
                       {courses?.jobQualification}
                     </li>
                   </ul>
-                </div>
+                </div> */}
                 <div className="text-center">
                   <Link
                     className="job-details-btn"

@@ -9,7 +9,7 @@ const UserDashboardLayout = ({ children }) => {
     let localUserName = sessionStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
-      router.back();
+      router.push("/");
     }
   }, []);
   return (
@@ -65,6 +65,7 @@ const UserDashboardLayout = ({ children }) => {
                       sessionStorage.removeItem("userName");
                       sessionStorage.removeItem("companyId");
                       sessionStorage.removeItem("comapnyName");
+                      location.reload();
                       router.push("/");
                     }}
                   >

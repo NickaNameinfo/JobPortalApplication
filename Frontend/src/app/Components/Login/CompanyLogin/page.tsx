@@ -33,6 +33,7 @@ const CompanyLogin = () => {
       if (response.data.success && !response?.data?.data?.error) {
         sessionStorage.setItem("companyName", response?.data?.data?.userName);
         sessionStorage.setItem("companyId", response?.data?.data?.id);
+        location.reload();
         router.push(`/CompanyDashboard/CompanyProfile`);
       } else {
         alert("User name or password is incorrect");

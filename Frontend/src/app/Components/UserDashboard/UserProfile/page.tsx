@@ -211,7 +211,6 @@ const UserProfile = () => {
                     rules={{ required: true }}
                     render={({ field }) => (
                       <select {...field} className="form-control">
-                        <option>Select</option>
                         <option value={"Male"}>Male</option>
                         <option value={"Female"}>Female</option>
                       </select>
@@ -253,7 +252,7 @@ const UserProfile = () => {
                   <Controller
                     name="resume"
                     control={controlLogin}
-                    rules={{ required: true }}
+                    // rules={{ required: true }}
                     render={({ field }) => (
                       <input
                         type={"file"}

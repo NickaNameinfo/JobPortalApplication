@@ -10,7 +10,7 @@ const Header = () => {
   );
 
   return (
-    <div className="navbar-area fixed-top">
+    <div className="navbar-area">
       <div className="mobile-nav">
         <Link href="/" className="logo">
           <img src="/Images/logo.png" alt="Logo"></img>
@@ -54,19 +54,25 @@ const Header = () => {
               <div className="common-btn">
                 {!userName && !comapnyName ? (
                   <>
-                    <Link className="login-btn" href="/Components/Login">
-                      Log in /
+                    <Link className="login-btn pe-0" href="/Components/Login">
+                      Log in / 
                     </Link>
                     <Link
                       className="login-btn"
                       href="/Components/Login/CompanyLogin"
                     >
-                      Company Log in
+                     Employers / Post Job
                     </Link>
                   </>
                 ) : (
                   <>
-                    <Link href={comapnyName ? "/CompanyDashboard/CompanyProfile" : "/Components/UserDashboard/UserProfile"}>
+                    <Link
+                      href={
+                        comapnyName
+                          ? "/CompanyDashboard/CompanyProfile"
+                          : "/Components/UserDashboard/UserProfile"
+                      }
+                    >
                       <img
                         className="user-profile"
                         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png"

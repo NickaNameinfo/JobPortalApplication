@@ -7,7 +7,7 @@ const courseController = {
         page = 1,
         limit = 500,
         orderBy = "jobTitle",
-        sortBy = "asc",
+        sortBy = "desc",
         keyword,
       } = req.query;
 

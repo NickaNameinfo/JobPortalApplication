@@ -10,7 +10,7 @@ import JobCard from "../../JobCard";
 
 const SearchJob = () => {
   const [courses, setCourses] = React.useState([]);
-
+  console.log(courses, "courses")
   React.useEffect(() => {
     const apiUrl = `${infoData?.baseApi}/courses`;
     axios
@@ -29,17 +29,10 @@ const SearchJob = () => {
       <>
         
         <div className="searched-jobs">
-          <div className="searched-bar">
-            {/* <div className="searched-show">Showing {courses?.length} Jobs</div> */}
-            {/* <div className="searched-sort">
-              Sort by: <span className="post-time">Newest Post </span>
-              <span className="menu-icon">▼</span>
-            </div> */}
-          </div>
           <div className="job-cards d-block">
-            {courses?.map((result) => (
+            {courses.length > 0 ? courses?.map((result) => (
               <JobCard result={result} column={12} appiled={true}/>
-            ))}
+            )) : <p>No Jobs</p>}
           </div>
         </div>
       </>

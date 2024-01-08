@@ -33,7 +33,7 @@ const Login = () => {
       if (response.data.success && !response?.data?.data?.error) {
         sessionStorage.setItem("userName", response?.data?.data?.userName);
         sessionStorage.setItem("userID", response?.data?.data.id);
-        // location.reload();
+        location.reload();
         router.push("/Components/UserDashboard/UserProfile");
       } else {
         alert("User name or password is incorrect");

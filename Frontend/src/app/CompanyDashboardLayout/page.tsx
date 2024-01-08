@@ -5,13 +5,15 @@ import React from "react";
 
 const CompanyDashboardLayout = ({ children }) => {
   const router = useRouter();
+
   React.useEffect(() => {
     let localUserName = sessionStorage.getItem("companyName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
-      router.back();
+      router.push("/");
     }
   }, []);
+
   return (
     <div className="wrapper">
       {/* <div className="fright mt-4">
@@ -58,6 +60,7 @@ const CompanyDashboardLayout = ({ children }) => {
                     sessionStorage.removeItem("userName");
                     sessionStorage.removeItem("companyId");
                     sessionStorage.removeItem("companyName");
+                    location.reload();
                     router.push("/");
                   }}
                 >
