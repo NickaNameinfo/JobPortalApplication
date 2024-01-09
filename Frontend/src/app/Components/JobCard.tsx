@@ -96,109 +96,113 @@ const JobCard = ({ result, column, appiled = null }) => {
         ? jobList?.some((item) => item.jobTitle === result?.jobTitle) && (
             <div className={`col-sm-${column} mix web ui`} key={result?.id}>
               <div className="job-item">
-                <img src="/Images/home-1/jobs/1.png" alt="Job" />
-                <div className="job-inner align-items-center">
-                  <div className="job-inner-left">
-                    <h3>
-                      <Link href="#">{result?.jobTitle}</Link>
-                    </h3>
-                    <Link
-                      className="company"
-                      href={`/Components/${result?.id}`}
-                    >
+                <Link className="company" href={`/Components/${result?.id}`}>
+                  <img src="/Images/home-1/jobs/1.png" alt="Job" />
+                </Link>
+                <Link className="company" href={`/Components/${result?.id}`}>
+                  <div className="job-inner align-items-center">
+                    <div className="job-inner-left">
+                      <h3>
+                        <Link href="#">{result?.jobTitle}</Link>
+                      </h3>
+
                       {result?.companyName}
-                    </Link>
-                    <ul>
-                      <li>
-                        <i className="icofont-money-bag" />
-                        {result?.salaryFrom} - {result?.salaryTo}
-                      </li>
-                      <li>
-                        <i className="icofont-location-pin" />
-                        {result?.jobLocation}
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="job-inner-right">
-                    <ul>
-                      <li>
-                        {jobList?.some(
-                          (item) => item.jobTitle === result?.jobTitle
-                        ) ? (
-                          <div className="apply">
-                            {filtterJob?.[0]?.jobStatus
-                              ? filtterJob?.[0]?.jobStatus
-                              : "Applied"}
-                          </div>
-                        ) : userProfile?.["resume"] === "" ||
-                          !userProfile?.resume ? (
-                          <Link href={`/Components/Apply/${result?.id}`}>
-                            Apply
-                          </Link>
-                        ) : (
-                          <span onClick={() => onSubmit(result?.id)}>
-                            Apply
-                          </span>
-                        )}
-                      </li>
-                    </ul>
-                    <div className="apply1">
-                      <i className="icofont-book-mark"></i>
+                      <ul>
+                        <li>
+                          <i className="icofont-money-bag" />
+                          {result?.salaryFrom} - {result?.salaryTo}
+                        </li>
+                        <li>
+                          <i className="icofont-location-pin" />
+                          {result?.jobLocation}
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="job-inner-right">
+                      <ul>
+                        <li>
+                          {jobList?.some(
+                            (item) => item.jobTitle === result?.jobTitle
+                          ) ? (
+                            <div className="apply">
+                              {filtterJob?.[0]?.jobStatus
+                                ? filtterJob?.[0]?.jobStatus
+                                : "Applied"}
+                            </div>
+                          ) : userProfile?.["resume"] === "" ||
+                            !userProfile?.resume ? (
+                            <Link href={`/Components/Apply/${result?.id}`}>
+                              Apply
+                            </Link>
+                          ) : (
+                            <span onClick={() => onSubmit(result?.id)}>
+                              Apply
+                            </span>
+                          )}
+                        </li>
+                      </ul>
+                      <div className="apply1">
+                        <i className="icofont-book-mark"></i>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           )
         : !jobList?.some((item) => item.jobTitle === result?.jobTitle) && (
             <div className={`col-sm-${column} mix web ui`}>
               <div className="job-item">
-                <img src="/Images/home-1/jobs/1.png" alt="Job" />
-                <div className="job-inner align-items-center">
-                  <div className="job-inner-left">
-                    <h3>
-                      <Link href="#">{result?.jobTitle}</Link>
-                    </h3>
-                    <Link
-                      className="company"
-                      href={`/Components/${result?.id}`}
-                    >
-                      {result?.companyName}
-                    </Link>
-                    <ul>
-                      <li>
-                        <i className="icofont-money-bag" />
-                        {result?.salaryFrom} - {result?.salaryTo}
-                      </li>
-                      <li>
-                        <i className="icofont-location-pin" />
-                        {result?.jobLocation}
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="job-inner-right">
-                    <ul>
-                      <li>
-                        {userProfile?.["resume"] === "" ||
-                        !userProfile?.resume ? (
-                          <Link href={`/Components/Apply/${result?.id}`}>
-                            Apply
-                          </Link>
-                        ) : (
-                          <span
-                            onClick={() => onSubmit(result?.id)}
-                            className="cursor-pointer"
-                          >
-                            Apply
-                          </span>
-                        )}
-                      </li>
-                    </ul>
-                    <div className="apply1">
-                      <i className="icofont-book-mark"></i>
+                <Link className="company" href={`/Components/${result?.id}`}>
+                  <img src="/Images/home-1/jobs/1.png" alt="Job" />
+                </Link>
+                <Link className="company" href={`/Components/${result?.id}`}>
+                  <div className="job-inner align-items-center">
+                    <div className="job-inner-left">
+                      <h3>
+                        <Link href="#">{result?.jobTitle}</Link>
+                      </h3>
+                      <Link
+                        className="company"
+                        href={`/Components/${result?.id}`}
+                      >
+                        {result?.companyName}
+                      </Link>
+                      <ul>
+                        <li>
+                          <i className="icofont-money-bag" />
+                          {result?.salaryFrom} - {result?.salaryTo}
+                        </li>
+                        <li>
+                          <i className="icofont-location-pin" />
+                          {result?.jobLocation}
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="job-inner-right">
+                      <ul>
+                        <li>
+                          {userProfile?.["resume"] === "" ||
+                          !userProfile?.resume ? (
+                            <Link href={`/Components/Apply/${result?.id}`}>
+                              Apply
+                            </Link>
+                          ) : (
+                            <span
+                              onClick={() => onSubmit(result?.id)}
+                              className="cursor-pointer"
+                            >
+                              Apply
+                            </span>
+                          )}
+                        </li>
+                      </ul>
+                      <div className="apply1">
+                        <i className="icofont-book-mark"></i>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           )}
