@@ -299,17 +299,17 @@ button:focus {
     box-shadow: 0 0 0 15px #45111199;
 }
 
-.banner-form-area form {
+.banner-form-area .searchbox {
     position: relative;
     padding-right: 150px
 }
 
-.banner-form-area form .form-group {
+.banner-form-area .searchbox .form-group {
     margin-bottom: 0;
     position: relative
 }
 
-.banner-form-area form .form-group i {
+.banner-form-area .searchbox .form-group i {
     background: -webkit-gradient(linear, left top, right top, from(#38a745), color-stop(63%, #4cce5b));
     background: #549ce9;
     -webkit-background-clip: text;
@@ -317,7 +317,7 @@ button:focus {
     -webkit-text-fill-color: transparent
 }
 
-.banner-form-area form .form-group .form-control {
+.banner-form-area .searchbox .form-group .form-control {
     height: 50px;
     border-radius: 0;
     border: 0;
@@ -326,29 +326,29 @@ button:focus {
     padding-right: 40px
 }
 
-.banner-form-area form .form-group .form-control:focus {
+.banner-form-area .searchbox .form-group .form-control:focus {
     -webkit-box-shadow: none;
     box-shadow: none;
     border: 0
 }
 
-.banner-form-area form .form-group ::-webkit-input-placeholder {
+.banner-form-area .searchbox .form-group ::-webkit-input-placeholder {
     color: #95969c
 }
 
-.banner-form-area form .form-group :-ms-input-placeholder {
+.banner-form-area .searchbox .form-group :-ms-input-placeholder {
     color: #95969c
 }
 
-.banner-form-area form .form-group ::-ms-input-placeholder {
+.banner-form-area .searchbox .form-group ::-ms-input-placeholder {
     color: #95969c
 }
 
-.banner-form-area form .form-group ::placeholder {
+.banner-form-area .searchbox .form-group ::placeholder {
     color: #95969c
 }
 
-.banner-form-area form .form-group label {
+.banner-form-area .searchbox .form-group label {
     margin-bottom: 0;
     position: absolute;
     top: 13px;
@@ -356,7 +356,7 @@ button:focus {
     display: block
 }
 
-.banner-form-area form .form-group label i {
+.banner-form-area .searchbox .form-group label i {
     font-weight: 700;
     font-size: 25px
 }
