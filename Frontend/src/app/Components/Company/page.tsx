@@ -7,6 +7,8 @@ import Link from "next/link";
 import { infoData } from "../../../../configData";
 const Company = () => {
   const router = useRouter();
+  const [otpValue, setOtpValue] = React.useState(null);
+  const [oldOtp, setOldOtp] = React.useState(null);
   const {
     handleSubmit: handleSubmit,
     control: controlLogin,
@@ -22,20 +24,39 @@ const Company = () => {
   }, []);
 
   const onSubmit = async (formData) => {
-    console.log(formData, "sdfasdfsad");
-    try {
-      const response = await axios.post(
-        `${infoData?.baseApi}/company`,
-        formData
-      );
-      if (response.data.success && !response?.data?.data?.error) {
-        router.push("/Components/Login/CompanyLogin");
-      } else {
-        alert("User name, Company name or email is already exist");
+    if (!otpValue) {
+      try {
+        const response = await axios.post(
+          `${infoData?.baseApi}/customers/${formData?.companyEmail}`,
+          formData
+        );
+        if (response?.data) {
+          alert("Otp sent your registered mail id");
+          setOldOtp(response?.data);
+        }
+        console.log(formData, "formData32134", response);
+      } catch (error) {
+        alert("Somthis want worng");
       }
-    } catch (error) {
-      if (error.response) {
-        alert(error.response.data?.message);
+    } else {
+      if (String(oldOtp?.data) === String(otpValue)) {
+        try {
+          const response = await axios.post(
+            `${infoData?.baseApi}/company`,
+            formData
+          );
+          if (response.data.success && !response?.data?.data?.error) {
+            router.push("/Components/Login/CompanyLogin");
+          } else {
+            alert("User name, Company name or email is already exist");
+          }
+        } catch (error) {
+          if (error.response) {
+            alert(error.response.data?.message);
+          }
+        }
+      } else {
+        alert("Please check your otp");
       }
     }
   };
@@ -109,7 +130,7 @@ const Company = () => {
                             <input
                               type="text"
                               className="form-control"
-                              placeholder="Company Number"
+                              placeholder="Mobile Number"
                               {...field}
                             />
                           )}
@@ -221,9 +242,33 @@ const Company = () => {
                         </p>
                       </div>
                       <div className="text-right submitt">
-                        <button type="submit" className="btn create-photo-btn">
-                          Sent OTP
-                        </button>
+                        {oldOtp ? (
+                          <div className="form-group">
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Enter Otp"
+                              onChange={(e) => setOtpValue(e.target.value)}
+                            />
+                            <div className="text-right submitt">
+                              <button
+                                type="submit"
+                                className="btn create-photo-btn"
+                              >
+                                Submit
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="text-right submitt">
+                            <button
+                              type="submit"
+                              className="btn create-photo-btn"
+                            >
+                              Send Otp
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

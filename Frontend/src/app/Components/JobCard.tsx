@@ -1,24 +1,27 @@
 import axios from "axios";
 import Link from "next/link";
 import React from "react";
+import { infoData } from "../../../configData";
+import { useRouter } from "next/navigation";
 
 const JobCard = ({ result, column, appiled = null }) => {
   const [jobList, setJobList] = React.useState(null);
   const [filtterJob, setFilterJob] = React.useState(null);
+  const [userProfile, setUserProfile] = React.useState(null);
+  console.log(userProfile, "userProfile213412");
 
   React.useEffect(() => {
     let tempDate = jobList?.filter(
       (item) => item.jobTitle === result?.jobTitle
     );
     setFilterJob(tempDate);
+    getUserProfile();
   }, [result, jobList]);
-  React.useEffect(() => {
-    // Define the API URL
-    const apiUrl = "http://localhost:5000/api/v1/jobs";
 
+  React.useEffect(() => {
     // Make a GET request using Axios
     axios
-      .get(apiUrl)
+      .get(`${infoData?.baseApi}/jobs`)
       .then((response) => {
         // Handle the successful response
         let localUserName = sessionStorage.getItem("userName");
@@ -34,6 +37,58 @@ const JobCard = ({ result, column, appiled = null }) => {
         console.error("Error fetching courses:", error);
       });
   }, []);
+
+  const onSubmit = async (id) => {
+    const apiUrl1 = `${infoData?.baseApi}/courses/${id}`;
+    axios
+      .get(apiUrl1)
+      .then(async (response1) => {
+        const formData = new FormData();
+        formData.append("userName", userProfile?.userName);
+        formData.append("jobTitle", response1?.data?.data?.jobTitle);
+        formData.append("jobCategory", response1?.data?.data?.jobCategory);
+        formData.append("companyName", response1?.data?.data?.companyName);
+        formData.append("companyId", response1?.data?.data?.companyId);
+        formData.append("resume", userProfile?.resume);
+        try {
+          const response = await axios.post(
+            `${infoData?.baseApi}/jobs`,
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+          if (!response?.data?.success) {
+            alert("Somthing want worng");
+          } else {
+            let userID = sessionStorage.getItem("userID");
+            if (userID) {
+              alert("Good Job! Thanks for submitting the form!");
+              location.reload();
+            } else {
+              alert("Please login before applying");
+            }
+          }
+          // Handle the response as needed
+        } catch (error) {
+          // Handle errors
+          console.error("Error making POST request:", error);
+        }
+        console.log(response1?.data?.data, "Response from API 1");
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
+  const getUserProfile = async () => {
+    let userID = sessionStorage.getItem("userID");
+    const apiUrl = `${infoData?.baseApi}/customers/${userID}`;
+    let result = await axios.get(apiUrl);
+    setUserProfile(result?.data?.data);
+  };
 
   return (
     <>
@@ -56,7 +111,7 @@ const JobCard = ({ result, column, appiled = null }) => {
                     <ul>
                       <li>
                         <i className="icofont-money-bag" />
-                        {result?.salaryAmount} - {result?.salaryTo}
+                        {result?.salaryFrom} - {result?.salaryTo}
                       </li>
                       <li>
                         <i className="icofont-location-pin" />
@@ -70,49 +125,79 @@ const JobCard = ({ result, column, appiled = null }) => {
                         {jobList?.some(
                           (item) => item.jobTitle === result?.jobTitle
                         ) ? (
-                          <div className="apply">{filtterJob?.[0]?.jobStatus ? filtterJob?.[0]?.jobStatus : "Applied"}</div>
-                        ) : (
+                          <div className="apply">
+                            {filtterJob?.[0]?.jobStatus
+                              ? filtterJob?.[0]?.jobStatus
+                              : "Applied"}
+                          </div>
+                        ) : userProfile?.["resume"] === "" ||
+                          !userProfile?.resume ? (
                           <Link href={`/Components/Apply/${result?.id}`}>
                             Apply
                           </Link>
+                        ) : (
+                          <span onClick={() => onSubmit(result?.id)}>
+                            Apply
+                          </span>
                         )}
                       </li>
                     </ul>
+                    <div className="apply1">
+                      <i className="icofont-book-mark"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           )
         : !jobList?.some((item) => item.jobTitle === result?.jobTitle) && (
-            <div className="job-item">
-              <img src="/Images/home-1/jobs/1.png" alt="Job" />
-              <div className="job-inner align-items-center">
-                <div className="job-inner-left">
-                  <h3>
-                    <Link href="#">{result?.jobTitle}</Link>
-                  </h3>
-                  <Link className="company" href={`/Components/${result?.id}`}>
-                    {result?.companyName}
-                  </Link>
-                  <ul>
-                    <li>
-                      <i className="icofont-money-bag" />
-                      {result?.salaryAmount} - {result?.salaryTo}
-                    </li>
-                    <li>
-                      <i className="icofont-location-pin" />
-                      {result?.jobLocation}
-                    </li>
-                  </ul>
-                </div>
-                <div className="job-inner-right">
-                  <ul>
-                    <li>
-                      <Link href={`/Components/Apply/${result?.id}`}>
-                        Apply
-                      </Link>
-                    </li>
-                  </ul>
+            <div className={`col-sm-${column} mix web ui`}>
+              <div className="job-item">
+                <img src="/Images/home-1/jobs/1.png" alt="Job" />
+                <div className="job-inner align-items-center">
+                  <div className="job-inner-left">
+                    <h3>
+                      <Link href="#">{result?.jobTitle}</Link>
+                    </h3>
+                    <Link
+                      className="company"
+                      href={`/Components/${result?.id}`}
+                    >
+                      {result?.companyName}
+                    </Link>
+                    <ul>
+                      <li>
+                        <i className="icofont-money-bag" />
+                        {result?.salaryFrom} - {result?.salaryTo}
+                      </li>
+                      <li>
+                        <i className="icofont-location-pin" />
+                        {result?.jobLocation}
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="job-inner-right">
+                    <ul>
+                      <li>
+                        {userProfile?.["resume"] === "" ||
+                        !userProfile?.resume ? (
+                          <Link href={`/Components/Apply/${result?.id}`}>
+                            Apply
+                          </Link>
+                        ) : (
+                          <span
+                            onClick={() => onSubmit(result?.id)}
+                            className="cursor-pointer"
+                          >
+                            Apply
+                          </span>
+                        )}
+                      </li>
+                    </ul>
+                    <div className="apply1">
+                      <i className="icofont-book-mark"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

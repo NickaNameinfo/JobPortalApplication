@@ -1,11 +1,22 @@
 "use client";
 import UserDashboardLayout from "@/app/UserDashboardLayout/page";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const UserDashboard = () => {
+  const router = useRouter();
+
   const [company, setCompany] = React.useState([]);
   const loginUser = sessionStorage?.getItem("userName");
+
+  React.useEffect(() => {
+    let localUserName = sessionStorage.getItem("userName");
+    console.log(localUserName, "sdfas");
+    if (!localUserName) {
+      router.back();
+    }
+  }, []);
 
   React.useEffect(() => {
     // Define the API URL

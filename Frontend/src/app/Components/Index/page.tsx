@@ -14,7 +14,6 @@ const Index = () => {
     axios
       .get(apiUrl)
       .then((response) => {
-        console.log(response?.data?.data?.data, "response.data123412");
         setCourses(response?.data?.data?.data);
       })
       .catch((error) => {
@@ -24,7 +23,6 @@ const Index = () => {
 
   return (
     <div>
-      <Header />
       <>
         <div className="banner-area banner-img-one">
           <div className="d-table">
@@ -64,32 +62,12 @@ const Index = () => {
                             />
                           </div>
                         </div>
-                        {/* <div class="col-lg-4">
-                                      <div class="form-group">
-                                          <select class="form-select"
-                                              aria-label="Default select example">
-                                              <option>Job Category</option>
-                                              <option>ICT</option>
-                                              <option>Finance</option>
-                                              <option>Marketing</option>
-                                              <option>Production</option>
-                                              <option>Bank</option>
-                                              <option>Hospitality</option>
-                                              <option>NGO</option>
-                                          </select>
-                                      </div>
-                                  </div> */}
                       </div>
                       <button type="submit" className="btn banner-form-btn">
                         Search
                       </button>
                     </form>
                   </div>
-                  {/* <div class="banner-btn">
-                          <Link href="create-account.php">Create Your
-                              Profile</Link>
-                          <Link href="submit-resume.php">Upload Your CV</Link>
-                      </div> */}
                 </div>
               </div>
             </div>
@@ -127,7 +105,7 @@ const Index = () => {
             <div id="container">
               <div className="row">
                 {courses?.map((result: any) => (
-                  <JobCard result={result} column={6}/>
+                  <JobCard result={result} column={6} />
                 ))}
               </div>
             </div>

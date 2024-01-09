@@ -17,6 +17,7 @@ const JobSearch = ({ onSearch }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value, "asdfsa");
     setSearchParams((prevParams) => ({
       ...prevParams,
       [name]: value,
@@ -73,12 +74,15 @@ const JobSearch = ({ onSearch }) => {
             <rect x={2} y={7} width={20} height={14} rx={2} ry={2} />
             <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
           </svg>
-          <input
-            type="text"
-            placeholder="Job Type"
+          <select
             onChange={handleInputChange}
-            name="jobType"
-          />
+            name={"jobType"}
+            className="form-select"
+          >
+            <option value={"Full Time"}>Full Time</option>
+            <option value={"Part Time"}>Part Time</option>
+            <option value={"Intern"}>Intern</option>
+          </select>
         </div>
         {/* <div className="search-salary">
           <svg
@@ -165,7 +169,7 @@ const SearchJob = () => {
       <>
         <JobSearch onSearch={handleSearch} />
         <div className="searched-jobs">
-          <div className="searched-bar">
+          <div className="searched-bar mt-3">
             <div className="searched-show">Showing {courses?.length} Jobs</div>
             <div className="searched-sort">
               Sort by: <span className="post-time">Newest Post </span>
@@ -173,13 +177,15 @@ const SearchJob = () => {
             </div>
           </div>
           <div className="job-cards d-block">
-            {filteredJobs.length > 0
-              ? filteredJobs?.map((result) => (
-                  <JobCard result={result} column={12} />
-                ))
-              : courses?.map((result) => (
-                  <JobCard result={result} column={12} />
-                ))}
+            {filteredJobs.length > 0 ? (
+              filteredJobs?.map((result) => (
+                <JobCard result={result} column={12} />
+              ))
+            ) : courses?.length > 0 ? (
+              courses?.map((result) => <JobCard result={result} column={12} />)
+            ) : (
+              <p>No Jobs</p>
+            )}
           </div>
         </div>
       </>

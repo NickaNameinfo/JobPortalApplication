@@ -12,7 +12,17 @@ const PostJob = () => {
     handleSubmit: handleSubmit,
     control: controlLogin,
     formState: { errors: errorsLogin },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      jobType: "Full Time",
+      jobTitle: "",
+      salaryFrom: "",
+      salaryTo: "",
+      experince: "",
+      jobLocation: "",
+      jobdesCription: "",
+    },
+  });
 
   const onSubmit = async (formData) => {
     let companyId = sessionStorage.getItem("companyId");
@@ -66,7 +76,7 @@ const PostJob = () => {
                 </p>
               </div>
             </div>
-            <div className="col-lg-6">
+            {/* <div className="col-lg-6">
               <div className="form-group">
                 <label>Job Category</label>
                 <div className="job-category-area">
@@ -96,7 +106,7 @@ const PostJob = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="col-lg-6">
               <div className="form-group">
                 <label>Salary Form</label>
@@ -133,7 +143,7 @@ const PostJob = () => {
                   control={controlLogin}
                   // rules={{ required: true }}
                   render={({ field }) => (
-                    <input type="number" className="form-control" {...field} />
+                    <input type="text" className="form-control" {...field} />
                   )}
                 />
               </div>
@@ -156,17 +166,17 @@ const PostJob = () => {
                 </p>
               </div>
             </div>
-            <div className="col-lg-4">
-              <div className="form-group">
+            <div className="col-lg-6">
+              <div className="form-group mb-0">
+                <label>Job Type</label>
                 <div className="job-category-area">
-                  <span>Job Type</span>
                   <Controller
                     name="jobType"
                     control={controlLogin}
                     rules={{ required: true }}
                     render={({ field }) => (
                       <select
-                        className="form-select"
+                        className="form-select mb-0"
                         aria-label="Default select example"
                         {...field}
                       >
@@ -176,11 +186,10 @@ const PostJob = () => {
                       </select>
                     )}
                   />
-                  <p className="error">
-                    {errorsLogin.jobType?.type === "required"
-                      ? "Field is required"
-                      : null}
-                  </p>
+
+                  {errorsLogin.jobType?.type === "required" ? (
+                    <p className="error">Field is required</p>
+                  ) : null}
                 </div>
               </div>
             </div>

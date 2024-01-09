@@ -3,9 +3,18 @@ import * as React from "react";
 import CompanyDashboardLayout from "../CompanyDashboardLayout/page";
 import axios from "axios";
 import { infoData } from "../../../configData";
+import { useRouter } from "next/navigation";
 
 const CompanyDashboard = () => {
   const [company, setCompany] = React.useState([]);
+  const router = useRouter();
+  React.useEffect(() => {
+    let localUserName = sessionStorage.getItem("companyName");
+    console.log(localUserName, "sdfas");
+    if (!localUserName) {
+      router.back();
+    }
+  }, []);
 
   React.useEffect(() => {
     let localUserName = sessionStorage.getItem("companyName");

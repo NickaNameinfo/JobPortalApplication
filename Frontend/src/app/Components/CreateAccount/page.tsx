@@ -33,7 +33,7 @@ const CreateAccount = () => {
           formData
         );
         if (response?.data) {
-          alert('Please check Your mail')
+          alert('Otp sent your registered mail id')
           setOldOtp(response?.data);
         }
         console.log(formData, "formData32134", response);
@@ -47,7 +47,7 @@ const CreateAccount = () => {
             ...formData,
           };
           await axios.post(`${infoData?.baseApi}/customers`, tempData);
-          router.push("/Components/Login");
+          router.push("/");
         } catch (error) {
           if (error.response) {
             alert(error.response.data?.message);
@@ -59,19 +59,6 @@ const CreateAccount = () => {
     }
   };
 
-  // const onSubmit = async (formData) => {
-  //   try {
-  //     let tempData = {
-  //       ...formData,
-  //     };
-  //     await axios.post(`${infoData?.baseApi}/customers`, tempData);
-  //     router.push("/Components/Login");
-  //   } catch (error) {
-  //     if (error.response) {
-  //       alert(error.response.data?.message);
-  //     }
-  //   }
-  // };
 
   return (
     <div>
