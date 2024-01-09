@@ -6,8 +6,101 @@ import Link from "next/link";
 import { infoData } from "../../../../configData";
 import JobCard from "../JobCard";
 
+const JobSearch = ({ onSearch }) => {
+  const [searchParams, setSearchParams] = React.useState({
+    jobType: "",
+    jobLocation: "",
+    jobTitle: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value, "asdfsa");
+    setSearchParams((prevParams) => ({
+      ...prevParams,
+      [name]: value,
+    }));
+  };
+
+  const handleSearch = () => {
+    onSearch(searchParams);
+  };
+
+  return (
+    <div className="searchbox">
+        <div className="row">
+          <div className="col-lg-6">
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Job Title"
+                onChange={handleInputChange}
+                name="jobTitle"
+              />
+              <label>
+                <i className="icofont-search-1" />
+              </label>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="form-group">
+              <label>
+                <i className="icofont-location-pin" />
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="City or State"
+                onChange={handleInputChange}
+                name="jobLocation"
+              />
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          className="btn banner-form-btn"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+    </div>
+  );
+};
+
 const Index = () => {
   const [courses, setCourses] = React.useState([]);
+
+  const [filteredJobs, setFilteredJobs] = React.useState([]);
+
+  console.log(filteredJobs, "filteredJobs");
+
+  const handleSearch = (searchParams) => {
+    console.log(searchParams, "searchParams", courses);
+    // Implement your search logic here
+    const result = courses.filter((job) => {
+      const matchJobType =
+        !searchParams.jobType ||
+        job?.jobType
+          .toLowerCase()
+          .includes(searchParams?.jobType.toLowerCase());
+      const matchJobLocation =
+        !searchParams.jobLocation ||
+        job?.jobLocation
+          .toLowerCase()
+          .includes(searchParams?.jobLocation.toLowerCase());
+      const matchJobTitle =
+        !searchParams.jobTitle ||
+        job.jobTitle
+          .toLowerCase()
+          .includes(searchParams.jobTitle.toLowerCase());
+
+      return matchJobType && matchJobLocation && matchJobTitle;
+    });
+
+    setFilteredJobs(result);
+  };
 
   React.useEffect(() => {
     const apiUrl = `${infoData?.baseApi}/courses`;
@@ -36,37 +129,7 @@ const Index = () => {
                     Find 40,000+ Jobs, Employment &amp; Career Opportunities
                   </p>
                   <div className="banner-form-area">
-                    <form>
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Job Title"
-                            />
-                            <label>
-                              <i className="icofont-search-1" />
-                            </label>
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <label>
-                              <i className="icofont-location-pin" />
-                            </label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="City or State"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <button type="submit" className="btn banner-form-btn">
-                        Search
-                      </button>
-                    </form>
+                    <JobSearch onSearch={handleSearch} />
                   </div>
                 </div>
               </div>
@@ -104,9 +167,20 @@ const Index = () => {
             </div>
             <div id="container">
               <div className="row">
-                {courses?.map((result: any) => (
+                {filteredJobs.length > 0 ? (
+                  filteredJobs?.map((result) => (
+                    <JobCard result={result} column={6} />
+                  ))
+                ) : courses?.length > 0 ? (
+                  courses?.map((result) => (
+                    <JobCard result={result} column={6} />
+                  ))
+                ) : (
+                  <p>No Jobs</p>
+                )}
+                {/* {courses?.map((result: any) => (
                   <JobCard result={result} column={6} />
-                ))}
+                ))} */}
               </div>
             </div>
           </div>

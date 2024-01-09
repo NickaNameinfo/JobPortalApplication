@@ -11,12 +11,13 @@ import { Controller, useForm } from "react-hook-form";
 const Apply = ({ params }: { params: { slug: string } }) => {
   const [courses, setCourses] = React.useState(null);
   const [customer, setCustomer] = React.useState(null);
-
+  const [leave, setLevel] = React.useState(null);
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
     control: controlLogin,
     formState: { errors: errorsLogin },
+    watch,
   } = useForm();
 
   console.log(params.slug, "sdfjaslkd43245", courses);
@@ -192,26 +193,91 @@ const Apply = ({ params }: { params: { slug: string } }) => {
                             : null}
                         </p>
                       </div>
-                      <div className="form-group">
-                        <Controller
-                          name="experience"
-                          control={controlLogin}
-                          rules={{ required: true }}
-                          render={({ field }) => (
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Experience"
-                              {...field}
-                            />
-                          )}
+
+                      <div className="form-group textleft">
+                        <input
+                          type="radio"
+                          id="fresher"
+                          value="fresher"
+                          name="experienceType"
+                          onChange={(e) => setLevel(e.target.value)}
                         />
-                        <p className="error">
-                          {errorsLogin.experience?.type === "required"
-                            ? "Experience is required"
-                            : null}
-                        </p>
+                        <label htmlFor="fresher">Fresher</label>
+
+                        <input
+                          type="radio"
+                          id="experience"
+                          value="experience"
+                          name="experienceType"
+                          onChange={(e) => setLevel(e.target.value)}
+                        />
+                        <label htmlFor="experience">Experience</label>
                       </div>
+                      {leave === "experience" && (
+                        <>
+                          <div className="form-group">
+                            <Controller
+                              name="experience"
+                              control={controlLogin}
+                              rules={{ required: true }}
+                              render={({ field }) => (
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder="Experience"
+                                  {...field}
+                                />
+                              )}
+                            />
+                            <p className="error">
+                              {errorsLogin.experience?.type === "required"
+                                ? "Experience is required"
+                                : null}
+                            </p>
+                          </div>
+                          <div className="form-group">
+                            <Controller
+                              name="oldJobTitle"
+                              control={controlLogin}
+                              rules={{ required: true }}
+                              render={({ field }) => (
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder="Job Title"
+                                  {...field}
+                                />
+                              )}
+                            />
+                            <p className="error">
+                              {errorsLogin.jobTItle?.type === "required"
+                                ? "Job Title is required"
+                                : null}
+                            </p>
+                          </div>
+                          <div className="form-group">
+                            <Controller
+                              name="oldCompanyName"
+                              control={controlLogin}
+                              rules={{ required: true }}
+                              render={({ field }) => (
+                                <input
+                                  type="text"
+                                  className="form-control"
+                                  placeholder="Company Name"
+                                  {...field}
+                                />
+                              )}
+                            />
+                            <p className="error">
+                              {errorsLogin.companyName?.type === "required"
+                                ? "Company Name is required"
+                                : null}
+                            </p>
+                          </div>
+                        </>
+                      )}
+
                       <div className="form-group">
                         <Controller
                           name="resume"

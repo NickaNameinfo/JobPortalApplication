@@ -68,7 +68,7 @@ const Jobs = () => {
                         </li>
                         <li>
                           <span>
-                            <i>30</i> Applied
+                            <i>0</i> Applied
                           </span>
                         </li>
                       </ul>
