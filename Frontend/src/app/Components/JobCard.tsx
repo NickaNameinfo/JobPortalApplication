@@ -103,7 +103,7 @@ const JobCard = ({ result, column, appiled = null }) => {
                   <div className="job-inner align-items-center">
                     <div className="job-inner-left">
                       <h3>
-                        <Link href="#">{result?.jobTitle}</Link>
+                        <Link href={`/Components/${result?.id}`}>{result?.jobTitle}</Link>
                       </h3>
 
                       {result?.companyName}
@@ -160,7 +160,7 @@ const JobCard = ({ result, column, appiled = null }) => {
                   <div className="job-inner align-items-center">
                     <div className="job-inner-left">
                       <h3>
-                        <Link href="#">{result?.jobTitle}</Link>
+                        <Link href={`/Components/${result?.id}`}>{result?.jobTitle}</Link>
                       </h3>
                       <Link
                         className="company"
