@@ -28,43 +28,43 @@ const JobSearch = ({ onSearch }) => {
 
   return (
     <div className="searchbox">
-        <div className="row">
-          <div className="col-lg-6">
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Job Title"
-                onChange={handleInputChange}
-                name="jobTitle"
-              />
-              <label>
-                <i className="icofont-search-1" />
-              </label>
-            </div>
-          </div>
-          <div className="col-lg-6">
-            <div className="form-group">
-              <label>
-                <i className="icofont-location-pin" />
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="City or State"
-                onChange={handleInputChange}
-                name="jobLocation"
-              />
-            </div>
+      <div className="row">
+        <div className="col-lg-6">
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Job Title"
+              onChange={handleInputChange}
+              name="jobTitle"
+            />
+            <label>
+              <i className="icofont-search-1" />
+            </label>
           </div>
         </div>
-        <button
-          type="submit"
-          className="btn banner-form-btn"
-          onClick={handleSearch}
-        >
-          Search
-        </button>
+        <div className="col-lg-6">
+          <div className="form-group">
+            <label>
+              <i className="icofont-location-pin" />
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="City or State"
+              onChange={handleInputChange}
+              name="jobLocation"
+            />
+          </div>
+        </div>
+      </div>
+      <button
+        type="submit"
+        className="btn banner-form-btn"
+        onClick={handleSearch}
+      >
+        Search
+      </button>
     </div>
   );
 };
@@ -123,7 +123,7 @@ const Index = () => {
               <div className="container">
                 <div className="banner-text">
                   <h1>
-                    Start your <span>Dream Career</span> with Job{" "}
+                    Start your <span>Dream Career</span> with Job
                   </h1>
                   <p>
                     Find 40,000+ Jobs, Employment &amp; Career Opportunities
@@ -160,7 +160,226 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <section className="job-area pb-100 pt-50">
+        <section className="category-area category-area-two pt-100 pb-70">
+          <div className="container">
+            <div className="section-title">
+              <h2>Choose Your Desire Category</h2>
+            </div>
+            <div className="row">
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item wow fadeInUp animated"
+                  data-wow-delay=".3s"
+                  style={{ visibility: "visible", animationDelay: "0.3s" }}
+                >
+                  <i className="flaticon-settings" />
+                  <a href="#">Technical Support</a>
+                </div>
+              </div>
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item category-two wow fadeInUp animated"
+                  data-wow-delay=".4s"
+                  style={{ visibility: "visible", animationDelay: "0.4s" }}
+                >
+                  <i className="flaticon-layers" />
+                  <a href="#">Business Development</a>
+                </div>
+              </div>
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item category-three wow fadeInUp animated"
+                  data-wow-delay=".5s"
+                  style={{ visibility: "visible", animationDelay: "0.5s" }}
+                >
+                  <i className="flaticon-house" />
+                  <a href="#">Real Estate Business</a>
+                </div>
+              </div>
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item category-four wow fadeInUp animated"
+                  data-wow-delay=".6s"
+                  style={{ visibility: "visible", animationDelay: "0.6s" }}
+                >
+                  <i className="flaticon-analysis" />
+                  <a href="#">Share Maeket Analysis</a>
+                </div>
+              </div>
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item category-five wow fadeInUp animated"
+                  data-wow-delay=".7s"
+                  style={{ visibility: "visible", animationDelay: "0.7s" }}
+                >
+                  <i className="flaticon-sun" />
+                  <a href="#">Weather &amp; Environment</a>
+                </div>
+              </div>
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item category-six wow fadeInUp animated"
+                  data-wow-delay=".3s"
+                  style={{ visibility: "visible", animationDelay: "0.3s" }}
+                >
+                  <i className="flaticon-hand" />
+                  <a href="#">Finance &amp; Banking Service</a>
+                </div>
+              </div>
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item category-seven wow fadeInUp animated"
+                  data-wow-delay=".4s"
+                  style={{ visibility: "visible", animationDelay: "0.4s" }}
+                >
+                  <i className="flaticon-neural" />
+                  <a href="#">IT &amp; Networing Sevices</a>
+                </div>
+              </div>
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item category-eight wow fadeInUp animated"
+                  data-wow-delay=".5s"
+                  style={{ visibility: "visible", animationDelay: "0.5s" }}
+                >
+                  <i className="flaticon-dish" />
+                  <a href="#">Restaurant Services</a>
+                </div>
+              </div>
+              <div className="col-sm-4 col-lg-3">
+                <div
+                  className="category-item category-nine wow fadeInUp animated"
+                  data-wow-delay=".6s"
+                  style={{ visibility: "visible", animationDelay: "0.6s" }}
+                >
+                  <i className="icofont-fire-burn" />
+                  <a href="#">Defence &amp; Fire Service</a>
+                </div>
+              </div>
+              <div className="col-sm-4 offset-sm-4 offset-lg-0 col-lg-3">
+                <div
+                  className="category-item category-ten wow fadeInUp animated"
+                  data-wow-delay=".7s"
+                  style={{ visibility: "visible", animationDelay: "0.7s" }}
+                >
+                  <i className="flaticon-truck" />
+                  <a href="#">Home Delivery Services</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="job-area pb-100 pt-100">
+          <div className="container">
+            <div className="section-title">
+              <h2>Recent Jobs</h2>
+            </div>
+            <div id="container">
+              <div className="row">
+                <div className="col-lg-6 mix web ui">
+                  <div className="recents">
+                    <a href="">
+                      <img src="/Images/job.webp" alt="Job" />
+                    </a>
+                  </div>
+                </div>
+                <div className="col-lg-6 mix ui web">
+                  <div className="recents">
+                    <a href="">
+                      <img src="/Images/emp.webp" alt="Job" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div className="bannersec">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-8">
+                <img src="/Images/bann.png" alt="" />
+              </div>
+              <div className="col-sm-4">
+                <h6>Trending Jobs</h6>
+                <img src="/Images/add.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section className="blog-area pt-100">
+          <div className="container">
+            <div className="section-title">
+              <h2>Hire candidates from multiple districts across India!</h2>
+            </div>
+            <div className="row">
+              <div className="col-sm-6 col-lg-3">
+                <div className="blog-item wow fadeInUp" data-wow-delay=".3s">
+                  <div className="blog-top">
+                    <a href="#">
+                      <img src="/Images/d1.webp" alt="Blog" />
+                    </a>
+                    {/* <span>21 May, 2020</span> */}
+                  </div>
+                  <div className="blog-bottom">
+                    <h3>
+                      <a href="#">Mumbai</a>
+                    </h3>
+                    <p>4 lakh+ candidates</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6 col-lg-3">
+                <div className="blog-item wow fadeInUp" data-wow-delay=".4s">
+                  <div className="blog-top">
+                    <a href="#">
+                      <img src="/Images/d2.webp" alt="Blog" />
+                    </a>
+                  </div>
+                  <div className="blog-bottom">
+                    <h3>
+                      <a href="#">Tamil Nadu</a>
+                    </h3>
+                    <p>4 lakh+ candidates</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6 col-lg-3">
+                <div className="blog-item wow fadeInUp" data-wow-delay=".4s">
+                  <div className="blog-top">
+                    <a href="#">
+                      <img src="/Images/d3.webp" alt="Blog" />
+                    </a>
+                  </div>
+                  <div className="blog-bottom">
+                    <h3>
+                      <a href="#">Bangalore</a>
+                    </h3>
+                    <p>4 lakh+ candidates</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6 col-lg-3">
+                <div className="blog-item wow fadeInUp" data-wow-delay=".4s">
+                  <div className="blog-top">
+                    <a href="#">
+                      <img src="/Images/d4.webp" alt="Blog" />
+                    </a>
+                  </div>
+                  <div className="blog-bottom">
+                    <h3>
+                      <a href="#">Kerala</a>
+                    </h3>
+                    <p>4 lakh+ candidates</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* <section className="job-area pb-100 pt-50">
           <div className="container">
             <div className="section-title">
               <h2>Recent Jobs</h2>
@@ -178,13 +397,10 @@ const Index = () => {
                 ) : (
                   <p>No Jobs</p>
                 )}
-                {/* {courses?.map((result: any) => (
-                  <JobCard result={result} column={6} />
-                ))} */}
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </>
     </div>
   );

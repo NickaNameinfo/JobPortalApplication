@@ -2,150 +2,252 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="container">
-        <div className="subscribe-area">
-          <div className="section-title">
-            <h2>Subscribe Newsletter</h2>
-          </div>
-          <div className="subscribe-item">
-            <form className="newsletter-form" data-toggle="validator">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Enter Your Email"
-                name="EMAIL"
-                required
-              />
-              <button className="btn subscribe-btn disabled" type="submit">
-                Subscribe
-              </button>
-              <div id="validator-newsletter" className="form-result"></div>
-            </form>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-sm-6 col-lg-4">
-            <div className="footer-item">
-              <div className="footer-logo">
-                <a href="#">
-                  <img src="/Images/logo.png" alt="Logo" />
-                </a>
-                <ul>
-                  <li>
-                    <a href="https://www.youtube.com/" target="_blank">
-                      <i className="icofont-youtube-play"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.facebook.com/" target="_blank">
-                      <i className="icofont-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.instagram.com/" target="_blank">
-                      <i className="icofont-instagram"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://www.twitter.com/" target="_blank">
-                      <i className="icofont-twitter"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+    <>
+      <footer>
+        <div className="container">
+          <div className="subscribe-area">
+            <div className="section-title">
+              <h2>Subscribe Newsletter</h2>
+            </div>
+            <div className="subscribe-item">
+              <form className="newsletter-form" data-toggle="validator">
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Enter Your Email"
+                  name="EMAIL"
+                  autoComplete="off"
+                />
+                <button className="btn subscribe-btn" type="submit">
+                  Subscribe
+                </button>
+                <div id="validator-newsletter" className="form-result" />
+              </form>
             </div>
           </div>
-          <div className="col-sm-6 col-lg-4">
-            <div className="footer-item">
-              <div className="footer-category">
-                <h3>Category</h3>
-                <ul>
-                  <li>
-                    <a href="#">
-                      <i className="icofont-simple-right"></i>
-                      Terms &amp; Conditions
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="icofont-simple-right"></i>
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="icofont-simple-right"></i>
-                      Disclaimer
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="icofont-simple-right"></i>
-                      Post Job
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-lg-4">
-            <div className="footer-item">
-              <div className="footer-category">
-                <h3>Quick Links</h3>
-                <ul>
-                  <li>
-                    <a href="index.php">
-                      <i className="icofont-simple-right"></i>
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="about.php">
-                      <i className="icofont-simple-right"></i>
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog.php">
-                      <i className="icofont-simple-right"></i>
-                      Blogs
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i className="icofont-simple-right"></i>
-                      Testimonials
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="copyright-area">
           <div className="row">
-            <div className="col-lg-12">
-              <div className="copyright-item text-center">
-                <p>
-                  Copyright ©{" "}
-                  <script
-                    data-cfasync="false"
-                    src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-                  ></script>
-                  <script>document.write(new Date().getFullYear())</script>2023
-                  Rishi Jobs. Designed By{" "}
-                  <a href="www.impressbss.com" target="_blank">
-                    IBSS
-                  </a>
-                </p>
+            <div className="col-sm-6 col-lg-3">
+              <div className="footer-item">
+                <div className="footer-logo">
+                  <h3>
+                    <b>Rishi Jobs</b>
+                  </h3>
+                  <p>
+                    With 40M+ downloads, Lokal is a one stop solution for local
+                    updates, job search, classifieds and more!
+                  </p>
+                  <ul>
+                    <li>
+                      <a href="https://www.youtube.com/" target="_blank">
+                        <i className="icofont-youtube-play" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.facebook.com/" target="_blank">
+                        <i className="icofont-facebook" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.instagram.com/" target="_blank">
+                        <i className="icofont-instagram" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.twitter.com/" target="_blank">
+                        <i className="icofont-twitter" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.linkedin.com/" target="_blank">
+                        <i className="icofont-linkedin" />
+                      </a>
+                    </li>
+                  </ul>
+                  <div className="app-item footitem">
+                    <div className="app-btn">
+                      <a className="app-btn-one" href="#">
+                        <i className="flaticon-apple" />
+                        <span>Download on the</span>
+                        <p>App Store</p>
+                      </a>
+                      <a className="app-btn-two" href="#">
+                        <i className="flaticon-playstore" />
+                        <span>ANDROID APP ON</span>
+                        <p>Google Play</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-3">
+              <div className="footer-item">
+                <div className="footer-category">
+                  <h3>Category</h3>
+                  <ul>
+                    <li>
+                      <a href="terms.php">
+                        <i className="icofont-simple-right" />
+                        Terms &amp; Conditions
+                      </a>
+                    </li>
+                    <li>
+                      <a href="privacy-policy.php">
+                        <i className="icofont-simple-right" />
+                        Privacy Policy
+                      </a>
+                    </li>
+                    <li>
+                      <a href="disclaimer.php">
+                        <i className="icofont-simple-right" />
+                        Disclaimer
+                      </a>
+                    </li>
+                    <li>
+                      <a href="about.php">
+                        <i className="icofont-simple-right" />
+                        About Us
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog.php">
+                        <i className="icofont-simple-right" />
+                        Blogs
+                      </a>
+                    </li>
+                    <li>
+                      <a href="testimonials.php">
+                        <i className="icofont-simple-right" />
+                        Testimonials
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="icofont-simple-right" />
+                        Contact Us
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-3">
+              <div className="footer-item">
+                <div className="footer-category">
+                  <h3>Job By Category</h3>
+                  <ul>
+                    <li>
+                      <a href="index.php">
+                        <i className="icofont-simple-right" />
+                        Digital Marketing
+                      </a>
+                    </li>
+                    <li>
+                      <a href="about.php">
+                        <i className="icofont-simple-right" />
+                        Driving/Parking
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog.php">
+                        <i className="icofont-simple-right" />
+                        Engineering
+                      </a>
+                    </li>
+                    <li>
+                      <a href="testimonials.php">
+                        <i className="icofont-simple-right" />
+                        Machine Operation
+                      </a>
+                    </li>
+                    <li>
+                      <a href="testimonials.php">
+                        <i className="icofont-simple-right" />
+                        Marketing/ Sales
+                      </a>
+                    </li>
+                    <li>
+                      <a href="testimonials.php">
+                        <i className="icofont-simple-right" />
+                        Medical/ Doctor
+                      </a>
+                    </li>
+                    <li>
+                      <a href="testimonials.php">
+                        <i className="icofont-simple-right" />
+                        Security
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="col-sm-6 col-lg-3">
+              <div className="footer-item">
+                <div className="footer-category">
+                  <h3>Job By Location</h3>
+                  <ul>
+                    <li>
+                      <a href="index.php">
+                        <i className="icofont-simple-right" />
+                        Maharashtra
+                      </a>
+                    </li>
+                    <li>
+                      <a href="about.php">
+                        <i className="icofont-simple-right" />
+                        Punjab
+                      </a>
+                    </li>
+                    <li>
+                      <a href="blog.php">
+                        <i className="icofont-simple-right" />
+                        Gujarat
+                      </a>
+                    </li>
+                    <li>
+                      <a href="testimonials.php">
+                        <i className="icofont-simple-right" />
+                        Tamil_nadu
+                      </a>
+                    </li>
+                    <li>
+                      <a href="testimonials.php">
+                        <i className="icofont-simple-right" />
+                        Andhra
+                      </a>
+                    </li>
+                    <li>
+                      <a href="testimonials.php">
+                        <i className="icofont-simple-right" />
+                        Telangana
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="copyright-area">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="copyright-item text-center">
+                  <p>Copyright © Powered by Rishi Technologies Pvt Ltd.</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </footer>
+      <div className="icon-bar">
+        <a href="#" className="facebook">
+          <i className="icofont-whatsapp" />
+        </a>
+        <a href="#" className="google">
+          <i className="icofont-wechat" />
+        </a>
       </div>
-    </footer>
+    </>
   );
 };
 

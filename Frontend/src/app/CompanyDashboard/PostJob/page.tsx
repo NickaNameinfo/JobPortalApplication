@@ -21,17 +21,20 @@ const PostJob = () => {
       experince: "",
       jobLocation: "",
       jobdesCription: "",
+      jobCategory: "",
     },
   });
 
   const onSubmit = async (formData) => {
     let companyId = sessionStorage.getItem("companyId");
     let companyName = sessionStorage.getItem("companyName");
+    let companyLogo = sessionStorage.getItem("companyLogo");
     try {
       let tempData = {
         ...formData,
         companyName: companyName,
         companyId: companyId,
+        companyLogo: companyLogo,
       };
       const response = await axios.post(
         `${infoData?.baseApi}/courses`,
@@ -76,7 +79,7 @@ const PostJob = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="col-lg-6">
+            <div className="col-lg-6">
               <div className="form-group">
                 <label>Job Category</label>
                 <div className="job-category-area">
@@ -90,12 +93,36 @@ const PostJob = () => {
                         aria-label="Default select example"
                         {...field}
                       >
-                        <option value={"IT Technology"}>
-                          IT &amp; Technology
+                        <option value={"TechnicalSupport"}>
+                          Technical Support
                         </option>
-                        <option value={"Web Developer"}>Web Developer</option>
-                        <option value={"UX/UI Design"}>UX/UI Design</option>
-                        <option value={"SEO"}>SEO</option>
+                        <option value={"BusinessDevelopment"}>
+                          Business Development
+                        </option>
+                        <option value={"RealEstateBusiness"}>
+                          Real Estate Business
+                        </option>
+                        <option value={"ShareMaeketAnalysis"}>
+                          Share Maeket Analysis
+                        </option>
+                        <option value={"Weather&Environment"}>
+                          Weather & Environment
+                        </option>
+                        <option value={"Finance&BankingService"}>
+                          Finance & Banking Service
+                        </option>
+                        <option value={"IT&NetworingSevices"}>
+                          IT & Networing Sevices
+                        </option>
+                        <option value={"RestaurantServices"}>
+                          Restaurant Services
+                        </option>
+                        <option value={"Defence&FireService"}>
+                          Defence & Fire Service
+                        </option>
+                        <option value={"HomeDeliveryServices"}>
+                          Home Delivery Services
+                        </option>
                       </select>
                     )}
                   />
@@ -106,7 +133,7 @@ const PostJob = () => {
                   </p>
                 </div>
               </div>
-            </div> */}
+            </div>
             <div className="col-lg-6">
               <div className="form-group">
                 <label>Salary Form</label>

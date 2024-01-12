@@ -56,6 +56,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         field: "password",
       },
+      companyLogo: {
+        type: DataTypes.STRING,
+        field: "company_logo",
+      },
       createdAt: {
         type: DataTypes.DATE,
         field: "create_at",

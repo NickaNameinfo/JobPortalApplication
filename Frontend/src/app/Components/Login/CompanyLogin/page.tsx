@@ -33,6 +33,10 @@ const CompanyLogin = () => {
       if (response.data.success && !response?.data?.data?.error) {
         sessionStorage.setItem("companyName", response?.data?.data?.userName);
         sessionStorage.setItem("companyId", response?.data?.data?.id);
+        sessionStorage.setItem(
+          "companyLogo",
+          response?.data?.data?.companyLogo
+        );
         location.reload();
         router.push(`/CompanyDashboard/CompanyProfile`);
       } else {

@@ -24,9 +24,13 @@ const Login = () => {
 
   const onSubmit = async (formData) => {
     try {
+      let tempData = {
+        ...formData,
+        password : formData?.userName
+      }
       const response = await axios.post(
         `${infoData?.baseApi}/customers/authenticate`,
-        formData
+        tempData
       );
       console.log(formData, "formData32134", response);
 
@@ -64,7 +68,7 @@ const Login = () => {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="User Name"
+                        placeholder="Enter Mobile Number"
                         {...field}
                       />
                     )}
@@ -75,7 +79,7 @@ const Login = () => {
                       : null}
                   </p>
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                   <Controller
                     name="password"
                     control={controlLogin}
@@ -94,7 +98,7 @@ const Login = () => {
                       ? "Password is required"
                       : null}
                   </p>
-                </div>
+                </div> */}
                 <div className="login-sign-in">
                   <Link href="/Components/Forgot">Forgot Password?</Link>
                   <ul>

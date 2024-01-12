@@ -8,7 +8,7 @@ const JobCard = ({ result, column, appiled = null }) => {
   const [jobList, setJobList] = React.useState(null);
   const [filtterJob, setFilterJob] = React.useState(null);
   const [userProfile, setUserProfile] = React.useState(null);
-  console.log(userProfile, "userProfile213412");
+  console.log(result, "userProfile213412");
 
   React.useEffect(() => {
     let tempDate = jobList?.filter(
@@ -97,7 +97,7 @@ const JobCard = ({ result, column, appiled = null }) => {
             <div className={`col-sm-${column} mix web ui`} key={result?.id}>
               <div className="job-item">
                 <Link className="company" href={`/Components/${result?.id}`}>
-                  <img src="/Images/home-1/jobs/1.png" alt="Job" />
+                  <img src={`${infoData?.baseApi}/uploads/${result?.companyLogo}`} alt="Job" />
                 </Link>
                 <Link className="company" href={`/Components/${result?.id}`}>
                   <div className="job-inner align-items-center">
@@ -154,7 +154,7 @@ const JobCard = ({ result, column, appiled = null }) => {
             <div className={`col-sm-${column} mix web ui`}>
               <div className="job-item">
                 <Link className="company" href={`/Components/${result?.id}`}>
-                  <img src="/Images/home-1/jobs/1.png" alt="Job" />
+                <img src={`${infoData?.baseApi}/${result?.companyLogo }`} alt="Job" />
                 </Link>
                 <Link className="company" href={`/Components/${result?.id}`}>
                   <div className="job-inner align-items-center">
