@@ -15,7 +15,7 @@ const CreateAccount = () => {
   const [otpValue, setOtpValue] = React.useState(null);
   const [oldOtp, setOldOtp] = React.useState(null);
 
-  console.log(otpValue, oldOtp)
+  console.log(otpValue, oldOtp);
 
   React.useEffect(() => {
     let localUserName = sessionStorage.getItem("userName");
@@ -33,7 +33,7 @@ const CreateAccount = () => {
           formData
         );
         if (response?.data) {
-          alert('Otp sent your registered mail id')
+          alert("Otp sent your registered mail id");
           setOldOtp(response?.data);
         }
         console.log(formData, "formData32134", response);
@@ -45,6 +45,8 @@ const CreateAccount = () => {
         try {
           let tempData = {
             ...formData,
+            userName: formData?.phoneNumber,
+            password: formData?.phoneNumber,
           };
           await axios.post(`${infoData?.baseApi}/customers`, tempData);
           router.push("/");
@@ -58,7 +60,6 @@ const CreateAccount = () => {
       }
     }
   };
-
 
   return (
     <div>
@@ -160,7 +161,7 @@ const CreateAccount = () => {
                             : null}
                         </p>
                       </div>
-                      <div className="form-group">
+                      {/* <div className="form-group">
                         <Controller
                           name="userName"
                           control={controlLogin}
@@ -199,7 +200,7 @@ const CreateAccount = () => {
                             ? "Password is required"
                             : null}
                         </p>
-                      </div>
+                      </div> */}
                       {oldOtp ? (
                         <div className="form-group">
                           <input

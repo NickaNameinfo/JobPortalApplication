@@ -40,15 +40,25 @@ const COmpanyProfile = () => {
     });
   };
 
-  const onSubmit = async (formData) => {
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    for (const key in data) {
+      formData.append(key, data[key]);
+    }
+
     console.log(formData, "sdfasdfsad");
     try {
       const response = await axios.put(
-        `${infoData?.baseApi}/company/${formData?.id}`,
-        formData
+        `${infoData?.baseApi}/company/${data?.id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       if (response.data.success && !response?.data?.data?.error) {
-        location.reload()
+        location.reload();
       } else {
         alert("User name, Company name or email is already exist");
       }
@@ -184,6 +194,24 @@ const COmpanyProfile = () => {
                     ? "Number is required"
                     : null}
                 </p>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="form-group">
+                <label>Update Logo</label>
+                <Controller
+                  name="companyLogo"
+                  control={controlLogin}
+                  // rules={{ required: true }}
+                  render={({ field }) => (
+                    <input
+                      type={"file"}
+                      onChange={(e) => {
+                        field.onChange(e.target.files[0]); // Don't forget to call field.onChange to update the form state
+                      }}
+                    />
+                  )}
+                />
               </div>
             </div>
           </div>

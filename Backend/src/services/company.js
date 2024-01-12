@@ -122,6 +122,7 @@ const companyService = {
   updateById: (id, body) =>
     new Promise(async (resolve, reject) => {
       try {
+        console.log(body, "body2334")
         const company = await Company.findByPk(id);
         if (!company) throw new NotFoundException("Not found comapny!");
 

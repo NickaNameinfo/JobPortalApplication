@@ -58,13 +58,17 @@ const courseController = {
     }
   },
   updateById: async (req, res, next) => {
+    console.log(req?.files?.companyLogo, "089")
     try {
       const { id } = req.params;
       let tempData = {
         ...req.body,
-        password: await bcrypt.hash(req?.body?.password, 10),
+        ...(req?.body?.password && {
+          password: await bcrypt.hash(req?.body?.password, 10),
+        }),
+        companyLogo: req?.files?.companyLogo?.[0]?.path,
       };
-      const data = await companyService.updateById(id, tempData); 
+      const data = await companyService.updateById(id, tempData);
       return res.json({ success: true, data });
     } catch (error) {
       next(error);

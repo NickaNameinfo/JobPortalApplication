@@ -20,13 +20,13 @@ const storage = multer.diskStorage({
 const uploads = multer({
   storage: storage,
   limits: { fileSize: "1000000" },
-}).fields([{ name: "uploadCourse" }]);
+}).fields([{ name: "companyLogo" }]);
 
 router.post("/authenticate", companyController.authenticate);
 router.get("/", companyController.findAll);
 router.get("/:id", companyController.findById);
 router.post("/", companyController.create);
-router.put("/:id", companyController.updateById);
+router.put("/:id",uploads, companyController.updateById);
 router.delete("/:id", companyController.deleteById);
 
 module.exports = router;

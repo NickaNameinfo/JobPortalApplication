@@ -250,12 +250,11 @@ button:focus {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 425px;
-    position: relative
+    height: 435px;
+    position: relative;
+    /* margin-top: 105px; */
 }
-.cursor-pointer{
-    cursor: pointer;
-}
+
 /* .banner-area:before {
     position: absolute;
     content: '';
@@ -441,7 +440,7 @@ button:focus {
 
 .account-area {
     background: -webkit-gradient(linear, left top, right top, from(#38a745), color-stop(63%, #4cce5b));
-    background: #549ce9;
+    background: #451111;
     padding-top: 30px;
     padding-bottom: 0px;
 }
@@ -494,7 +493,8 @@ button:focus {
 .account-item span {
     display: block;
     font-weight: 500;
-    font-size: 16px
+    font-size: 16px;
+    color: #fff;
 }
 
 .account-last:before {
@@ -790,7 +790,8 @@ button:focus {
 
 .job-item img {
     position: absolute;
-    top: 38%
+    top: 38%;
+    width: 50px;
 }
 
 .job-item .job-inner {
@@ -1011,7 +1012,7 @@ button:focus {
 
 .counter-area {
     background: -webkit-gradient(linear, left top, right top, from(#38a745), color-stop(63%, #4cce5b));
-    background: #549ce9;
+    background: #451111;
 }
 
 .counter-item {
@@ -1022,19 +1023,21 @@ button:focus {
 .counter-item i {
     display: block;
     font-size: 45px;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    color: #e5e5e5;
 }
 
 .counter-item h3 {
     font-weight: 700;
     font-size: 48px;
     color: #fff;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 .counter-item p {
     margin-bottom: 0;
-    font-size: 18px
+    font-size: 18px;
+    color: #e5e5e5;
 }
 
 .popular-item {
@@ -1280,10 +1283,10 @@ button:focus {
     background-color: #fff;
     -webkit-box-shadow: 0 0 15px 0 #dddddd78;
     box-shadow: 0 0 15px 0 #dddddd78;
-    padding: 25px;
+    padding: 15px 15px;
     position: relative;
     max-width: 95%;
-    margin-top: -60px;
+    margin-top: -30px;
     -webkit-transition: .5s all ease;
     transition: .5s all ease
 }
@@ -1338,17 +1341,18 @@ button:focus {
 }
 
 .app-area {
-    background-image: url(/Images/home-1/app-bg.png);
+    background-image: url(/Images/app-bg.png);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat
 }
 
 .app-item {
-    padding-top: 150px;
-    padding-bottom: 130px;
-    margin-bottom: 30px;
-    position: relative
+    padding-top: 50px;
+    padding-bottom: 30px;
+    margin-bottom: 0px;
+    position: relative;
+    width: 100%;
 }
 
 .app-item img {
@@ -1960,7 +1964,7 @@ button:focus {
 }
 
 footer {
-    background-image: url(/Images/home-1/footer-bg.png);
+    background-image: url(/Images/footer-bg.png);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat
@@ -1976,7 +1980,7 @@ footer {
 }
 
 .footer-item .footer-logo p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 15px
 }
 
@@ -2108,11 +2112,12 @@ footer {
     padding-top: 10px;
     padding-bottom: 10px;
     border-top: 1px solid #6bbf75;
-    margin-top: 70px
+    margin-top: 30px;
 }
 
 .copyright-item p {
-    margin-bottom: 0
+    margin-bottom: 0;
+    color: #fff;
 }
 
 .copyright-item p a {
@@ -2154,7 +2159,7 @@ footer {
 }
 
 .banner-img-two {
-    background-image: url(/Images/home-2/banner.jpg)
+    background-image: url(/Images/banner.jpg)
 }
 
 .banner-area-two {
@@ -2348,18 +2353,18 @@ footer {
 .create-area {
     background: -webkit-gradient(linear, left top, right top, from(#38a745), color-stop(63%, #4cce5b));
     background: #549ce9;
-    padding-top: 50px;
-    padding-bottom: 20px
+    padding-top: 10px;
+    padding-bottom: 10px
 }
 
 .create-item {
-    margin-bottom: 30px
+    margin-bottom: 0px
 }
 
 .create-item h2 {
     color: #fff;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 20px;
     margin-bottom: 0
 }
 
@@ -2373,7 +2378,8 @@ footer {
     font-size: 16px;
     color: #333;
     background-color: #fff;
-    padding: 18px 26px
+    padding: 10px 15px;
+    border-radius: 5px;
 }
 
 .create-item .create-btn a:hover {
@@ -2604,7 +2610,7 @@ footer {
 .create-education {
     border: 1px solid #d6d5d5;
     padding: 20px 20px 20px;
-    margin-bottom: 0px
+    margin-bottom: 70px
 }
 
 .create-education .create-education-wrap {
@@ -2976,7 +2982,7 @@ footer {
 }
 
 .login-area {
-    padding-bottom: 200px;
+    padding-bottom: 103px;
 }
 
 .login-area h2 {
@@ -3901,7 +3907,7 @@ footer {
 }
 
 .dashboard-area {
-    padding-bottom: 15px;
+    padding-bottom: 170px
 }
 
 .dashboard-area .text-left {
@@ -4603,7 +4609,7 @@ footer {
 }
 
 .contact-form-area .form-group {
-    margin-bottom: 30px
+    margin-bottom: 10px
 }
 
 .contact-form-area .form-group .form-control {
@@ -4612,7 +4618,7 @@ footer {
     border-image-source: #549ce9;
     border-image-slice: 1;
     border-radius: 0;
-    height: 60px;
+    height: 40px;
     padding-left: 30px;
     color: #333;
     font-size: 15px
@@ -4676,7 +4682,8 @@ footer {
     background-color: #dc3545;
     opacity: 1;
     border-radius: 0;
-    padding: 14px 45px;
+    padding: 10px 25px;
+    border-radius: 5px;
     font-size: 16px;
     font-weight: 500;
     -webkit-transition: .5s all ease;
@@ -4906,7 +4913,7 @@ footer {
     padding-bottom: 3px;
     -webkit-box-shadow: 0 0 15px 0 #ddd;
     box-shadow: 0 0 15px 0 #ddd;
-    background: #549ce9;
+    /* background: #549ce9; */
 }
 .menu-shrink .common-btn a {
     text-align: center;
@@ -5131,7 +5138,7 @@ textarea{
 	 flex-direction: column;
 	 flex-grow: 1;
 	 scroll-behavior: smooth;
-	 padding: 15px 40px 80px;
+	 padding: 30px 40px 100px;
 	 overflow: auto;
 }
  .search-menu {
@@ -5158,13 +5165,12 @@ textarea{
 	 height: 100%;
 	 display: block;
 	 background-color: transparent;
-	 border: 1px solid gray;
+	 border: none;
 	 background-image: url("");
 	 background-repeat: no-repeat;
 	 background-size: 14px;
 	 background-position: 0 50%;
-	 padding: 0 25px 0 20px;
-     border-radius: 4px;
+	 padding: 0 25px 0 305px;
 }
  .search-location, .search-job, .search-salary {
 	 display: flex;
@@ -5172,19 +5178,15 @@ textarea{
 	 width: 50%;
 	 font-size: 14px;
 	 font-weight: 500;
-	 padding: 0 2px;
+	 padding: 0 25px;
 	 height: 100%;
 }
-.search-job .form-select {
-    border: 1px solid gray;
-}
-.search-location input, .search-job input, .search-salary input {
-    width: 100%;
-    height: 100%;
-    display: block;
-    background-color: transparent;
-    border: 1px solid gray;
-    border-radius: 4px;
+ .search-location input, .search-job input, .search-salary input {
+	 width: 100%;
+	 height: 100%;
+	 display: block;
+	 background-color: transparent;
+	 border: none;
 }
  .search-location svg, .search-job svg, .search-salary svg {
 	 margin-right: 8px;
@@ -6098,6 +6100,117 @@ textarea{
     color: #c80911 !important;
     font-size: 22px;
 }
-.error{
+
+
+.callback{
+    background: #fff;
+    padding: 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.5);
+}
+
+.callback h5{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+.footitem{
+    padding: 20px 0px !important;
+}
+
+.footer-item p{
+    color: #fff;
+}
+.footer-item h3{
+    color: #fff;
+}
+
+
+.icon-bar {
+    position: fixed;
+    top: 75%;
+    right: 0px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 30px;
+    border-radius: 50%;
+  }
+  
+  .icon-bar a:hover {
+    background-color: #000;
+  }
+  
+  .facebook {
+    background: #047211;
+    color: white;
+  }
+  
+  .twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  
+  .google {
+    background: #dd4b39;
+    color: white;
+  }
+  
+  .linkedin {
+    background: #007bb5;
+    color: white;
+  }
+  
+  .youtube {
+    background: #bb0000;
+    color: white;
+  }
+  
+  .content {
+    margin-left: 75px;
+    font-size: 30px;
+  }
+
+  .icofont-youtube-play{
+    color: #c80911;
+  }
+  .icofont-facebook{
+    color: #007bb5;
+  }
+  .icofont-instagram{
+    /* background: #d6249f; */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    /* box-shadow: 0px 3px 10px rgba(0,0,0,.25); */
+    border-radius: 5px;
+  }
+  .icofont-twitter{
+    color: #3396ff;
+  }
+  .icofont-linkedin{
+    color: #01458c;
+  }
+  .bannersec h6{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    background: #007bb5;
+    color: #fff;
+    padding: 10px;
+  }
+  .bannersec .co-sm-4{
+    padding: 0px;
+  }
+
+  .error{
     color: red !important;
 }
