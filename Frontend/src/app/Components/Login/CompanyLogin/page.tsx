@@ -100,7 +100,7 @@ const CompanyLogin = () => {
                   </p>
                 </div>
                 <div className="login-sign-in">
-                  <Link href="/Components/Forgot">Forgot Password?</Link>
+                  {/* <Link href="/Components/Forgot">Forgot Password?</Link> */}
                   <ul>
                     <li>Don’t Have Account ?</li>
                     <li>

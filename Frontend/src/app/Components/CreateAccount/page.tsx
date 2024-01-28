@@ -48,7 +48,14 @@ const CreateAccount = () => {
             userName: formData?.phoneNumber,
             password: formData?.phoneNumber,
           };
-          await axios.post(`${infoData?.baseApi}/customers`, tempData);
+          let result = await axios.post(
+            `${infoData?.baseApi}/customers`,
+            tempData
+          );
+          console.log(result, "asdfasd");
+          sessionStorage.setItem("userName", result?.["data"]?.data?.userName);
+          sessionStorage.setItem("userID", result?.["data"]?.data?.id);
+          location.reload();
           router.push("/");
         } catch (error) {
           if (error.response) {

@@ -55,13 +55,13 @@ const Header = () => {
                 {!userName && !comapnyName ? (
                   <>
                     <Link className="login-btn pe-0" href="/Components/Login">
-                      Log in / 
+                      Log in /
                     </Link>
                     <Link
                       className="login-btn"
                       href="/Components/Login/CompanyLogin"
                     >
-                     Employers / Post Job
+                      Employers / Post Job
                     </Link>
                   </>
                 ) : (
@@ -84,6 +84,11 @@ const Header = () => {
                     </Link>
                   </>
                 )}
+                <div
+                  id="google_translate_element"
+                  className="lang"
+                  style={{ display: "inline" }}
+                ></div>
               </div>
             </div>
           </nav>

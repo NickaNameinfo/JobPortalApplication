@@ -60,6 +60,7 @@ const Apply = ({ params }: { params: { slug: string } }) => {
     formData.append("jobCategory", courses?.jobCategory);
     formData.append("companyName", courses?.companyName);
     formData.append("companyId", courses?.companyId);
+    formData.append("jobStatus", "Applied");
     try {
       const response = await axios.post(`${infoData?.baseApi}/jobs`, formData, {
         headers: {

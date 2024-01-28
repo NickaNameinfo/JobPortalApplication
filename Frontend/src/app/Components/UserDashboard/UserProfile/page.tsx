@@ -21,8 +21,9 @@ const UserProfile = () => {
     console.log(userID, "sdfas");
     if (!userID) {
       router.back();
+    } else {
+      getCompany(userID);
     }
-    getCompany(userID);
   }, []);
 
   const getCompany = async (userID) => {
@@ -65,7 +66,6 @@ const UserProfile = () => {
       if (!response?.data?.success) {
         alert("Somthing want worng");
       } else {
-        
         location.reload();
       }
       // Handle the response as needed

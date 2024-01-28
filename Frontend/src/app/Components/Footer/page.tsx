@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -38,43 +39,43 @@ const Footer = () => {
                   </p>
                   <ul>
                     <li>
-                      <a href="https://www.youtube.com/" target="_blank">
+                      <Link href="https://www.youtube.com/" target="_blank">
                         <i className="icofont-youtube-play" />
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/" target="_blank">
+                      <Link href="https://www.facebook.com/" target="_blank">
                         <i className="icofont-facebook" />
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/" target="_blank">
+                      <Link href="https://www.instagram.com/" target="_blank">
                         <i className="icofont-instagram" />
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="https://www.twitter.com/" target="_blank">
+                      <Link href="https://www.twitter.com/" target="_blank">
                         <i className="icofont-twitter" />
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="https://www.linkedin.com/" target="_blank">
+                      <Link href="https://www.linkedin.com/" target="_blank">
                         <i className="icofont-linkedin" />
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                   <div className="app-item footitem">
                     <div className="app-btn">
-                      <a className="app-btn-one" href="#">
+                      <Link className="app-btn-one" href="#">
                         <i className="flaticon-apple" />
                         <span>Download on the</span>
                         <p>App Store</p>
-                      </a>
-                      <a className="app-btn-two" href="#">
+                      </Link>
+                      <Link className="app-btn-two" href="#">
                         <i className="flaticon-playstore" />
                         <span>ANDROID APP ON</span>
                         <p>Google Play</p>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -86,46 +87,46 @@ const Footer = () => {
                   <h3>Category</h3>
                   <ul>
                     <li>
-                      <a href="terms.php">
+                      <Link href="/Components/Terms">
                         <i className="icofont-simple-right" />
                         Terms &amp; Conditions
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="privacy-policy.php">
+                      <Link href="/Components/Privacy">
                         <i className="icofont-simple-right" />
                         Privacy Policy
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="disclaimer.php">
+                      <Link href="/Components/Disclaimer">
                         <i className="icofont-simple-right" />
                         Disclaimer
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="about.php">
+                      <Link href="/Components/About">
                         <i className="icofont-simple-right" />
                         About Us
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="blog.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Blogs
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="testimonials.php">
+                      <Link href="/Components/Testimonial">
                         <i className="icofont-simple-right" />
                         Testimonials
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">
+                      <Link href="/Components/Contact">
                         <i className="icofont-simple-right" />
                         Contact Us
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -137,46 +138,46 @@ const Footer = () => {
                   <h3>Job By Category</h3>
                   <ul>
                     <li>
-                      <a href="index.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Digital Marketing
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="about.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Driving/Parking
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="blog.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Engineering
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="testimonials.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Machine Operation
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="testimonials.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Marketing/ Sales
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="testimonials.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Medical/ Doctor
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="testimonials.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Security
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -188,40 +189,40 @@ const Footer = () => {
                   <h3>Job By Location</h3>
                   <ul>
                     <li>
-                      <a href="index.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Maharashtra
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="about.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Punjab
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="blog.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Gujarat
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="testimonials.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Tamil_nadu
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="testimonials.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Andhra
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="testimonials.php">
+                      <Link href="#">
                         <i className="icofont-simple-right" />
                         Telangana
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -240,12 +241,12 @@ const Footer = () => {
         </div>
       </footer>
       <div className="icon-bar">
-        <a href="#" className="facebook">
+        <Link href="#" className="facebook">
           <i className="icofont-whatsapp" />
-        </a>
-        <a href="#" className="google">
+        </Link>
+        <Link href="#" className="google">
           <i className="icofont-wechat" />
-        </a>
+        </Link>
       </div>
     </>
   );

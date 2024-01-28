@@ -94,12 +94,12 @@ const companyService = {
           );
 
         const existingCustomerByEmail = await Company.findOne({
-          where: { companyEmail: body?.companyEmail },
+          where: { company_email: body?.companyEmail },
         });
 
         // Check if a customer with the provided userName already exists
         const existingCompanyUserName = await Company.findOne({
-          where: { userName: body?.userName },
+          where: { user_Name: body?.userName },
         });
 
         if (existingCustomerByEmail) {
@@ -113,6 +113,7 @@ const companyService = {
             `User Name ${body?.userName} already exists`
           );
         }
+        console.log(existingCompanyUserName, existingCustomerByEmail, company, "company213412")
         const data = await Company.create(body);
         resolve(data);
       } catch (error) {

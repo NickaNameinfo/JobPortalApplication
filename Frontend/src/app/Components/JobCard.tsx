@@ -8,7 +8,7 @@ const JobCard = ({ result, column, appiled = null }) => {
   const [jobList, setJobList] = React.useState(null);
   const [filtterJob, setFilterJob] = React.useState(null);
   const [userProfile, setUserProfile] = React.useState(null);
-  console.log(result, "userProfile213412");
+  console.log(jobList, "userProfile213412", userProfile);
 
   React.useEffect(() => {
     let tempDate = jobList?.filter(
@@ -49,7 +49,10 @@ const JobCard = ({ result, column, appiled = null }) => {
         formData.append("jobCategory", response1?.data?.data?.jobCategory);
         formData.append("companyName", response1?.data?.data?.companyName);
         formData.append("companyId", response1?.data?.data?.companyId);
-        formData.append("resume", userProfile?.resume);
+        formData.append(
+          "resume",
+          userProfile?.resume ? userProfile?.resume : jobList?.[0]?.resume
+        );
         try {
           const response = await axios.post(
             `${infoData?.baseApi}/jobs`,
@@ -97,13 +100,18 @@ const JobCard = ({ result, column, appiled = null }) => {
             <div className={`col-sm-${column} mix web ui`} key={result?.id}>
               <div className="job-item">
                 <Link className="company" href={`/Components/${result?.id}`}>
-                  <img src={`${infoData?.baseApi}/uploads/${result?.companyLogo}`} alt="Job" />
+                  <img
+                    src={`${infoData?.baseApi}/uploads/${result?.companyLogo}`}
+                    alt="Job"
+                  />
                 </Link>
                 <Link className="company" href={`/Components/${result?.id}`}>
                   <div className="job-inner align-items-center">
                     <div className="job-inner-left">
                       <h3>
-                        <Link href={`/Components/${result?.id}`}>{result?.jobTitle}</Link>
+                        <Link href={`/Components/${result?.id}`}>
+                          {result?.jobTitle}
+                        </Link>
                       </h3>
 
                       {result?.companyName}
@@ -129,8 +137,8 @@ const JobCard = ({ result, column, appiled = null }) => {
                                 ? filtterJob?.[0]?.jobStatus
                                 : "Applied"}
                             </div>
-                          ) : userProfile?.["resume"] === "" ||
-                            !userProfile?.resume ? (
+                          ) : jobList?.[0]?.resume === "" ||
+                            !jobList?.[0]?.resume ? (
                             <Link href={`/Components/Apply/${result?.id}`}>
                               Apply
                             </Link>
@@ -154,13 +162,18 @@ const JobCard = ({ result, column, appiled = null }) => {
             <div className={`col-sm-${column} mix web ui`}>
               <div className="job-item">
                 <Link className="company" href={`/Components/${result?.id}`}>
-                <img src={`${infoData?.baseApi}/${result?.companyLogo }`} alt="Job" />
+                  <img
+                    src={`${infoData?.baseApi}/${result?.companyLogo}`}
+                    alt="Job"
+                  />
                 </Link>
                 <Link className="company" href={`/Components/${result?.id}`}>
                   <div className="job-inner align-items-center">
                     <div className="job-inner-left">
                       <h3>
-                        <Link href={`/Components/${result?.id}`}>{result?.jobTitle}</Link>
+                        <Link href={`/Components/${result?.id}`}>
+                          {result?.jobTitle}
+                        </Link>
                       </h3>
                       <Link
                         className="company"
@@ -182,8 +195,8 @@ const JobCard = ({ result, column, appiled = null }) => {
                     <div className="job-inner-right">
                       <ul>
                         <li>
-                          {userProfile?.["resume"] === "" ||
-                          !userProfile?.resume ? (
+                          {jobList?.[0]?.resume === "" ||
+                          !jobList?.[0]?.resume ? (
                             <Link href={`/Components/Apply/${result?.id}`}>
                               Apply
                             </Link>

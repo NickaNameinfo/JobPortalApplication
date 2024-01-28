@@ -54,6 +54,20 @@ export default function RootLayout({
         <script src="../assets/js/jquery.appear.min.js"></script>
 
         <script src="../assets/js/custom.js"></script>
+
+        
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+<script type="text/javascript">
+
+</script>
+
+<script>
+    
+
+</script>
+
       </body>
     </html>
   );
