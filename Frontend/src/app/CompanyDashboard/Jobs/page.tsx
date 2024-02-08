@@ -7,9 +7,11 @@ import Link from "next/link";
 
 const Jobs = () => {
   const [company, setCompany] = React.useState([]);
-
+  const [companyId, setLoginUserName] = React.useState(
+    sessionStorage.getItem("companyId")
+  );
   React.useEffect(() => {
-    let companyId = sessionStorage.getItem("companyId");
+    // let companyId = sessionStorage.getItem("companyId");
     axios
       .get(`${infoData.baseApi}/courses`)
       .then((response) => {
@@ -35,8 +37,8 @@ const Jobs = () => {
       <section className="job-area job-area-two">
         <div className="container">
           <div className="row">
-            {company?.map((result) => (
-              <div className="col-lg-12">
+            {company?.map((result, index) => (
+              <div className="col-lg-12" key={index}>
                 <div className="job-item">
                   <img src="/images/home-1/jobs/1.png" alt="Job" />
                   <div className="job-inner align-items-center">

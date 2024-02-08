@@ -7,9 +7,11 @@ import { useRouter } from "next/navigation";
 
 const CompanyDashboard = () => {
   const [company, setCompany] = React.useState([]);
+  const [localUserName, setLoginUserName] = React.useState(
+    sessionStorage.getItem("companyName")
+  );
   const router = useRouter();
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("companyName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
       router.back();
@@ -17,7 +19,7 @@ const CompanyDashboard = () => {
   }, []);
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("companyName");
+    // let localUserName = sessionStorage.getItem("companyName");
     axios
       .get(`${infoData.baseApi}/courses`)
       .then((response) => {
@@ -44,8 +46,8 @@ const CompanyDashboard = () => {
             <span className="menu-icon">▼</span>
           </div>
         </div>
-        {company?.map((result) => (
-          <table className="table table-bordered">
+        {company?.map((result, index) => (
+          <table className="table table-bordered" key={index}>
             <tbody>
               <tr>
                 <td>

@@ -178,11 +178,11 @@ const SearchJob = () => {
           </div>
           <div className="job-cards d-block">
             {filteredJobs.length > 0 ? (
-              filteredJobs?.map((result) => (
-                <JobCard result={result} column={12} />
+              filteredJobs?.map((result, index) => (
+                <JobCard result={result} column={12}  key={index}/>
               ))
             ) : courses?.length > 0 ? (
-              courses?.map((result) => <JobCard result={result} column={12} />)
+              courses?.map((result, index) => <JobCard result={result} column={12}  key={index}/>)
             ) : (
               <p>No Jobs</p>
             )}

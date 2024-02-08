@@ -7,6 +7,9 @@ import Link from "next/link";
 import { infoData } from "../../../../configData";
 
 const Login = () => {
+  const [localUserName, setCompanyName] = React.useState(
+    sessionStorage.getItem("userName")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -15,7 +18,7 @@ const Login = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = sessionStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();

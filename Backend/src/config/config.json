@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "jobPortal",
-    "host": "localhost",
+    "username": "rishijob_rishi",
+    "password": "vX-1lp;MAwu8",
+    "database": "rishijob_jobportal",
+    "host": "www.rishijob.com",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "rishijob_rishi",
+    "password": "vX-1lp;MAwu8",
+    "database": "rishijob_jobportal",
+    "host": "www.rishijob.com",
     "dialect": "mysql"
   },
   "production": {
-    "username": "rishi",
-    "password": "Welcome@123",
-    "database": "rishijob",
-    "host": "localhost",
+    "username": "rishijob_rishi",
+    "password": "vX-1lp;MAwu8",
+    "database": "rishijob_jobportal",
+    "host": "www.rishijob.com",
     "dialect": "mysql"
   }
 }

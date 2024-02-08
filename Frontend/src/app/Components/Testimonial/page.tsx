@@ -12,7 +12,7 @@ const Testimonial = () => {
                   <h2>Testimonials</h2>
                   <ul>
                     <li>
-                      <a href="index.html">Home</a>
+                      <a href="/">Home</a>
                     </li>
                     <li>
                       <i className="icofont-simple-right" />
@@ -54,7 +54,7 @@ const Testimonial = () => {
                     <a href="company-details.html">Joseph.M</a>
                   </h3>
                   <p>
-                    It's a leading company and their are many things to learn
+                    Its a leading company and their are many things to learn
                     more and got growth as per your working experience...
                   </p>
                   {/* <a class="companies-btn"
@@ -90,7 +90,7 @@ const Testimonial = () => {
                   </h3>
                   <p>
                     Salary on time is only key of this organisation what most of
-                    the popel feel good 👍
+                    the popel feel good 
                   </p>
                   {/* <a class="companies-btn"
                           href="create-account.html">Hiring</a> */}

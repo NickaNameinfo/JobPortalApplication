@@ -9,7 +9,6 @@ import AdminDashboardLayout from "@/app/AdminDashboardLayout/page";
 const JobList = () => {
   const [company, setCompany] = React.useState(null);
   React.useEffect(() => {
-    let companyId = sessionStorage.getItem("companyId");
     axios
       .get(`${infoData.baseApi}/courses`)
       .then((response) => {
@@ -41,8 +40,8 @@ const JobList = () => {
             </tr>
           </thead>
           <tbody>
-            {company?.map((result) => (
-              <tr>
+            {company?.map((result, index) => (
+              <tr key={index}>
                 <td>
                   <h5>
                     <b>{result?.companyName}</b>{" "}

@@ -7,6 +7,9 @@ import { Controller, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 const Settings = () => {
+  const [userID, setCompanyName] = React.useState(
+    sessionStorage.getItem("userID")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -16,7 +19,7 @@ const Settings = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let userID = sessionStorage.getItem("userID");
+    // let userID = sessionStorage.getItem("userID");
     console.log(userID, "sdfas");
     if (!userID) {
       router.back();
@@ -46,7 +49,7 @@ const Settings = () => {
   };
 
   const onSubmit = async (data) => {
-    let userID = sessionStorage.getItem("userID");
+    // let userID = sessionStorage.getItem("userID");
     const formData = new FormData();
     for (const key in data) {
       formData.append(key, data[key]);

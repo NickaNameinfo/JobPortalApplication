@@ -7,8 +7,11 @@ import Link from "next/link";
 
 const Candidates = () => {
   const [company, setCompany] = React.useState(null);
+  const [companyId, setLoginUserName] = React.useState(
+    sessionStorage.getItem("companyId")
+  );
   React.useEffect(() => {
-    let companyId = sessionStorage.getItem("companyId");
+    // let companyId = sessionStorage.getItem("companyId");
     axios
       .get(`${infoData.baseApi}/jobs`)
       .then((response) => {
@@ -78,8 +81,8 @@ const Candidates = () => {
             </tr>
           </thead>
           <tbody>
-            {company?.map((result) => (
-              <tr>
+            {company?.map((result, index) => (
+              <tr key={index}>
                 <td>
                   <h5>
                     <b>{result?.name}</b>{" "}
@@ -102,8 +105,20 @@ const Candidates = () => {
                   <p>{result?.jobStatus}</p>
                 </td>
                 <td style={{ width: " 180px" }}>
-                  <i className="icofont-close-squared-alt" onClick={() => onClickReject(result)} style={{color: "red", fontSize: "30px", marginRight : "10px"}}/>
-                  <i className="icofont-tick-boxed" onClick={() => onClickApprove(result)} style={{color: "green", fontSize: "30px"}}></i>
+                  <i
+                    className="icofont-close-squared-alt"
+                    onClick={() => onClickReject(result)}
+                    style={{
+                      color: "red",
+                      fontSize: "30px",
+                      marginRight: "10px",
+                    }}
+                  />
+                  <i
+                    className="icofont-tick-boxed"
+                    onClick={() => onClickApprove(result)}
+                    style={{ color: "green", fontSize: "30px" }}
+                  ></i>
                 </td>
               </tr>
             ))}

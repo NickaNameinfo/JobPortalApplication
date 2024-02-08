@@ -33,41 +33,33 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-        <script src="../assets/js/jquery.min.js"></script>
-        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/jquery.min.js" async></script>
+        <script src="../assets/js/bootstrap.bundle.min.js" async></script>
 
-        <script src="../assets/js/jquery.meanmenu.js"></script>
+        <script src="../assets/js/jquery.meanmenu.js" async></script>
 
-        <script src="../assets/js/jquery.mixitup.min.js"></script>
+        <script src="../assets/js/jquery.mixitup.min.js" async></script>
 
-        <script src="../assets/js/owl.carousel.min.js"></script>
+        <script src="../assets/js/owl.carousel.min.js" async></script>
 
-        <script src="../assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="../assets/js/jquery.ajaxchimp.min.js" async></script>
 
-        <script src="../assets/js/form-validator.min.js"></script>
+        <script src="../assets/js/form-validator.min.js" async></script>
 
-        <script src="../assets/js/contact-form-script.js"></script>
+        <script src="../assets/js/contact-form-script.js" async></script>
 
-        <script src="../assets/js/wow.min.js"></script>
+        <script src="../assets/js/wow.min.js" async></script>
 
-        <script src="../assets/js/odometer.min.js"></script>
-        <script src="../assets/js/jquery.appear.min.js"></script>
+        <script src="../assets/js/odometer.min.js" async></script>
+        <script src="../assets/js/jquery.appear.min.js" async></script>
 
-        <script src="../assets/js/custom.js"></script>
+        <script src="../assets/js/custom.js" async></script>
 
-        
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-
-<script type="text/javascript">
-
-</script>
-
-<script>
-    
-
-</script>
-
+        <script
+          type="text/javascript"
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          async
+        ></script>
       </body>
     </html>
   );

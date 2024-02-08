@@ -3,10 +3,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const UserDashboardLayout = ({ children }) => {
+const UserDashboardLayout:any = ({ children }) => {
+  const [localUserName, setCompanyName] = React.useState(
+    sessionStorage.getItem("userName")
+  );
   const router = useRouter();
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = sessionStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
       router.push("/");

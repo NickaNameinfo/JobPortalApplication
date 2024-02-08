@@ -29,7 +29,7 @@ const Terms = () => {
             <div className="privacy-item">
               <h2>Terms &amp; Conditions</h2>
               <p>
-                Welcome to Rishi Jobs! These terms and conditions ("Terms")
+                Welcome to Rishi Jobs! These terms and conditions (Terms)
                 outline the rules and regulations for the use of our job portal.
               </p>
               <p>

@@ -1,17 +1,20 @@
 "use client";
 import React from "react";
-import Header from "../../Header";
-import Footer from "../../Footer/page";
-import { infoData } from "../../../../../configData";
+// import Header from "../../Header";
+// import Footer from "../../Footer/page";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
+import { infoData } from "../../../../../../configData";
 
 const Apply = ({ params }: { params: { slug: string } }) => {
   const [courses, setCourses] = React.useState(null);
   const [customer, setCustomer] = React.useState(null);
   const [leave, setLevel] = React.useState(null);
+  const [localUserName, setCompanyName] = React.useState(
+    sessionStorage.getItem("userName")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -23,7 +26,7 @@ const Apply = ({ params }: { params: { slug: string } }) => {
   console.log(params.slug, "sdfjaslkd43245", courses);
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = sessionStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
       alert("Before applying job kindly login your account");

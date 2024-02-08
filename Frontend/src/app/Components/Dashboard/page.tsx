@@ -133,8 +133,8 @@ const Dashboard = () => {
               </div>
               <div className="col-sm-8">
                 <div className="row">
-                  {courses?.map((result) => (
-                    <JobCard result={result} column={12}/>
+                  {courses?.map((result, index) => (
+                    <JobCard result={result} column={12} key={index}/>
                   ))}
                 </div>
               </div>

@@ -8,6 +8,9 @@ import Link from "next/link";
 import { infoData } from "../../../../../configData";
 
 const UserProfile = () => {
+  const [userID, setCompanyName] = React.useState(
+    sessionStorage.getItem("userID")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -17,7 +20,7 @@ const UserProfile = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let userID = sessionStorage.getItem("userID");
+    // let userID = sessionStorage.getItem("userID");
     console.log(userID, "sdfas");
     if (!userID) {
       router.back();
@@ -48,7 +51,7 @@ const UserProfile = () => {
   };
 
   const onSubmit = async (data) => {
-    let userID = sessionStorage.getItem("userID");
+    // let userID = sessionStorage.getItem("userID");
     const formData = new FormData();
     for (const key in data) {
       formData.append(key, data[key]);

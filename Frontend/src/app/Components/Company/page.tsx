@@ -9,6 +9,9 @@ const Company = () => {
   const router = useRouter();
   const [otpValue, setOtpValue] = React.useState(null);
   const [oldOtp, setOldOtp] = React.useState(null);
+  const [localUserName, setCompanyName] = React.useState(
+    sessionStorage.getItem("companyName")
+  );
   const {
     handleSubmit: handleSubmit,
     control: controlLogin,
@@ -16,7 +19,7 @@ const Company = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("companyName");
+    // let localUserName = sessionStorage.getItem("companyName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();

@@ -201,6 +201,30 @@ const customerService = {
         reject(error);
       }
     }),
+  generateMobileOtp: (number) =>
+    new Promise(async (resolve, reject) => {
+      console.log(number, "numbernumber");
+      try {
+        const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit random OTP
+        const smsApiUrl = `http://site.ping4sms.com/api/smsapi?key=e741867a2aae3c35f6a835cff40432a9&route=2&sender=TNPWEL&number=${Number(
+          number
+        )}&sms=Dear%20User,%20Your%${otp}%20is%209025.%20This%20OTP%20is%20valid%20for%2010%20minutes%20-%20TNPWEL&templateid=1207168620790375475`;
+
+        // Send the OTP via the API
+        const response = await axios.get(smsApiUrl);
+
+        console.log(response.status, "responseresponse");
+        // Handle the response from the API if necessary
+
+        console.log(otp, "sdfasdf");
+
+        resolve(otp); // Return the generated OTP in the response
+      } catch (error) {
+        reject(error);
+        console.error("Error generating OTP:", error);
+        res.status(500).json({ error: "Failed to generate OTP" });
+      }
+    }),
 };
 
 module.exports = customerService;

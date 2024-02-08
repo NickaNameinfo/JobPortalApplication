@@ -7,6 +7,9 @@ import { Controller, useForm } from "react-hook-form";
 import { infoData } from "../../../../configData";
 
 const COmpanyProfile = () => {
+  const [companyId, setLoginUserName] = React.useState(
+    sessionStorage.getItem("companyId")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -16,7 +19,7 @@ const COmpanyProfile = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let companyId = sessionStorage.getItem("companyId");
+    // let companyId = sessionStorage.getItem("companyId");
     if (!companyId) {
       router.back();
     }

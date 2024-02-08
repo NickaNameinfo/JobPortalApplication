@@ -8,6 +8,11 @@ const JobCard = ({ result, column, appiled = null }) => {
   const [jobList, setJobList] = React.useState(null);
   const [filtterJob, setFilterJob] = React.useState(null);
   const [userProfile, setUserProfile] = React.useState(null);
+  const [localUserName, setCOmpanyName] = React.useState(
+    sessionStorage.getItem("userName")
+  );
+  const [userID, setuserID] = React.useState(sessionStorage.getItem("userID"));
+
   console.log(jobList, "userProfile213412", userProfile);
 
   React.useEffect(() => {
@@ -24,7 +29,7 @@ const JobCard = ({ result, column, appiled = null }) => {
       .get(`${infoData?.baseApi}/jobs`)
       .then((response) => {
         // Handle the successful response
-        let localUserName = sessionStorage.getItem("userName");
+        // let localUserName = sessionStorage.getItem("userName");
         let tempData = response?.data?.data?.data.filter(
           (item) => item.userName === localUserName
         );
@@ -66,7 +71,7 @@ const JobCard = ({ result, column, appiled = null }) => {
           if (!response?.data?.success) {
             alert("Somthing want worng");
           } else {
-            let userID = sessionStorage.getItem("userID");
+            // let userID = userID;
             if (userID) {
               alert("Good Job! Thanks for submitting the form!");
               location.reload();
@@ -87,7 +92,7 @@ const JobCard = ({ result, column, appiled = null }) => {
   };
 
   const getUserProfile = async () => {
-    let userID = sessionStorage.getItem("userID");
+    // let userID = sessionStorage.getItem("userID");
     const apiUrl = `${infoData?.baseApi}/customers/${userID}`;
     let result = await axios.get(apiUrl);
     setUserProfile(result?.data?.data);

@@ -8,6 +8,9 @@ import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 
 const Settings = () => {
+  const [companyId, setLoginUserName] = React.useState(
+    sessionStorage.getItem("companyId")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -17,7 +20,7 @@ const Settings = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let companyId = sessionStorage.getItem("companyId");
+    // let companyId = sessionStorage.getItem("companyId");
     if (!companyId) {
       router.back();
     }

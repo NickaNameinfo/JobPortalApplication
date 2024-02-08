@@ -12,13 +12,16 @@ const CreateAccount = () => {
     control: controlLogin,
     formState: { errors: errorsLogin },
   } = useForm();
+  const [localUserName, setCompanyName] = React.useState(
+    sessionStorage.getItem("userName")
+  );
   const [otpValue, setOtpValue] = React.useState(null);
   const [oldOtp, setOldOtp] = React.useState(null);
 
   console.log(otpValue, oldOtp);
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = sessionStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();

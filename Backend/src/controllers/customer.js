@@ -102,6 +102,15 @@ const customerController = {
       next(error);
     }
   },
+  generateMobileOtp: async (req, res, next) => {
+    try {
+      const { number } = req.params;
+      const data = await customerService.generateMobileOtp(number);
+      return res.json({ success: true, data });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 module.exports = customerController;
