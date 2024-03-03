@@ -3,10 +3,10 @@ import Link from "next/link";
 import * as React from "react";
 const Header = () => {
   const [userName, setUserName] = React.useState(
-    sessionStorage?.getItem("userName")
+    localStorage?.getItem("userName")
   );
   const [comapnyName, setCOmpanyName] = React.useState(
-    sessionStorage.getItem("companyName")
+    localStorage.getItem("companyName")
   );
 
   return (

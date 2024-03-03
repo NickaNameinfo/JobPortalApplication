@@ -8,7 +8,7 @@ import { infoData } from "../../../../configData";
 
 const COmpanyProfile = () => {
   const [companyId, setLoginUserName] = React.useState(
-    sessionStorage.getItem("companyId")
+    localStorage.getItem("companyId")
   );
   const router = useRouter();
   const {
@@ -19,7 +19,7 @@ const COmpanyProfile = () => {
   } = useForm();
 
   React.useEffect(() => {
-    // let companyId = sessionStorage.getItem("companyId");
+    // let companyId = localStorage.getItem("companyId");
     if (!companyId) {
       router.back();
     }

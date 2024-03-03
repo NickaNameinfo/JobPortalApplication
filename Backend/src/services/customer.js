@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const { Customer, Address } = require("../models/index");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
+const axios = require("axios")
 
 const NotFoundException = require("../exception/NotFoundException");
 const BadRequestException = require("../exception/BadRequestException");
@@ -206,10 +207,13 @@ const customerService = {
       console.log(number, "numbernumber");
       try {
         const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit random OTP
-        const smsApiUrl = `http://site.ping4sms.com/api/smsapi?key=e741867a2aae3c35f6a835cff40432a9&route=2&sender=TNPWEL&number=${Number(
-          number
-        )}&sms=Dear%20User,%20Your%${otp}%20is%209025.%20This%20OTP%20is%20valid%20for%2010%20minutes%20-%20TNPWEL&templateid=1207168620790375475`;
 
+        // const smsApiUrl = `http://site.ping4sms.com/api/smsapi?key=8948656f9eea4d715984ce06d2ea022b&route=2&sender=TNPWEL&number=${Number(
+        //   number
+        // )}&sms=Dear%20User,%20Your%${otp}%20is%209025.%20This%20OTP%20is%20valid%20for%2010%20minutes%20-%20TNPWEL&templateid=1207168620790375475`;
+        const smsApiUrl = `http://site.ping4sms.com/api/smsapi?key=8948656f9eea4d715984ce06d2ea022b&route=2&sender=EZCRTR&number=${Number(
+          number
+        )}&sms=We%20are%20happy%20to%20welcome%20you%20as%20a%20new%20client!%20Please%20use%20this%20OTP%20${otp}%20to%20complete%20the%20registration.%20Let%E2%80%99s%20Eat%20Better%20Taken%20care%20by%20EZ%20CARTER&templateid=1607100000000279802`;
         // Send the OTP via the API
         const response = await axios.get(smsApiUrl);
 
@@ -222,7 +226,6 @@ const customerService = {
       } catch (error) {
         reject(error);
         console.error("Error generating OTP:", error);
-        res.status(500).json({ error: "Failed to generate OTP" });
       }
     }),
 };

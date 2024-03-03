@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 // const open = require('open');
 
-const dev = process.env.NODE_ENV !== "production";
+const dev = process.env.NODE_ENV !== "localhost";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 

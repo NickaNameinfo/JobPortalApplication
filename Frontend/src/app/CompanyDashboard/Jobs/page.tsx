@@ -8,10 +8,10 @@ import Link from "next/link";
 const Jobs = () => {
   const [company, setCompany] = React.useState([]);
   const [companyId, setLoginUserName] = React.useState(
-    sessionStorage.getItem("companyId")
+    localStorage.getItem("companyId")
   );
   React.useEffect(() => {
-    // let companyId = sessionStorage.getItem("companyId");
+    // let companyId = localStorage.getItem("companyId");
     axios
       .get(`${infoData.baseApi}/courses`)
       .then((response) => {

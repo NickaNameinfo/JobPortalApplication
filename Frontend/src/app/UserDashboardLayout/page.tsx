@@ -5,11 +5,11 @@ import React from "react";
 
 const UserDashboardLayout:any = ({ children }) => {
   const [localUserName, setCompanyName] = React.useState(
-    sessionStorage.getItem("userName")
+    localStorage.getItem("userName")
   );
   const router = useRouter();
   React.useEffect(() => {
-    // let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = localStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
       router.push("/");
@@ -64,11 +64,10 @@ const UserDashboardLayout:any = ({ children }) => {
                 >
                   <span
                     onClick={() => {
-                      sessionStorage.removeItem("userID");
-                      sessionStorage.removeItem("userName");
-                      sessionStorage.removeItem("companyId");
-                      sessionStorage.removeItem("comapnyName");
-                      location.reload();
+                      localStorage.removeItem("userID");
+                      localStorage.removeItem("userName");
+                      localStorage.removeItem("companyId");
+                      localStorage.removeItem("comapnyName");
                       router.push("/");
                     }}
                   >

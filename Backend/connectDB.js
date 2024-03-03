@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 const sequelize = new Sequelize("jobportal", "root", null, {
   host: "localhost",
   dialect: "mysql",
-  logging: false,
+  logging: console.log,
 });
 
 const connect = async () => {

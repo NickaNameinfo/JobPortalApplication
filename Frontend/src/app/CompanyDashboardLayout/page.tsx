@@ -5,12 +5,12 @@ import React from "react";
 
 const CompanyDashboardLayout:any = ({ children }) => {
   const [companyName, setLoginUserName] = React.useState(
-    sessionStorage.getItem("companyName")
+    localStorage.getItem("companyName")
   );
   const router = useRouter();
 
   React.useEffect(() => {
-    // let localUserName = sessionStorage.getItem("companyName");
+    // let localUserName = localStorage.getItem("companyName");
     console.log(companyName, "sdfas");
     if (!companyName) {
       router.push("/");
@@ -59,10 +59,10 @@ const CompanyDashboardLayout:any = ({ children }) => {
               <a className="search-buttons card-buttons">
                 <span
                   onClick={() => {
-                    sessionStorage.removeItem("userID");
-                    sessionStorage.removeItem("userName");
-                    sessionStorage.removeItem("companyId");
-                    sessionStorage.removeItem("companyName");
+                    localStorage.removeItem("userID");
+                    localStorage.removeItem("userName");
+                    localStorage.removeItem("companyId");
+                    localStorage.removeItem("companyName");
                     location.reload();
                     router.push("/");
                   }}

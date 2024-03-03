@@ -8,7 +8,7 @@ const UserDashboard = () => {
   const router = useRouter();
   const [company, setCompany] = React.useState([]);
   const [localUserName, setCompanyName] = React.useState(
-    sessionStorage.getItem("userName")
+    localStorage.getItem("userName")
   );
 
   React.useEffect(() => {

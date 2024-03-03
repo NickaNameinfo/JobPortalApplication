@@ -8,13 +8,13 @@ import CompanyDashboardLayout from "@/app/CompanyDashboardLayout/page";
 
 const PostJob = () => {
   const [companyId, setLoginUserName] = React.useState(
-    sessionStorage.getItem("companyId")
+    localStorage.getItem("companyId")
   );
   const [companyName, setCompanyName] = React.useState(
-    sessionStorage.getItem("companyId")
+    localStorage.getItem("companyId")
   );
   const [companyLogo, setCompanyLogo] = React.useState(
-    sessionStorage.getItem("companyId")
+    localStorage.getItem("companyId")
   );
   const router = useRouter();
   const {
@@ -35,9 +35,9 @@ const PostJob = () => {
   });
 
   const onSubmit = async (formData) => {
-    // let companyId = sessionStorage.getItem("companyId");
-    // let companyName = sessionStorage.getItem("companyName");
-    // let companyLogo = sessionStorage.getItem("companyLogo");
+    // let companyId = localStorage.getItem("companyId");
+    // let companyName = localStorage.getItem("companyName");
+    // let companyLogo = localStorage.getItem("companyLogo");
     try {
       let tempData = {
         ...formData,

@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 const CompanyDashboard = () => {
   const [company, setCompany] = React.useState([]);
   const [localUserName, setLoginUserName] = React.useState(
-    sessionStorage.getItem("companyName")
+    localStorage.getItem("companyName")
   );
   const router = useRouter();
   React.useEffect(() => {
@@ -19,7 +19,7 @@ const CompanyDashboard = () => {
   }, []);
 
   React.useEffect(() => {
-    // let localUserName = sessionStorage.getItem("companyName");
+    // let localUserName = localStorage.getItem("companyName");
     axios
       .get(`${infoData.baseApi}/courses`)
       .then((response) => {

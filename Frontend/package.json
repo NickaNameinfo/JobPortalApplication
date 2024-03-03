@@ -1,6 +1,7 @@
 {
   "name": "jobportal",
   "version": "0.1.0",
+  "homepage": "https://www.rishijob.com",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",

@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 const Settings = () => {
   const [userID, setCompanyName] = React.useState(
-    sessionStorage.getItem("userID")
+    localStorage.getItem("userID")
   );
   const router = useRouter();
   const {
@@ -19,7 +19,7 @@ const Settings = () => {
   } = useForm();
 
   React.useEffect(() => {
-    // let userID = sessionStorage.getItem("userID");
+    // let userID = localStorage.getItem("userID");
     console.log(userID, "sdfas");
     if (!userID) {
       router.back();
@@ -49,7 +49,7 @@ const Settings = () => {
   };
 
   const onSubmit = async (data) => {
-    // let userID = sessionStorage.getItem("userID");
+    // let userID = localStorage.getItem("userID");
     const formData = new FormData();
     for (const key in data) {
       formData.append(key, data[key]);

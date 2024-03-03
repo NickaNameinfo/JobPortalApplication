@@ -9,9 +9,9 @@ const JobCard = ({ result, column, appiled = null }) => {
   const [filtterJob, setFilterJob] = React.useState(null);
   const [userProfile, setUserProfile] = React.useState(null);
   const [localUserName, setCOmpanyName] = React.useState(
-    sessionStorage.getItem("userName")
+    localStorage.getItem("userName")
   );
-  const [userID, setuserID] = React.useState(sessionStorage.getItem("userID"));
+  const [userID, setuserID] = React.useState(localStorage.getItem("userID"));
 
   console.log(jobList, "userProfile213412", userProfile);
 
@@ -29,7 +29,7 @@ const JobCard = ({ result, column, appiled = null }) => {
       .get(`${infoData?.baseApi}/jobs`)
       .then((response) => {
         // Handle the successful response
-        // let localUserName = sessionStorage.getItem("userName");
+        // let localUserName = localStorage.getItem("userName");
         let tempData = response?.data?.data?.data.filter(
           (item) => item.userName === localUserName
         );
@@ -92,7 +92,7 @@ const JobCard = ({ result, column, appiled = null }) => {
   };
 
   const getUserProfile = async () => {
-    // let userID = sessionStorage.getItem("userID");
+    // let userID = localStorage.getItem("userID");
     const apiUrl = `${infoData?.baseApi}/customers/${userID}`;
     let result = await axios.get(apiUrl);
     setUserProfile(result?.data?.data);

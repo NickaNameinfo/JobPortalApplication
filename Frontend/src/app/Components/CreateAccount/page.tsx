@@ -13,7 +13,7 @@ const CreateAccount = () => {
     formState: { errors: errorsLogin },
   } = useForm();
   const [localUserName, setCompanyName] = React.useState(
-    sessionStorage.getItem("userName")
+    localStorage.getItem("userName")
   );
   const [otpValue, setOtpValue] = React.useState(null);
   const [oldOtp, setOldOtp] = React.useState(null);
@@ -21,7 +21,7 @@ const CreateAccount = () => {
   console.log(otpValue, oldOtp);
 
   React.useEffect(() => {
-    // let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = localStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();
@@ -32,11 +32,11 @@ const CreateAccount = () => {
     if (!otpValue) {
       try {
         const response = await axios.post(
-          `${infoData?.baseApi}/customers/${formData?.email}`,
+          `${infoData?.baseApi}/customers/number/${formData?.phoneNumber}`,
           formData
         );
         if (response?.data) {
-          alert("Otp sent your registered mail id");
+          alert("Otp sent your registered Phone Number");
           setOldOtp(response?.data);
         }
         console.log(formData, "formData32134", response);
@@ -56,8 +56,8 @@ const CreateAccount = () => {
             tempData
           );
           console.log(result, "asdfasd");
-          sessionStorage.setItem("userName", result?.["data"]?.data?.userName);
-          sessionStorage.setItem("userID", result?.["data"]?.data?.id);
+          localStorage.setItem("userName", result?.["data"]?.data?.userName);
+          localStorage.setItem("userID", result?.["data"]?.data?.id);
           location.reload();
           router.push("/");
         } catch (error) {

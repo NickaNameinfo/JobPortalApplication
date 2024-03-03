@@ -8,7 +8,7 @@ import { infoData } from "../../../../../configData";
 
 const CompanyLogin = () => {
   const [localUserName, setCompanyName] = React.useState(
-    sessionStorage.getItem("companyName")
+    localStorage.getItem("companyName")
   );
   const router = useRouter();
   const {
@@ -18,7 +18,7 @@ const CompanyLogin = () => {
   } = useForm();
 
   React.useEffect(() => {
-    // let localUserName = sessionStorage.getItem("companyName");
+    // let localUserName = localStorage.getItem("companyName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();
@@ -34,9 +34,9 @@ const CompanyLogin = () => {
       console.log(formData, "formData32134", response);
 
       if (response.data.success && !response?.data?.data?.error) {
-        sessionStorage.setItem("companyName", response?.data?.data?.userName);
-        sessionStorage.setItem("companyId", response?.data?.data?.id);
-        sessionStorage.setItem(
+        localStorage.setItem("companyName", response?.data?.data?.userName);
+        localStorage.setItem("companyId", response?.data?.data?.id);
+        localStorage.setItem(
           "companyLogo",
           response?.data?.data?.companyLogo
         );

@@ -29,6 +29,6 @@ router.post("/", customerController.create);
 router.put("/:id", uploads, customerController.updateById);
 router.delete("/:id", customerController.deleteById);
 router.post("/:email", customerController.generateOtp);
-router.post("/:number", customerController.generateMobileOtp);
+router.post("/number/:number", customerController.generateMobileOtp);
 
 module.exports = router;
