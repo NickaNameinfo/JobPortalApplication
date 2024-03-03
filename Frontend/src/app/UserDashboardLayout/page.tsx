@@ -3,10 +3,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const UserDashboardLayout = ({ children }) => {
+const UserDashboardLayout:any = ({ children }) => {
+  const [localUserName, setCompanyName] = React.useState(
+    localStorage.getItem("userName")
+  );
   const router = useRouter();
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = localStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
       router.push("/");
@@ -61,11 +64,10 @@ const UserDashboardLayout = ({ children }) => {
                 >
                   <span
                     onClick={() => {
-                      sessionStorage.removeItem("userID");
-                      sessionStorage.removeItem("userName");
-                      sessionStorage.removeItem("companyId");
-                      sessionStorage.removeItem("comapnyName");
-                      location.reload();
+                      localStorage.removeItem("userID");
+                      localStorage.removeItem("userName");
+                      localStorage.removeItem("companyId");
+                      localStorage.removeItem("comapnyName");
                       router.push("/");
                     }}
                   >

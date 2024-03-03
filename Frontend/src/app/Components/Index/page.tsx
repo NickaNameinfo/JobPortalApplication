@@ -29,7 +29,7 @@ const JobSearch = ({ onSearch }) => {
   return (
     <div className="searchbox">
       <div className="row">
-        <div className="col-lg-6">
+        <div className="col-lg-4">
           <div className="form-group">
             <input
               type="text"
@@ -43,7 +43,7 @@ const JobSearch = ({ onSearch }) => {
             </label>
           </div>
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-4">
           <div className="form-group">
             <label>
               <i className="icofont-location-pin" />
@@ -55,6 +55,20 @@ const JobSearch = ({ onSearch }) => {
               onChange={handleInputChange}
               name="jobLocation"
             />
+          </div>
+        </div>
+        <div className="col-lg-4">
+          <div className="form-group">
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              // onChange={handleInputChange}
+            >
+              <option>Job Category</option>
+              <option value={"Part Time"}>Part Time</option>
+              <option value={"Full Time"}>Full Time</option>
+              <option value={"Contract"}>Contract</option>
+            </select>
           </div>
         </div>
       </div>
@@ -173,7 +187,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.3s" }}
                 >
                   <i className="flaticon-settings" />
-                  <a href="#">Technical Support</a>
+                  <Link href="#">Technical Support</Link>
                 </div>
               </div>
               <div className="col-sm-4 col-lg-3">
@@ -183,7 +197,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.4s" }}
                 >
                   <i className="flaticon-layers" />
-                  <a href="#">Business Development</a>
+                  <Link href="#">Business Development</Link>
                 </div>
               </div>
               <div className="col-sm-4 col-lg-3">
@@ -193,7 +207,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.5s" }}
                 >
                   <i className="flaticon-house" />
-                  <a href="#">Real Estate Business</a>
+                  <Link href="#">Real Estate Business</Link>
                 </div>
               </div>
               <div className="col-sm-4 col-lg-3">
@@ -203,7 +217,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.6s" }}
                 >
                   <i className="flaticon-analysis" />
-                  <a href="#">Share Maeket Analysis</a>
+                  <Link href="#">Share Maeket Analysis</Link>
                 </div>
               </div>
               <div className="col-sm-4 col-lg-3">
@@ -213,7 +227,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.7s" }}
                 >
                   <i className="flaticon-sun" />
-                  <a href="#">Weather &amp; Environment</a>
+                  <Link href="#">Weather &amp; Environment</Link>
                 </div>
               </div>
               <div className="col-sm-4 col-lg-3">
@@ -223,7 +237,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.3s" }}
                 >
                   <i className="flaticon-hand" />
-                  <a href="#">Finance &amp; Banking Service</a>
+                  <Link href="#">Finance &amp; Banking Service</Link>
                 </div>
               </div>
               <div className="col-sm-4 col-lg-3">
@@ -233,7 +247,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.4s" }}
                 >
                   <i className="flaticon-neural" />
-                  <a href="#">IT &amp; Networing Sevices</a>
+                  <Link href="#">IT &amp; Networing Sevices</Link>
                 </div>
               </div>
               <div className="col-sm-4 col-lg-3">
@@ -243,7 +257,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.5s" }}
                 >
                   <i className="flaticon-dish" />
-                  <a href="#">Restaurant Services</a>
+                  <Link href="#">Restaurant Services</Link>
                 </div>
               </div>
               <div className="col-sm-4 col-lg-3">
@@ -253,7 +267,7 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.6s" }}
                 >
                   <i className="icofont-fire-burn" />
-                  <a href="#">Defence &amp; Fire Service</a>
+                  <Link href="#">Defence &amp; Fire Service</Link>
                 </div>
               </div>
               <div className="col-sm-4 offset-sm-4 offset-lg-0 col-lg-3">
@@ -263,12 +277,67 @@ const Index = () => {
                   style={{ visibility: "visible", animationDelay: "0.7s" }}
                 >
                   <i className="flaticon-truck" />
-                  <a href="#">Home Delivery Services</a>
+                  <Link href="#">Home Delivery Services</Link>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <div className="counter-area pt-50 pb-20">
+          <div className="container">
+            <div className="row">
+              <div className="col-6 col-sm-3 col-lg-3">
+                <div className="counter-item">
+                  <i className="flaticon-employee" />
+                  <h3>
+                    <span className="odometer" data-count={14}>
+                      1 4
+                    </span>
+                    <span className="target">k+</span>
+                  </h3>
+                  <p>Job Available</p>
+                </div>
+              </div>
+              <div className="col-6 col-sm-3 col-lg-3">
+                <div className="counter-item">
+                  <i className="flaticon-curriculum" />
+                  <h3>
+                    <span className="odometer" data-count={18}>
+                      1 8
+                    </span>
+                    <span className="target">k+</span>
+                  </h3>
+                  <p>CV Submitted</p>
+                </div>
+              </div>
+              <div className="col-6 col-sm-3 col-lg-3">
+                <div className="counter-item">
+                  <i className="flaticon-enterprise" />
+                  <h3>
+                    <span className="odometer" data-count={9}>
+                      9
+                    </span>
+                    <span className="target">k+</span>
+                  </h3>
+                  <p>Companies</p>
+                </div>
+              </div>
+              <div className="col-6 col-sm-3 col-lg-3">
+                <div className="counter-item">
+                  <i className="flaticon-businessman-paper-of-the-application-for-a-job" />
+                  <h3>
+                    <span className="odometer" data-count={35}>
+                      3 5
+                    </span>
+                    <span className="target">+</span>
+                  </h3>
+                  <p>Appointed to Job</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <section className="job-area pb-100 pt-100">
           <div className="container">
             <div className="section-title">
@@ -278,16 +347,16 @@ const Index = () => {
               <div className="row">
                 <div className="col-lg-6 mix web ui">
                   <div className="recents">
-                    <a href="">
+                    <Link href="/Components/Login">
                       <img src="/Images/job.webp" alt="Job" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="col-lg-6 mix ui web">
                   <div className="recents">
-                    <a href="">
+                    <Link href="/Components/Login/CompanyLogin">
                       <img src="/Images/emp.webp" alt="Job" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -317,61 +386,61 @@ const Index = () => {
               <div className="col-sm-6 col-lg-3">
                 <div className="blog-item wow fadeInUp" data-wow-delay=".3s">
                   <div className="blog-top">
-                    <a href="#">
+                    <Link href="#">
                       <img src="/Images/d1.webp" alt="Blog" />
-                    </a>
+                    </Link>
                     {/* <span>21 May, 2020</span> */}
                   </div>
                   <div className="blog-bottom">
                     <h3>
-                      <a href="#">Mumbai</a>
+                      <Link href="#">Kumbakonam</Link>
                     </h3>
-                    <p>4 lakh+ candidates</p>
+                    <p>500+ candidates</p>
                   </div>
                 </div>
               </div>
               <div className="col-sm-6 col-lg-3">
                 <div className="blog-item wow fadeInUp" data-wow-delay=".4s">
                   <div className="blog-top">
-                    <a href="#">
+                    <Link href="#">
                       <img src="/Images/d2.webp" alt="Blog" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="blog-bottom">
                     <h3>
-                      <a href="#">Tamil Nadu</a>
+                      <Link href="#">Chennai</Link>
                     </h3>
-                    <p>4 lakh+ candidates</p>
+                    <p>Coming Soon</p>
                   </div>
                 </div>
               </div>
               <div className="col-sm-6 col-lg-3">
                 <div className="blog-item wow fadeInUp" data-wow-delay=".4s">
                   <div className="blog-top">
-                    <a href="#">
+                    <Link href="#">
                       <img src="/Images/d3.webp" alt="Blog" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="blog-bottom">
                     <h3>
-                      <a href="#">Bangalore</a>
+                      <Link href="#">Bangalore</Link>
                     </h3>
-                    <p>4 lakh+ candidates</p>
+                    <p>Coming Soon</p>
                   </div>
                 </div>
               </div>
               <div className="col-sm-6 col-lg-3">
                 <div className="blog-item wow fadeInUp" data-wow-delay=".4s">
                   <div className="blog-top">
-                    <a href="#">
+                    <Link href="#">
                       <img src="/Images/d4.webp" alt="Blog" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="blog-bottom">
                     <h3>
-                      <a href="#">Kerala</a>
+                      <Link href="#">Kerala</Link>
                     </h3>
-                    <p>4 lakh+ candidates</p>
+                    <p>Coming Soon</p>
                   </div>
                 </div>
               </div>

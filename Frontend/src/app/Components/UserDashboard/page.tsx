@@ -6,12 +6,12 @@ import React from "react";
 
 const UserDashboard = () => {
   const router = useRouter();
-
   const [company, setCompany] = React.useState([]);
-  const loginUser = sessionStorage?.getItem("userName");
+  const [localUserName, setCompanyName] = React.useState(
+    localStorage.getItem("userName")
+  );
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
       router.back();
@@ -53,9 +53,9 @@ const UserDashboard = () => {
           <div className="container">
             <div className="row">
               {company
-                ?.filter((item) => item.userName === loginUser)
-                ?.map((result) => (
-                  <div className="col-sm-4">
+                ?.filter((item) => item.userName === localUserName)
+                ?.map((result, index) => (
+                  <div className="col-sm-4" key={index}>
                     <div className="job-card">
                       <div className="job-card-header">
                         <svg

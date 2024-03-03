@@ -9,6 +9,9 @@ const Company = () => {
   const router = useRouter();
   const [otpValue, setOtpValue] = React.useState(null);
   const [oldOtp, setOldOtp] = React.useState(null);
+  const [localUserName, setCompanyName] = React.useState(
+    localStorage.getItem("companyName")
+  );
   const {
     handleSubmit: handleSubmit,
     control: controlLogin,
@@ -16,7 +19,7 @@ const Company = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("companyName");
+    // let localUserName = localStorage.getItem("companyName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();
@@ -27,11 +30,11 @@ const Company = () => {
     if (!otpValue) {
       try {
         const response = await axios.post(
-          `${infoData?.baseApi}/customers/${formData?.companyEmail}`,
+          `${infoData?.baseApi}/customers/number/${formData?.companyNumber}`,
           formData
         );
         if (response?.data) {
-          alert("Otp sent your registered mail id");
+          alert("Otp sent your registered Phone Number");
           setOldOtp(response?.data);
         }
         console.log(formData, "formData32134", response);

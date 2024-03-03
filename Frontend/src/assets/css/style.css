@@ -6214,3 +6214,10 @@ textarea{
   .error{
     color: red !important;
 }
+
+.enquiry {
+    box-shadow: 0 0 20px 0 #dddddd87;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}

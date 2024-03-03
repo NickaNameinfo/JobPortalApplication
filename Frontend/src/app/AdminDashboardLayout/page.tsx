@@ -3,15 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const AdminDashboardLayout = ({ children }) => {
+const AdminDashboardLayout:any = ({ children }) => {
   const router = useRouter();
-  // React.useEffect(() => {
-  //   let localUserName = sessionStorage.getItem("companyName");
-  //   console.log(localUserName, "sdfas");
-  //   if (!localUserName) {
-  //     router.back();
-  //   }
-  // }, []);
   return (
     <div className="wrapper">
       {/* <div className="fright mt-4">

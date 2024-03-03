@@ -3,10 +3,10 @@ import Link from "next/link";
 import * as React from "react";
 const Header = () => {
   const [userName, setUserName] = React.useState(
-    sessionStorage?.getItem("userName")
+    localStorage?.getItem("userName")
   );
   const [comapnyName, setCOmpanyName] = React.useState(
-    sessionStorage.getItem("companyName")
+    localStorage.getItem("companyName")
   );
 
   return (
@@ -55,13 +55,13 @@ const Header = () => {
                 {!userName && !comapnyName ? (
                   <>
                     <Link className="login-btn pe-0" href="/Components/Login">
-                      Log in / 
+                      Log in /
                     </Link>
                     <Link
                       className="login-btn"
                       href="/Components/Login/CompanyLogin"
                     >
-                     Employers / Post Job
+                      Employers / Post Job
                     </Link>
                   </>
                 ) : (
@@ -84,6 +84,11 @@ const Header = () => {
                     </Link>
                   </>
                 )}
+                <div
+                  id="google_translate_element"
+                  className="lang"
+                  style={{ display: "inline" }}
+                ></div>
               </div>
             </div>
           </nav>

@@ -4,6 +4,9 @@ import * as React from "react";
 
 const JobProfileCard = ({ result, column = null }) => {
   const [jobList, setJobList] = React.useState(null);
+  const [localUserName, setCOmpanyName] = React.useState(
+    localStorage.getItem("userName")
+  );
   React.useEffect(() => {
     // Define the API URL
     const apiUrl = "http://localhost:5000/api/v1/jobs";
@@ -13,7 +16,7 @@ const JobProfileCard = ({ result, column = null }) => {
       .get(apiUrl)
       .then((response) => {
         // Handle the successful response
-        let localUserName = sessionStorage.getItem("userName");
+        // let localUserName = localStorage.getItem("userName");
         let tempData = response?.data?.data?.data.filter(
           (item) => item.userName === localUserName
         );

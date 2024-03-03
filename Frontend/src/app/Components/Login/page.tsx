@@ -7,6 +7,9 @@ import Link from "next/link";
 import { infoData } from "../../../../configData";
 
 const Login = () => {
+  const [localUserName, setCompanyName] = React.useState(
+    localStorage.getItem("userName")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -15,7 +18,7 @@ const Login = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = localStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();
@@ -35,8 +38,8 @@ const Login = () => {
       console.log(formData, "formData32134", response);
 
       if (response.data.success && !response?.data?.data?.error) {
-        sessionStorage.setItem("userName", response?.data?.data?.userName);
-        sessionStorage.setItem("userID", response?.data?.data.id);
+        localStorage.setItem("userName", response?.data?.data?.userName);
+        localStorage.setItem("userID", response?.data?.data.id);
         location.reload();
         router.push("/Components/UserDashboard/UserProfile");
       } else {
@@ -100,7 +103,7 @@ const Login = () => {
                   </p>
                 </div> */}
                 <div className="login-sign-in">
-                  <Link href="/Components/Forgot">Forgot Password?</Link>
+                  {/* <Link href="/Components/Forgot">Forgot Password?</Link> */}
                   <ul>
                     <li>Don’t Have Account ?</li>
                     <li>

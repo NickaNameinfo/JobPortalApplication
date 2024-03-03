@@ -7,6 +7,9 @@ import Link from "next/link";
 import { infoData } from "../../../../../configData";
 
 const CompanyLogin = () => {
+  const [localUserName, setCompanyName] = React.useState(
+    localStorage.getItem("companyName")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -15,7 +18,7 @@ const CompanyLogin = () => {
   } = useForm();
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("companyName");
+    // let localUserName = localStorage.getItem("companyName");
     console.log(localUserName, "sdfas");
     if (localUserName) {
       router.back();
@@ -31,9 +34,9 @@ const CompanyLogin = () => {
       console.log(formData, "formData32134", response);
 
       if (response.data.success && !response?.data?.data?.error) {
-        sessionStorage.setItem("companyName", response?.data?.data?.userName);
-        sessionStorage.setItem("companyId", response?.data?.data?.id);
-        sessionStorage.setItem(
+        localStorage.setItem("companyName", response?.data?.data?.userName);
+        localStorage.setItem("companyId", response?.data?.data?.id);
+        localStorage.setItem(
           "companyLogo",
           response?.data?.data?.companyLogo
         );
@@ -100,7 +103,7 @@ const CompanyLogin = () => {
                   </p>
                 </div>
                 <div className="login-sign-in">
-                  <Link href="/Components/Forgot">Forgot Password?</Link>
+                  {/* <Link href="/Components/Forgot">Forgot Password?</Link> */}
                   <ul>
                     <li>Don’t Have Account ?</li>
                     <li>

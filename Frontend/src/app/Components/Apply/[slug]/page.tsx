@@ -12,6 +12,9 @@ const Apply = ({ params }: { params: { slug: string } }) => {
   const [courses, setCourses] = React.useState(null);
   const [customer, setCustomer] = React.useState(null);
   const [leave, setLevel] = React.useState(null);
+  const [localUserName, setCOmpanyName] = React.useState(
+    localStorage.getItem("userName")
+  );
   const router = useRouter();
   const {
     handleSubmit: handleSubmit,
@@ -23,7 +26,7 @@ const Apply = ({ params }: { params: { slug: string } }) => {
   console.log(params.slug, "sdfjaslkd43245", courses);
 
   React.useEffect(() => {
-    let localUserName = sessionStorage.getItem("userName");
+    // let localUserName = localStorage.getItem("userName");
     console.log(localUserName, "sdfas");
     if (!localUserName) {
       alert("Before applying job kindly login your account");
@@ -31,7 +34,7 @@ const Apply = ({ params }: { params: { slug: string } }) => {
     }
 
     const apiUrl1 = `${infoData?.baseApi}/courses/${params.slug}`;
-    const apiUrl2 = `${infoData?.baseApi}/customers/${sessionStorage.getItem(
+    const apiUrl2 = `${infoData?.baseApi}/customers/${localStorage.getItem(
       "userID"
     )}`;
     axios
@@ -60,6 +63,7 @@ const Apply = ({ params }: { params: { slug: string } }) => {
     formData.append("jobCategory", courses?.jobCategory);
     formData.append("companyName", courses?.companyName);
     formData.append("companyId", courses?.companyId);
+    formData.append("jobStatus", "Applied");
     try {
       const response = await axios.post(`${infoData?.baseApi}/jobs`, formData, {
         headers: {
