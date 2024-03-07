@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         allowNull: false,
-        primaryKey: true, 
+        primaryKey: true,
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
@@ -71,6 +71,10 @@ module.exports = (sequelize, DataTypes) => {
       jobType: {
         type: DataTypes.STRING,
         field: "job_type",
+      },
+      hiringCandidates: {
+        type: DataTypes.STRING,
+        field: "hiring_candidates",
       },
       jobEligibilty: {
         type: DataTypes.STRING,

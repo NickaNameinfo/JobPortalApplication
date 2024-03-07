@@ -11,10 +11,10 @@ const PostJob = () => {
     localStorage.getItem("companyId")
   );
   const [companyName, setCompanyName] = React.useState(
-    localStorage.getItem("companyId")
+    localStorage.getItem("companyName")
   );
   const [companyLogo, setCompanyLogo] = React.useState(
-    localStorage.getItem("companyId")
+    localStorage.getItem("companyLogo")
   );
   const navigate = useNavigate();
   const {
@@ -31,6 +31,7 @@ const PostJob = () => {
       jobLocation: "",
       jobdesCription: "",
       jobCategory: "",
+      hiringCandidates: "",
     },
   });
 
@@ -224,6 +225,25 @@ const PostJob = () => {
                   />
 
                   {errorsLogin.jobType?.type === "required" ? (
+                    <p className="error">Field is required</p>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="form-group mb-0">
+                <label>Hiring Candidates</label>
+                <div className="job-category-area">
+                  <Controller
+                    name="hiringCandidates"
+                    control={controlLogin}
+                    rules={{ required: true }}
+                    render={({ field }) => (
+                      <input type="text" className="form-control" {...field} />
+                    )}
+                  />
+
+                  {errorsLogin.hiringCandidates?.type === "required" ? (
                     <p className="error">Field is required</p>
                   ) : null}
                 </div>

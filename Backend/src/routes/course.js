@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 const uploads = multer({
   storage: storage,
   limits: { fileSize: "1000000" },
-}).fields([{ name: "uploadCourse" }]);
+}).fields([{ name: "company_logo" }]);
 
 router.get("/", courseController.findAll);
 router.get("/:id", courseController.findById);

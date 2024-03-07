@@ -34,11 +34,11 @@ import { login } from "./loginSlice";
 
 function App() {
   const dispatch = useDispatch();
-  let profileName = localStorage.getItem("profileName");
+  let profileName:any = localStorage.getItem("profileName");
 
   React.useEffect(() => {
     if (profileName) {
-      dispatch(login(JSON.parse(profileName)));
+      dispatch(login(profileName));
     } else {
       dispatch(login(null));
     }

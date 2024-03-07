@@ -39,7 +39,7 @@ const CompanyLogin = () => {
         localStorage.setItem("companyName", response?.data?.data?.userName);
         localStorage.setItem("companyId", response?.data?.data?.id);
         localStorage.setItem("companyLogo", response?.data?.data?.companyLogo);
-        localStorage.setItem("profileName", response?.data?.data.firstName);
+        localStorage.setItem("profileName", response?.data?.data.companyName);
         setTimeout(() => {
           navigate(`/CompanyDashboard/CompanyProfile`);
         }, 1000);

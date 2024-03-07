@@ -40,15 +40,23 @@ const Jobs = () => {
             {company?.map((result, index) => (
               <div className="col-lg-12" key={index}>
                 <div className="job-item">
-                  <img src="/images/home-1/jobs/1.png" alt="Job" />
+                  <img
+                    src={`${infoData?.baseApi}/${result?.companyLogo}`}
+                    alt="Job"
+                  />
                   <div className="job-inner align-items-center">
                     <div className="job-inner-left">
                       <h3>
                         <Link to="">{result?.jobTitle}</Link>
                       </h3>
-                      <Link className="company" to="">
-                        {result?.companyName}
-                      </Link>
+                      <ul>
+                        <li style={{ padding: "0px" }}>
+                          <Link className="company" to="">
+                            {result?.companyName}
+                          </Link>
+                        </li>
+                        <li>Total Hiring : {result?.hiringCandidates}</li>
+                      </ul>
                       <ul>
                         <li>
                           <i className="icofont-money-bag" />

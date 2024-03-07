@@ -17,14 +17,12 @@ app.use(
 app.use(express.json());
 
 require("./connectDB");
-
 const customerRouter = require("./src/routes/customer");
 const courseRouter = require("./src/routes/course");
 const companyRouter = require("./src/routes/company");
 const jobsRouter = require("./src/routes/jobs");
 
-app.use("/api/v1/src/uploads", express.static("./src/uploads"));
-
+app.use("/api/v1/src/uploads", express.static(__dirname + "/src/uploads"));
 app.use("/api/v1/customers", customerRouter);
 app.use("/api/v1/courses", courseRouter);
 app.use("/api/v1/company", companyRouter);
